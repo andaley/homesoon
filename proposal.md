@@ -27,10 +27,10 @@ Technologies needed:
   - Mapbox
 
 Tutorials and documentation
-- https://github.com/argaen/python-google-distance-matrix
-https://www.mapbox.com/developers/api/directions/
-- http://leafletjs.com/examples/quick-start.html
-- https://developers.google.com/maps/documentation/distancematrix/intro
+- [Python Google Distance Matrix](https://github.com/argaen/python-google-distance-matrix)
+- [Mapbox API](https://www.mapbox.com/developers/api/directions/)
+- [Leaflet.js](http://leafletjs.com/examples/quick-start.html)
+- [Google Distance Matrix](https://developers.google.com/maps/documentation/distancematrix/intro)
 
 Possible Challenges
 - Load time for calculating distance
