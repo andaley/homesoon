@@ -15,7 +15,9 @@ nested_dict = list_of_dicts[0] # sample dict containing posting information
 
 i = 0
 while i < 10:
-    print list_of_dicts[i]
+    posting = list_of_dicts[i]
+    for key, value in posting.items():
+        print 'Key: %s, Value: %s'% (key, value)
     i += 1
 
 
