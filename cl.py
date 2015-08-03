@@ -13,6 +13,7 @@ nested_dict = list_of_dicts[0] # sample dict containing posting information
 
 # PostedDate, Latitude, Longitude, and PostingID, work
 
+# Testing the Craigslist data by iterating through list of dictionaries up to the 10th index.
 i = 0
 while i < 10:
     posting = list_of_dicts[i]
@@ -29,12 +30,3 @@ while i < 10:
 #  u'NumPosts': 12,
 #  u'Latitude': 37.789259488482,
 #  u'PostedDate': u'1438143822'}
-
-
-# [[{"Ask":"4095","ImageThumb":"http:\/\/images.craigslist.org\/00R0R_rbbDV8fOzp,0:00101_id4Wdg7G4Vt,0:00H0H_6QPFUVzhVen,0:00P0P_hutUiqbKfK,0:00G0G_dZEAXHTKtci,0:00e0e_5kHe1MDU253,0:00m0m_YYoboLO3M3,0:00d0d_eEsiPeDf9Qn_50x50c.jpg","Latitude":37.324476,"PostingTitle":"Your 3 bedroom home, ready NOW with a special","PostedDate":"1438385562","Longitude":-121.971828,"PostingURL":"\/\/sfbay.craigslist.org\/sby\/apa\/5150641297.html","Bedrooms":"3","CategoryID":"1","PostingID":"5150641297"}
-#
-# ,{"Longitude":-122.223872512748,"NumPosts":2,"PostedDate":"1438385549","GeoCluster":"102587075736","PostingID":"5145542605,5146875914","url":"\/jsonsearch\/apa\/?geocluster=102587075736&key=E23s6PbyAdDY5kSkRZN6NQ","Latitude":38.0531065531255},
-#
-# {"Longitude":-122.224044,"PostingURL":"\/\/sfbay.craigslist.org\/eby\/apa\/5146879148.html","Ask":"1400","Bedrooms":"3","ImageThumb":"http:\/\/images.craigslist.org\/00f0f_79fT2tZYW9t,0:00a0a_6YrkqHzb41y,0:00B0B_9Sn3PI3T301,0:00Q0Q_fTH59PBqh1n,0:00v0v_kRjNht8rXj8,0:00V0V_cenD78vVxlz,0:00T0T_lwC18mNQCU1,0:00Y0Y_6Sodehi6nyb,0:00z0z_25o2wqtSaKy,0:00505_1UFgloQulOU,0:01717_lu2nYAOGNWb,0:00B0B_5wu3TI8645V,0:00o0o_5g9a5P4m3o2_50x50c.jpg","PostingID":"5146879148","CategoryID":"1","Latitude":38.053163,"PostingTitle":"Spacious Updated 3\/1 in quiet Crockett neighborhood","PostedDate":"1438385529"},
-#
-# {"Ask":"2695","ImageThumb":"http:\/\/images.craigslist.org\/00707_gAgQM0SzQae,0:00S0S_aSVj8nrU686,0:00n0n_fgOfdDOWXH4,0:00H0H_kzUuPN2yMmd,0:00f0f_lSxKRHNkhUc,0:00808_2JolCXlyOw9,0:01313_cQWZr1I3z0x,0:00H0H_6KIl4F3LYhD,0:00V0V_hlYM9bZOUM1_50x50c.jpg","Latitude":37.562883,"PostingTitle":"2BR\/2BACondo\/Forest Park Elementary-Furnished Kitchen","PostedDate":"1438385522","Longitude":-122.049521,"PostingURL":"\/\/sfbay.craigslist.org\/eby\/apa\/5150640435.html","Bedrooms":"2","CategoryID":"1","PostingID":"5150640435"}
