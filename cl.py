@@ -4,14 +4,19 @@ import json
 fin = open('cl-data.json').read()
 parsed_json = json.loads(fin)  # returns list
 
-list_of_dicts = parsed_json[0] # returns list
+list_of_dicts = parsed_json[0] # returns list of 4000 dicts
 
 nested_dict = list_of_dicts[0] # sample dict containing posting information
 
-for key, value in nested_dict.items():
-    print 'Key: %s, Value: %s'% (key, value)
+# for key, value in nested_dict.items():
+#     print 'Key: %s, Value: %s'% (key, value)
 
 # PostedDate, Latitude, Longitude, and PostingID, work
+
+i = 0
+while i < 10:
+    print list_of_dicts[i]
+    i += 1
 
 
 # Index o {
