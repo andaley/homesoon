@@ -6,11 +6,33 @@
         #map-canvas {
             width: 500px;
             height: 400px;
+            background-color: #ccc;
         }
     </style>
 </head>
 
 <body>
     <div id="map-canvas"></div>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js">
+    function initialize() {
+        
+        // Map is a class that takes 2 arguents:
+            // A reference to the div that the map will be loaded into (#map-canvas)
+            // Options for the map, such as the center, zoom level, and the map type.
+
+        var mapCanvas = document.getElementById('map-canvas');
+        var mapOptions = {center: new google.maps.LatLng(37.78,-122.41),
+                            zoom: 8,
+                            mapTypeId: google.maps.MapTypeId.ROADMAP
+                            }
+
+                            // center is a Maps LatLng object that tells the the API where to center the map.
+                            // zoom can be between 0 (farthest) and 22
+                            // mapTypeId can be ROADMAP, SATELLITE, HYBRID, or TERRAIN.
+
+        var map = new google.maps.Map(mapCanvas);
+         
+    }
+    </script>
 </body>
 </html>
