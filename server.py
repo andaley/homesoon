@@ -1,9 +1,10 @@
 from flask import Flask, render_template
-from model import list_of_dicts
-from flask_debugtoolbar import DebugToolbarExtension
+from model import Posting
+from jinja2 import StrictUndefined
 
 app = Flask(__name__)
-
+app.secret_key = "hello"
+app.jinja_env.undefined = StrictUndefined
 
 
 
