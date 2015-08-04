@@ -2,11 +2,11 @@ from model import Posting, connect_to_db, db
 from server import app
 import json
 
-def load_posts():
+def load_posts(json_file):
     """Load Craigslist posts from JSON into database."""
 
-    fin = open('cl-data.json').read()
-    parsed_json = json.loads(fin)  # returns list
+    f = open(json_file).read()
+    parsed_json = json.loads(f)  # returns list
 
     list_of_posts = parsed_json[0] # returns list of 4000 dicts
 
