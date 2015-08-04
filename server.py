@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-from cl import list_of_dicts
+from model import list_of_dicts
 from flask_debugtoolbar import DebugToolbarExtension
 
 app = Flask(__name__)
