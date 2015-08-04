@@ -1,7 +1,6 @@
 """Model and database functions for Craigslist searcher."""
 
 from flask_sqlalchemy import SQLAlchemy
-import json
 
 db = SQLAlchemy()
 
