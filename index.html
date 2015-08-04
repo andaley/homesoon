@@ -12,6 +12,9 @@
             <div class="col-md-6"><h1>Find me an apartment near...</h1></div>
         </div>
         <div class="row">
+            <input type="address" name="address"
+        </div>
+        <div class="row">
             <div class="col-md-6">
                 <p>within 
                     <select>
@@ -24,10 +27,17 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6"><p>that has x bedrooms.</p></div>
+            <div class="col-md-6"><p>that has 
+                <select>
+                    <option value="one">1</option>
+                    <option value="two">2</option>
+                    <option value="three">3</option>
+                    <option value="four">4</option>
+                </select>
+                bedrooms.</p></div>
         </div>
         <div class="row">
-            <div class="col-md-6"><p>and costs x per month.</p></div>
+            <div class="col-md-6"><p>and costs less than <input type="number" name="cost"> per month.</p></div>
         </div>
     </div>
 </body>
