@@ -18,6 +18,8 @@
                 // Options for the map, such as the center, zoom level, and the map type.
 
             var mapCanvas = document.getElementById('map-canvas');
+
+
             var mapOptions = {center: new google.maps.LatLng(37.78,-122.41),
                                 zoom: 12,
                                 mapTypeId: google.maps.MapTypeId.ROADMAP
@@ -27,7 +29,18 @@
                                 // zoom can be between 0 (farthest) and 22
                                 // mapTypeId can be ROADMAP, SATELLITE, HYBRID, or TERRAIN.
 
+            // Create the map!
             var map = new google.maps.Map(mapCanvas, mapOptions);
+
+            // Grab lat & lon & pass to marker.
+            var sampleLocation = new google.maps.LatLng(37.7886663, -122.4114625);
+
+            // Create marker
+            var marker = new google.maps.Marker({
+              position: sampleLocation,
+              map: map,
+              title: 'hello world'
+            });
 
         }
         // Add event listener to the window object that will call initialize function.
