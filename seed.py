@@ -1,19 +1,21 @@
 from model import Posting, connect_to_db, db
-from server import app
 import json
+import requests
 
-def load_posts(json_file):
+
+def load_posts():
     """Load Craigslist posts from JSON into database."""
-    # TODO: use request library to go to Craigslist and retrieve JSON
-    # use requests to open JSON
-    # f = JSON object
 
-    f = open(json_file).read()
-    parsed_json = json.loads(f)  # returns list
+    # Retrieve JSON from Craigslist
+    endpoint = 'http://sfbay.craigslist.org/jsonsearch/apa/'
+    cl_json = requests.get(endpoint)
+
+    parsed_json = cl_json.json() # returns list
 
     list_of_posts = parsed_json[0] # returns list of 4000 dicts
 
     # Testing the Craigslist data by iterating through list of dictionaries up to the 10th index.
+
     i = 0
     while i < 1000:
         posting = list_of_posts[i]
@@ -48,10 +50,14 @@ def load_posts(json_file):
             db.session.add(new_post)
 
         i += 1
+    db.session.commit()
 
 if __name__ == '__main__':
+    from server import app
+
     connect_to_db(app)
-    # load_posts()
+    db.create_all()
+    load_posts()
     # db.session.commit()
-    print "Connected to db. Run load_posts() and db.session.commit() to repopulate database."
+    print "Database updated."
     # If creating database from scratch, run db.create_all()

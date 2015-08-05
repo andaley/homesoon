@@ -16,7 +16,7 @@ def home():
     return render_template('index.html')
 
 
-@app.route('find-apartments')
+@app.route('/find-apartments')
 def find_apartments():
     """
     Query database for posts within the user-specified distance.
@@ -31,7 +31,9 @@ def find_apartments():
     # TODO: convert address to lat/long
     # origin_lat = convert address to latitide
     # origin_long = convert address to longitude
-
+    # hard code lat/long
+    # change form to take in lat/long
+    # once that works, switch to address 
 
     # Gather list of tuples w/ ids, lat & longs
     _QUERY = "SELECT post_id, latitude, longitude FROM postings WHERE SQRT(SQUARE(latitude - ?)) + (SQUARE(longitude - ?)) ) < ?"
