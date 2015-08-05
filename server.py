@@ -25,22 +25,21 @@ def find_apartments():
     """
 
     MILES_TO_DEGREES = 69
-    max_distance = request.args.get('distance')
-    dist_degrees = max_distance / MILES_TO_DEGREES
+    # max_distance = request.args.get('distance')
+    # dist_degrees = max_distance / MILES_TO_DEGREES
+
 
     # TODO: convert address to lat/long
-    # origin_lat = convert address to latitide
-    # origin_long = convert address to longitude
+    origin_lat = request.args.get('lat')
+    origin_long = request.args.get('lon')
     # hard code lat/long
     # change form to take in lat/long
-    # once that works, switch to address 
+    # once that works, switch to address
 
     # Gather list of tuples w/ ids, lat & longs
     _QUERY = "SELECT post_id, latitude, longitude FROM postings WHERE SQRT(SQUARE(latitude - ?)) + (SQUARE(longitude - ?)) ) < ?"
 
     db.session.execute(_QUERY(origin_lat, origin_long, dist_degrees))
-
-
 
     # all_apts = db.session.query(Posting.post_id, Posting.latitude, Posting.longitude).all()
 
@@ -55,9 +54,10 @@ def find_apartments():
     #     # Eventually, all items on this list will be plotted on the map.
     # matching_apts = Posting.query.filter(Posting.id.in_([apt_ids]))
     #
-    # return matching_apts
+    return render_template(matching_apts=matching_apts)
 
 
+@app.route
 if __name__ == '__main__':
     app.debug = True
     app.run()

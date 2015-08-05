@@ -1,0 +1,35 @@
+{% extends 'base.html'%}
+
+{% block title %} Apartment Results {% endblock %}
+
+{% block content %}
+
+<div class="row">
+  <div class="col-md-6">
+
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Post ID</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+        </tr>
+        </thead>
+
+        <tbody>
+            {% for id, lat, long in matching_apts %}
+                <tr>
+                    <td>{{ id }}</td>
+                    <td>{{ lat }}</td>
+                    <td>{{ long }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+  </div>
+</div>
+
+{% endblock %}
