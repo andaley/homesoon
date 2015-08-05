@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from model import Posting
 from jinja2 import StrictUndefined
 
@@ -16,18 +16,30 @@ def home():
     return render_template('index.html')
 
 
-# @app.route('find-apartments')
-# def find_apartments():
-#     """
-#     Query database for posts within the user-specified distance.
-#
-#     Returns list of apartment objects.
-#     """
+@app.route('find-apartments')
+def find_apartments():
+    """
+    Query database for posts within the user-specified distance.
 
-    # max_distance = value from search form
+    Returns list of apartment objects.
+    """
+
+    MILES_TO_DEGREES = 69
+    max_distance = request.args.get('distance')
+    dist_degrees = max_distance / MILES_TO_DEGREES
+
     # TODO: convert address to lat/long
+    # origin_lat = convert address to latitide
+    # origin_long = convert address to longitude
+
 
     # Gather list of tuples w/ ids, lat & longs
+    _QUERY = "SELECT post_id, latitude, longitude FROM postings WHERE SQRT(SQUARE(latitude - ?)) + (SQUARE(longitude - ?)) ) < ?"
+
+    db.session.execute(_QUERY(origin_lat, origin_long, dist_degrees))
+
+
+
     # all_apts = db.session.query(Posting.post_id, Posting.latitude, Posting.longitude).all()
 
     # Iterate through tuples, checking if any fit the latitude & longitude criteria.

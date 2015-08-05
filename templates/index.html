@@ -13,33 +13,33 @@
         <!-- TODO: figure out where to send this form data, modify text to match 1 bedroom / 2 bedroomS -->
         <input type="address" name="address" id="address-box">
             <!-- <p>within</p> -->
-                <label>within
-                  <select>
-                    <option value="one">1</option>
-                    <option value="five">5</option>
-                    <option value="ten">10</option>
-                    <option value="twenty-five">25</option>
-                    <option value="fifty">50</option>
-                  </select>
-                </label>
-            <p>miles.</p>
+        <label>within
+          <select name="distance">
+            <option value="one">1</option>
+            <option value="five">5</option>
+            <option value="ten">10</option>
+            <option value="twenty-five">25</option>
+            <option value="fifty">50</option>
+          </select>
+        </label>
+        <p>miles.</p>
 
-            <!-- <p>That has</p> -->
-              <label>That has
-                <select>
-                    <option value="one">1</option>
-                    <option value="two">2</option>
-                    <option value="three">3</option>
-                    <option value="four">4</option>
-                </select>
-              </label>
-            <p>bedrooms.</p>
+    <!-- <p>That has</p> -->
+        <label>That has
+          <select>
+            <option value="one">1</option>
+            <option value="two">2</option>
+            <option value="three">3</option>
+            <option value="four">4</option>
+          </select>
+        </label>
+        <p>bedrooms.</p>
 
-            <!-- <p>and costs less than<p> -->
-              <label>and costs less than
-                <input type="number" name="cost">
-              </label>
-            <p>per month.</p>
+        <!-- <p>and costs less than<p> -->
+        <label>and costs less than
+          <input type="number" name="cost">
+        </label>
+        <p>per month.</p>
         <input type="submit" id="search-btn">
     </div>
   </div>
