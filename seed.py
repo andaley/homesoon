@@ -4,6 +4,9 @@ import json
 
 def load_posts(json_file):
     """Load Craigslist posts from JSON into database."""
+    # TODO: use request library to go to Craigslist and retrieve JSON
+    # use requests to open JSON
+    # f = JSON object
 
     f = open(json_file).read()
     parsed_json = json.loads(f)  # returns list
@@ -48,5 +51,7 @@ def load_posts(json_file):
 
 if __name__ == '__main__':
     connect_to_db(app)
+    # load_posts()
+    # db.session.commit()
     print "Connected to db. Run load_posts() and db.session.commit() to repopulate database."
     # If creating database from scratch, run db.create_all()
