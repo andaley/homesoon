@@ -8,31 +8,38 @@
       <div class="col-md-6"><h1>Find me an apartment near...</h1></div>
   </div>
   <div class="row">
-      <input type="address" name="address"
-  </div>
-  <div class="row">
-      <div class="col-md-6">
-          <p>within
-              <select>
-                  <option value="one">1</option>
-                  <option value="five">5</option>
-                  <option value="ten">10</option>
-                  <option value="twenty-five">25</option>
-                  <option value="fifty">50</option>
-              </select> miles.</p>
-      </div>
-  </div>
-  <div class="row">
-      <div class="col-md-6"><p>that has
-          <select>
-              <option value="one">1</option>
-              <option value="two">2</option>
-              <option value="three">3</option>
-              <option value="four">4</option>
-          </select>
-          bedrooms.</p></div>
-  </div>
-  <div class="row">
-      <div class="col-md-6"><p>and costs less than <input type="number" name="cost"> per month.</p></div>
+    <div class="col-md-6">
+      <form action="#">
+        <input type="address" name="address">
+            <p>within</p>
+                <label>
+                  <select>
+                    <option value="one">1</option>
+                    <option value="five">5</option>
+                    <option value="ten">10</option>
+                    <option value="twenty-five">25</option>
+                    <option value="fifty">50</option>
+                  </select>
+                </label>
+            <p>miles.</p>
+
+            <p>That has</p>
+              <label>
+                <select>
+                    <option value="one">1</option>
+                    <option value="two">2</option>
+                    <option value="three">3</option>
+                    <option value="four">4</option>
+                </select>
+              </label>
+            <p>bedrooms.</p>
+
+            <p>and costs less than<p>
+              <label>
+                <input type="number" name="cost">
+              </label>
+            <p>per month.</p>
+        <input type="submit" id="search-btn">
+    </div>
   </div>
 {% endblock %}
