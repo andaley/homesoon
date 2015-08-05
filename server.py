@@ -29,39 +29,26 @@ def find_apartments():
     print max_distance, type(max_distance)
 
     dist_degrees = max_distance / MILES_TO_DEGREES
-    #
-    #
-    # # TODO: convert address to lat/long
-    #
-    # origin_lat = request.args.get('lat')
-    # origin_long = request.args.get('lon')
-    # # hard code lat/long
-    # # change form to take in lat/long
-    # # once that works, switch to address
-    #
+
+
+    # TODO: convert address to lat/long
+
+    origin_lat = request.args.get('lat')
+    origin_long = request.args.get('lon')
+
     # # Gather list of tuples w/ ids, lat & longs
     # _QUERY = "SELECT post_id, latitude, longitude FROM postings WHERE SQRT(SQUARE(latitude - ?)) + (SQUARE(longitude - ?)) ) < ?"
     #
     # db.session.execute(_QUERY(origin_lat, origin_long, dist_degrees))
-
-    # all_apts = db.session.query(Posting.post_id, Posting.latitude, Posting.longitude).all()
-
-    # Iterate through tuples, checking if any fit the latitude & longitude criteria.
-    # If they do post id to list.
-    # apt_ids = []
-    # for post_id, lat, lon in all_apts:
-    #     if x < lat y and x2 < lon < y2:
-    #         apt_ids.append(post_id)
     #
-    # # Grab all objects in user_apts from database.
-    #     # Eventually, all items on this list will be plotted on the map.
-    # matching_apts = Posting.query.filter(Posting.id.in_([apt_ids]))
-    #
+    # # matching_apts =
+
     return render_template("apts.html", matching_apts=matching_apts)
 
 
 @app.route('/display-apartments')
 def display_apartments():
+    """Display apartment search results on a map. When a user clicks on a particular point, they will be re-routed."""
     pass
 
 if __name__ == '__main__':
