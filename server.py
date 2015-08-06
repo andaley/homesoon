@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 from model import Posting, db
 from jinja2 import StrictUndefined
+import math
 
 app = Flask(__name__)
 app.secret_key = "hello"
@@ -47,9 +48,12 @@ def find_apartments():
     ALL_lat_lons = db.session.query(Posting.post_id, Posting.latitude, Posting.longitude).all()
     # run math
 
+    matching_apts = []
+    for id, lat, lon in ALL_lat_lons:
+        if math.sqrt((lat - 37.7914448)**2 + (lon - -122.3929672)**2) < .072463768:
+            matching_apts.append(Posting.query.get(id))
+
     # db.session.execute(_QUERY(origin_lat, origin_long, dist_degrees))
-    #
-    # # matching_apts =
 
     return render_template("apts.html", matching_apts=matching_apts)
 
