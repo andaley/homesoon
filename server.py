@@ -1,8 +1,7 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from model import Posting, db, connect_to_db
 from jinja2 import StrictUndefined
 import math
-import jsonify
 
 app = Flask(__name__)
 app.secret_key = "oakzebraland"
@@ -59,17 +58,17 @@ def find_apartments():
 def display_apartments():
     """Display apartment search results on a map. When a user clicks on a particular point, display info window."""
 
-    apartments = {
-        "post_id":,
-        "title": ,
-        "date_posted": ,
-        "url": ,
-        "img_url": ,
-        "price": ,
-        "bedrooms": ,
-        "latitude": ,
-        "longitude":
-    }
+
+    apartments = { apt.post_id: {
+        "title": apt.title,
+        "date_posted": apt.date_posted,
+        "url": apt.url,
+        "img_url": apt.img_url,
+        "price": apt.price,
+        "bedrooms": apt.bed,
+        "latitude": apt.latitude,
+        "longitude": apt.longitude
+    } for apt in matching_apts}
 
     return jsonify(apartments)
 

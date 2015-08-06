@@ -11,7 +11,7 @@ function initialize() {
   var map = new google.maps.Map(mapCanvas, mapOptions);
 
   $.get('/apartments.json', 'hello server', function(apts) {
-    
+    console.log(apts)
   })
 
 }
