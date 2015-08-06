@@ -26,7 +26,7 @@ def find_apartments():
 
     MILES_TO_DEGREES = 69.0
     max_distance = int(request.args.get('distance'))
-    dist_degrees = max_distance / MILES_TO_DEGREES
+    origin_dist_degrees = max_distance / MILES_TO_DEGREES
 
     # TODO: convert address to lat/long
 
@@ -43,8 +43,11 @@ def find_apartments():
     matching_apts = []
 
     for post_id, lat, lon in all_lat_lons:
-        if math.sqrt((lat - origin_lat)**2 + (lon - origin_lon)**2) < dist_degrees:
-            matching_apts.append(Posting.query.get(post_id))
+        # calculate distance
+        distance_deg = math.sqrt((lat - origin_lat)**2 + (lon - origin_lon)**2)
+        distance_mi = distance_deg * 69
+        if distance_deg < origin_dist_degrees:
+            matching_apts.append((Posting.query.get(post_id), distance_mi))
 
     print 'There are %s apts within %s miles' % (len(matching_apts), max_distance)
 

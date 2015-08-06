@@ -14,15 +14,17 @@
             <th>Post ID</th>
             <th>Latitude</th>
             <th>Longitude</th>
+            <th>Distance</th>
         </tr>
         </thead>
 
         <tbody>
-            {% for apt in matching_apts %}
+            {% for apt, distance in matching_apts %}
                 <tr>
                     <td>{{ apt.post_id }}</td>
                     <td>{{ apt.latitude }}</td>
                     <td>{{ apt.longitude }}</td>
+                    <td>{{ distance }}</td>
                 </tr>
             {% endfor %}
         </tbody>
