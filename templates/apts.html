@@ -1,11 +1,16 @@
 {% extends 'base.html'%}
 
-{% block title %} Apartment Results {% endblock %}
+{% block title %}Apartment Results{% endblock %}
+
+{% block script %}
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+<script src="https://code.jquery.com/jquery.js"></script>
+{% endblock %}
 
 {% block content %}
 
 <div class="row">
-  <div class="col-lg-12" id="main-map">Test</div>
+  <div class="col-lg-12" id="main-map"></div>
 </div>
 
 <div class="row">
@@ -37,5 +42,7 @@
 
   </div>
 </div>
+
+<script src="/static/map.js"></script>
 
 {% endblock %}
