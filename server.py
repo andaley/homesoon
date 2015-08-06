@@ -37,12 +37,16 @@ def find_apartments():
     origin_long = request.args.get('lon')
 
     # # Gather list of tuples w/ ids, lat & longs
-    # _QUERY = "SELECT post_id, latitude, longitude FROM postings WHERE SQRT(SQUARE(latitude - ?)) + (SQUARE(longitude - ?)) ) < ?"
+    #  _QUERY = "SELECT post_id, latitude, longitude FROM postings WHERE SQRT(SQUARE(latitude - ?)) + (SQUARE(longitude - ?)) ) < ?"
 
     # SELECT post_id, latitude, longitude
     # FROM postings
     # WHERE SQRT(SQUARE(latitude - 37.7914448) + SQUARE(longitude - -122.3929672)) < .072463768
-    #
+
+    # retrieve all lat/lon/ids from database
+    ALL_lat_lons = db.session.query(Posting.post_id, Posting.latitude, Posting.longitude).all()
+    # run math
+
     # db.session.execute(_QUERY(origin_lat, origin_long, dist_degrees))
     #
     # # matching_apts =
