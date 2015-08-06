@@ -47,8 +47,12 @@ walked through google maps tutorial and added two points to sample map
 - Challenge:
   - SQL can’t process SQRT or square; need to install extension
 
+8/6
+- Tested SQL distance query w/ sample lat/lon -- it works!
+- 
+
 TODO
-- Test SQL distance query w/ sample lat/lon
+
 - Test SQL distance query w/ user inputted lat/lon
 - Test Google Distance Matrix w/ dummy data
 - Test plotting multiple points on map w/ dummy data

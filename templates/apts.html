@@ -18,11 +18,11 @@
         </thead>
 
         <tbody>
-            {% for id, lat, long in matching_apts %}
+            {% for apt in matching_apts %}
                 <tr>
-                    <td>{{ id }}</td>
-                    <td>{{ lat }}</td>
-                    <td>{{ long }}</td>
+                    <td>{{ apt.post_id }}</td>
+                    <td>{{ apt.latitude }}</td>
+                    <td>{{ apt.longitude }}</td>
                 </tr>
             {% endfor %}
         </tbody>

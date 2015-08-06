@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from model import Posting, db
+from model import Posting, db, connect_to_db
 from jinja2 import StrictUndefined
 import math
 
@@ -33,20 +33,28 @@ def find_apartments():
     # TODO: convert address to lat/long
 
     origin_lat = float(request.args.get('lat'))
+    # sample 37.7914448
     origin_lon = float(request.args.get('lon'))
+    # sample -122.3929672
 
+    print '\n\n\n\n\n', origin_lat, origin_lon, max_distance, '\n\n\n'
 
     # # Gather list of tuples w/ ids, lat & longs
     #  _QUERY = "SELECT post_id, latitude, longitude FROM postings WHERE SQRT(SQUARE(latitude - ?)) + (SQUARE(longitude - ?)) ) < ?"
 
-    # retrieve all lat/lon/ids from database
-    ALL_lat_lons = db.session.query(Posting.post_id, Posting.latitude, Posting.longitude).all()
+    # Retrieve all lat/lon/ids from database
+    all_lat_lons = db.session.query(Posting.post_id, Posting.latitude, Posting.longitude).all()
 
-    # If lat & lon are within desired distance, retrieve the corresponding Posting
+    print '\n\n\n\n\n', len(all_lat_lons), '\n\n\n'
+
+    # If lat & lon are within desired distance, retrieve the corresponding Posting object
     matching_apts = []
-    for id, lat, lon in ALL_lat_lons:
+
+    print '\n\n\n\n\n', matching_apts, '\n\n\n'
+
+    for post_id, lat, lon in all_lat_lons:
         if math.sqrt((lat - origin_lat)**2 + (lon - origin_lon)**2) < dist_degrees:
-            matching_apts.append(Posting.query.get(id))
+            matching_apts.append(Posting.query.get(post_id))
 
     print 'There are %s apts within %s miles' % (len(matching_apts), max_distance)
 
@@ -62,4 +70,5 @@ def display_apartments():
 
 if __name__ == '__main__':
     app.debug = True
+    connect_to_db(app)
     app.run()
