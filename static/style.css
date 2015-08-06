@@ -1,9 +1,13 @@
 #main-img {
     background-color: #ccc;
-    width: 100%;
     height: 400px;
 }
 
 #address-box {
   display: block;
+}
+
+#main-map{
+  background-color: #ccc;
+  height: 600px;
 }
