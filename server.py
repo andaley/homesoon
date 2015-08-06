@@ -25,33 +25,30 @@ def find_apartments():
     Returns list of apartment objects.
     """
 
-    MILES_TO_DEGREES = 69
+    MILES_TO_DEGREES = 69.0
     max_distance = int(request.args.get('distance'))
-    print max_distance, type(max_distance)
 
     dist_degrees = max_distance / MILES_TO_DEGREES
 
-
     # TODO: convert address to lat/long
 
-    origin_lat = request.args.get('lat')
-    origin_long = request.args.get('lon')
+    origin_lat = float(request.args.get('lat'))
+    origin_lon = float(request.args.get('lon'))
+
 
     # # Gather list of tuples w/ ids, lat & longs
     #  _QUERY = "SELECT post_id, latitude, longitude FROM postings WHERE SQRT(SQUARE(latitude - ?)) + (SQUARE(longitude - ?)) ) < ?"
 
-    # SELECT post_id, latitude, longitude
-    # FROM postings
-    # WHERE SQRT(SQUARE(latitude - 37.7914448) + SQUARE(longitude - -122.3929672)) < .072463768
-
     # retrieve all lat/lon/ids from database
     ALL_lat_lons = db.session.query(Posting.post_id, Posting.latitude, Posting.longitude).all()
-    # run math
 
+    # If lat & lon are within desired distance, retrieve the corresponding Posting
     matching_apts = []
     for id, lat, lon in ALL_lat_lons:
-        if math.sqrt((lat - 37.7914448)**2 + (lon - -122.3929672)**2) < .072463768:
+        if math.sqrt((lat - origin_lat)**2 + (lon - origin_lon)**2) < dist_degrees:
             matching_apts.append(Posting.query.get(id))
+
+    print 'There are %s apts within %s miles' % (len(matching_apts), max_distance)
 
     # db.session.execute(_QUERY(origin_lat, origin_long, dist_degrees))
 
