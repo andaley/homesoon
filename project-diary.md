@@ -48,8 +48,9 @@ walked through google maps tutorial and added two points to sample map
   - SQL can’t process SQRT or square; need to install extension
 
 8/6
-- Tested SQL distance query w/ sample lat/lon -- it works!
-- 
+- Tested SQL distance query with sample lat/lon -- it works!
+- Successfully connected html form with server
+- Displayed results of search as text with post id, latitude, longitude, and distance from origin
 
 TODO
 
