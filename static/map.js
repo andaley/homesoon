@@ -1,6 +1,8 @@
+console.log('hello please')
 
 function initialize() {
 
+  console.log('please work')
   var mapCanvas = document.getElementById('main-map');
   var mapOptions = {
     center: new google.maps.LatLng(37.78, -122.41),
@@ -10,8 +12,10 @@ function initialize() {
 
   var map = new google.maps.Map(mapCanvas, mapOptions);
 
-  $.get('/apartments.json', 'hello server', function(apts) {
-    console.log(apts)
+  console.log('making ajax call now!')
+  $.get('/apartments.json', 'hello', function(apts) {
+    console.log(apts);
+    // TODO: Add markers!
   })
 
 }
