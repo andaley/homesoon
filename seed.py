@@ -17,7 +17,7 @@ def load_posts():
     # Testing the Craigslist data by iterating through list of dictionaries up to the 10th index.
 
     i = 0
-    while i < 1000:
+    while i < len(list_of_posts)-1:
         posting = list_of_posts[i]
 
         # If this object has a GeoCluster key, skip it, since it's not an actual post.

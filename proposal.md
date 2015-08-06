@@ -36,11 +36,3 @@ ___ allows users to search for housing based on proximity to a given location an
 **Possible Challenges:**
 - Load time for calculating distance
 - Load time for calculating commute time
-
-### Project Diary
-
-##### Week 0
-- Drafted this proposal and outline :)
-- Researched Google Maps API
-- Toyed with Craigslist data
-  - Potential blocker: data is formatted terribly and is inconsistent!
