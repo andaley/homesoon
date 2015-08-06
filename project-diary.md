@@ -54,6 +54,7 @@ walked through google maps tutorial and added two points to sample map
 - Successfully connected html form with server
 - Displayed results of search as text with post id, latitude, longitude, and distance from origin
 - Added map to results page!
+- Moved query to separate route; using AJAX to retrieve results
 
 TODO
 
