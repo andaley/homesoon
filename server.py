@@ -2,9 +2,10 @@ from flask import Flask, render_template, request
 from model import Posting, db, connect_to_db
 from jinja2 import StrictUndefined
 import math
+import jsonify
 
 app = Flask(__name__)
-app.secret_key = "hello"
+app.secret_key = "oakzebraland"
 app.jinja_env.undefined = StrictUndefined
 
 
@@ -17,7 +18,7 @@ def home():
     return render_template('index.html')
 
 
-@app.route('/search-apartments')
+@app.route('/apartments')
 def find_apartments():
     """
     Query database for posts within the user-specified distance.
@@ -54,10 +55,23 @@ def find_apartments():
     return render_template("apts.html", matching_apts=matching_apts)
 
 
-@app.route('/display-apartments')
+@app.route('/apartments.json')
 def display_apartments():
-    """Display apartment search results on a map. When a user clicks on a particular point, they will be re-routed."""
-    pass
+    """Display apartment search results on a map. When a user clicks on a particular point, display info window."""
+
+    apartments = {
+        "post_id":,
+        "title": ,
+        "date_posted": ,
+        "url": ,
+        "img_url": ,
+        "price": ,
+        "bedrooms": ,
+        "latitude": ,
+        "longitude":
+    }
+
+    return jsonify(apartments)
 
 if __name__ == '__main__':
     app.debug = True

@@ -44,17 +44,21 @@
 walked through google maps tutorial and added two points to sample map
 - use requests library to pull down Craigslist object every time I run seed.py
 - add distance query to server
+- Tested plotting multiple points on map w/ dummy data
 - Challenge:
   - SQL can’t process SQRT or square; need to install extension
 
 8/6
-- Tested SQL distance query with sample lat/lon -- it works!
+- Tested SQL distance query with hard coded lat/lon -- it works!
+- Test SQL distance query w/ user inputted lat/lon
 - Successfully connected html form with server
 - Displayed results of search as text with post id, latitude, longitude, and distance from origin
+- Added map to results page!
 
 TODO
 
-- Test SQL distance query w/ user inputted lat/lon
 - Test Google Distance Matrix w/ dummy data
-- Test plotting multiple points on map w/ dummy data
 - Test adding info windows to map w/ dummy data
+- Sort results by distance
+- Modify query to check for price and bedrooms
+- Add support for East Bay and Portland
