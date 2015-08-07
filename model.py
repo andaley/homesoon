@@ -24,6 +24,8 @@ class Posting(db.Model):
     def __repr__(self):
         return "<Post: %s price: %s bedrooms: %s>" % (self.post_id, self.price, self.bedrooms)
 
+    ### get all lat lons as class method
+
 
 ######### Helper Functions #########
 

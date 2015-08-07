@@ -29,12 +29,11 @@ def find_apartments():
 
     # TODO: convert address to lat/long
 
-    origin_lat = float(request.args.get('lat')) # sample 37.7914448
-    origin_lon = float(request.args.get('lon')) # sample -122.3929672
-
-    session['origin_latitude'] = origin_lat
-    session['origin_longitude'] = origin_lon
     session['max_distance'] = origin_dist_degrees
+    session['origin_latitude'] = float(request.args.get('lat')) # sample 37.7914448
+    session['origin_longitude'] = float(request.args.get('lon')) # sample -122.3929672
+    session['bedrooms'] = request.args.get('bedrooms')
+    session['price'] = request.args.get('cost')
 
     return render_template("apts.html")
 
@@ -46,10 +45,12 @@ def display_apartments():
     Returns JSON with nested apartment objects.
     """
 
+    # TODO: move into model.py
     # Retrieve all lat/lon/ids from database as tuples
     all_lat_lons = db.session.query(Posting.post_id, Posting.latitude, Posting.longitude).all()
 
     # If lat & lon are within desired distance, retrieve the corresponding Posting object
+    # TODO: move into separate function
     matching_apts = []
 
     for post_id, lat, lon in all_lat_lons:
@@ -71,6 +72,8 @@ def display_apartments():
     } for apt in matching_apts}
 
     return jsonify(apartments)
+
+######### Helper Functions #########
 
 if __name__ == '__main__':
     app.debug = True

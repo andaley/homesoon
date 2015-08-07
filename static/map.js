@@ -1,12 +1,10 @@
-console.log('hello please')
 
 function initialize() {
 
-  console.log('please work')
   var mapCanvas = document.getElementById('main-map');
   var mapOptions = {
     center: new google.maps.LatLng(37.78, -122.41),
-    zoom: 12,
+    zoom: 13,
     // mapTypeId: google.maps.mapTypeId.ROADMAP
   };
 
@@ -14,12 +12,10 @@ function initialize() {
 
   // Define global info window
   var infoWindow = new google.maps.InfoWindow({
-        width: 100
+        width: 200
     })
 
-  console.log('making ajax call now!')
-
-  // Retrieve apartment objects to use as markers
+  // Retrieve apartment objects from server
   $.get('/apartments.json', function(apts) {
     var apartment, marker, contentString;
 
@@ -38,6 +34,7 @@ function initialize() {
       contentString = (
         '<div class="window-content">'+
         '<a href="' + apartment['url'] + '">' + apartment['title'] + '</a>' + '<p>Price: ' + apartment['price'] + '</p>' +
+        '<p>Bedrooms: ' + apartment['bedrooms'] + '</p>' +
         '</div>'
       );
 
