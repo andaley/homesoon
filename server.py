@@ -24,7 +24,7 @@ def find_apartments():
     """
 
     # TODO: convert address to lat/long
-    
+
     session['max_distance'] = int(request.args.get('distance'))
     session['origin_latitude'] = float(request.args.get('lat')) # sample 37.7914448
     session['origin_longitude'] = float(request.args.get('lon')) # sample -122.3929672
@@ -41,16 +41,13 @@ def display_apartments():
     Returns JSON with nested apartment objects.
     """
 
-    print len(session)
-    print session['price']
-    print session['bedrooms']
-    print session['origin_latitude']
-    print session['origin_longitude']
-    print session['max_distance']
-
     search_results = Posting.get_apartments(session['price'], session['bedrooms'], session['origin_latitude'], session['origin_longitude'], session['max_distance'])
 
-    print len(search_results)
+    # TODO: if search returns nothing, flash a message.
+
+    if not search_results:
+        # return nothing
+        pass
 
     apartments = {apt.post_id: {
         "title": apt.title,
