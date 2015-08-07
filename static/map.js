@@ -1,3 +1,5 @@
+// TODO: add event listener to info window; calculate commute distance with Google Distance Matrix
+
 
 function initialize() {
 
