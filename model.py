@@ -1,7 +1,7 @@
 """Model and database functions for Craigslist searcher."""
 
 from flask_sqlalchemy import SQLAlchemy
-from flask import session
+import math
 
 db = SQLAlchemy()
 
@@ -57,12 +57,15 @@ class Posting(db.Model):
             distance_deg = math.sqrt((lat - origin_lat)**2 + (lon - origin_lon)**2)
 
             # Convert distance to miles
-            distance_mi = distance_deg * 69
+            distance_mi = distance_deg * 69.0
 
-            if distance_deg < desired_distance:
+            if distance_mi < desired_distance:
                 matching_apts.append(cls.query.get(post_id))
 
         return matching_apts
+
+    # @classmethod
+    # def get_apartments
 
 ######### Helper Functions #########
 

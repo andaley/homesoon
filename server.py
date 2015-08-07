@@ -47,20 +47,12 @@ def display_apartments():
 
     # TODO: move into model.py
     # Retrieve all ids/lat/lons from database as tuples
-    Posting.get_lat_lons(session['price'], session['bedrooms'])
+    # Posting.get_lat_lons(session['price'], session['bedrooms'])
 
 
     # If lat & lon are within desired distance, retrieve the corresponding Posting object
     # TODO: move into separate function
-    matching_apts = []
 
-
-    for post_id, lat, lon in all_lat_lons:
-        # calculate distance
-        distance_deg = math.sqrt((lat - session['origin_latitude'])**2 + (lon - session['origin_longitude'])**2)
-        distance_mi = distance_deg * 69
-        if distance_deg < session['max_distance']:
-            matching_apts.append(Posting.query.get(post_id))
 
     apartments = {apt.post_id: {
         "title": apt.title,
