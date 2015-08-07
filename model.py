@@ -1,6 +1,7 @@
 """Model and database functions for Craigslist searcher."""
 
 from flask_sqlalchemy import SQLAlchemy
+from flask import session
 
 db = SQLAlchemy()
 
@@ -24,11 +25,35 @@ class Posting(db.Model):
     def __repr__(self):
         return "<Post: %s price: %s bedrooms: %s>" % (self.post_id, self.price, self.bedrooms)
 
-    ### get all lat lons as class method
+    # TODO: Wrap class methods into one 'get apartments' function.
+
     @classmethod
-    def get_lat_longs(max_rent, num_rooms):
-        "Given price and # of bedrooms, return list of apartment ids, "
-        all_lat_lons = db.session.query(Posting.post_id, Posting.latitude, Posting.longitude).filter(Posting.price < max_rent, Posting.bedrooms == num_rooms).all()
+    def get_lat_lons(cls, max_rent, num_rooms):
+        """
+        Given price and # of bedrooms, return list of matching apartment objects.
+        """
+
+        # First, retrieve list of ids, latitudes, and longitudes of apts
+        # with desired number of bedrooms and within budget.
+        query = db.session.query(cls.post_id, cls.latitude, cls.longitude).filter(cls.price < max_rent, cls.bedrooms == num_rooms)
+
+        all_lat_lons = query.all()
+
+        return all_lat_lons
+
+    @classmethod
+    def calculate_distance():
+        # Then, calculate distance from origin to each apartment.
+        # If apartment is within desired range, retrieve that object and add to list.
+        matching_apts = []
+        for post_id, lat, lon in all_lat_lons:
+            # Calculate Euclidean distance
+            distance_deg = math.sqrt((lat - session['origin_latitude'])**2 + (lon - session['origin_longitude'])**2)
+            distance_mi = distance_deg * 69
+            if distance_deg < session['max_distance']:
+                matching_apts.append(Posting.query.get(post_id))
+
+        return matching_apts
 
 ######### Helper Functions #########
 
