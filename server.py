@@ -47,7 +47,7 @@ def display_apartments():
 
     # TODO: move into model.py
     # Retrieve all ids/lat/lons from database as tuples
-    # Posting.get_lat_lons(session['price'], session['bedrooms'])
+    Posting.get_lat_lons(session['price'], session['bedrooms'])
 
 
     # If lat & lon are within desired distance, retrieve the corresponding Posting object

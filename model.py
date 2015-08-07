@@ -64,8 +64,16 @@ class Posting(db.Model):
 
         return matching_apts
 
-    # @classmethod
-    # def get_apartments
+    @classmethod
+    def get_apartments(cls, max_rent, num_rooms, origin_lat, origin_lon, desired_distance):
+        """
+        Find apartments meeting the user's preferences. Returns a list of apartment objects.
+        """
+
+        l = cls.get_lat_lons(max_rent, num_rooms)
+        r = cls.calculate_distance(l, origin_lat, origin_lon, desired_distance)
+
+        return r
 
 ######### Helper Functions #########
 
