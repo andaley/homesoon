@@ -20,7 +20,7 @@ def home():
 @app.route('/apartments')
 def find_apartments():
     """
-    Add users' search preferences to their session and display apartments results page.
+    Add users' search preferences to their session and display apartment results page.
     """
 
     MILES_TO_DEGREES = 69.0
