@@ -25,7 +25,10 @@ class Posting(db.Model):
         return "<Post: %s price: %s bedrooms: %s>" % (self.post_id, self.price, self.bedrooms)
 
     ### get all lat lons as class method
-
+    @classmethod
+    def get_lat_longs(max_rent, num_rooms):
+        "Given price and # of bedrooms, return list of apartment ids, "
+        all_lat_lons = db.session.query(Posting.post_id, Posting.latitude, Posting.longitude).filter(Posting.price < max_rent, Posting.bedrooms == num_rooms).all()
 
 ######### Helper Functions #########
 
