@@ -30,7 +30,7 @@ class Posting(db.Model):
     @classmethod
     def get_lat_lons(cls, max_rent, num_rooms):
         """
-        Given price and # of bedrooms, return list of matching apartment objects.
+        Given price and # of bedrooms, return list of ids, latitudes and longitudes.
         """
 
         # First, retrieve list of ids, latitudes, and longitudes of apts
@@ -42,16 +42,25 @@ class Posting(db.Model):
         return all_lat_lons
 
     @classmethod
-    def calculate_distance():
-        # Then, calculate distance from origin to each apartment.
-        # If apartment is within desired range, retrieve that object and add to list.
+    def calculate_distance(cls, all_lat_lons, origin_lat, origin_lon, desired_distance):
+        """
+        Given list of tuples with (id, latitude, longitude), origin lat/lon, and desired distance, calculate distance from origin.
+        If distance is within desired range, retrieve that apartment object and add to list.
+
+        Returns list of apartment objects.
+        """
+
         matching_apts = []
         for post_id, lat, lon in all_lat_lons:
+
             # Calculate Euclidean distance
-            distance_deg = math.sqrt((lat - session['origin_latitude'])**2 + (lon - session['origin_longitude'])**2)
+            distance_deg = math.sqrt((lat - origin_lat)**2 + (lon - origin_lon)**2)
+
+            # Convert distance to miles
             distance_mi = distance_deg * 69
-            if distance_deg < session['max_distance']:
-                matching_apts.append(Posting.query.get(post_id))
+
+            if distance_deg < desired_distance:
+                matching_apts.append(cls.query.get(post_id))
 
         return matching_apts
 
