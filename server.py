@@ -23,13 +23,14 @@ def find_apartments():
     Add users' search preferences to their session and display apartment results page.
     """
 
+    # TODO: convert address to lat/long
+
+    # Convert distance from miles to degrees
     MILES_TO_DEGREES = 69.0
     max_distance = int(request.args.get('distance'))
     origin_dist_degrees = max_distance / MILES_TO_DEGREES
 
-    # TODO: convert address to lat/long
-
-    session['max_distance'] = origin_dist_degrees
+    session['max_distance'] = max_distance
     session['origin_latitude'] = float(request.args.get('lat')) # sample 37.7914448
     session['origin_longitude'] = float(request.args.get('lon')) # sample -122.3929672
     session['bedrooms'] = request.args.get('bedrooms')
@@ -45,14 +46,16 @@ def display_apartments():
     Returns JSON with nested apartment objects.
     """
 
-    # TODO: move into model.py
-    # Retrieve all ids/lat/lons from database as tuples
-    Posting.get_lat_lons(session['price'], session['bedrooms'])
+    print len(session)
+    print session['price']
+    print session['bedrooms']
+    print session['origin_latitude']
+    print session['origin_longitude']
+    print session['max_distance']
 
+    search_results = Posting.get_apartments(session['price'], session['bedrooms'], session['origin_latitude'], session['origin_longitude'], session['max_distance'])
 
-    # If lat & lon are within desired distance, retrieve the corresponding Posting object
-    # TODO: move into separate function
-
+    print len(search_results)
 
     apartments = {apt.post_id: {
         "title": apt.title,
@@ -63,7 +66,9 @@ def display_apartments():
         "bedrooms": apt.bedrooms,
         "latitude": apt.latitude,
         "longitude": apt.longitude
-    } for apt in matching_apts}
+    } for apt in search_results}
+
+    print len(apartments)
 
     return jsonify(apartments)
 

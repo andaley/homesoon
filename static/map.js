@@ -16,7 +16,7 @@ function initialize() {
     })
 
   // Retrieve apartment objects from server
-  $.get('/apartments.json', function(apts) {
+  $.get('/apartments.json', 'HELLO', function(apts) {
     var apartment, marker, contentString;
 
     // Iterate through keys in master apts object
