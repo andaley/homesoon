@@ -50,6 +50,8 @@ class Posting(db.Model):
         Returns list of apartment objects.
         """
 
+        MILES_TO_DEGREES = 69.0
+
         matching_apts = []
         for post_id, lat, lon in all_lat_lons:
 
@@ -57,7 +59,7 @@ class Posting(db.Model):
             distance_deg = math.sqrt((lat - origin_lat)**2 + (lon - origin_lon)**2)
 
             # Convert distance to miles
-            distance_mi = distance_deg * 69.0
+            distance_mi = distance_deg * MILES_TO_DEGREES
 
             if distance_mi < desired_distance:
                 matching_apts.append(cls.query.get(post_id))

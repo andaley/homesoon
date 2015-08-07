@@ -24,13 +24,8 @@ def find_apartments():
     """
 
     # TODO: convert address to lat/long
-
-    # Convert distance from miles to degrees
-    MILES_TO_DEGREES = 69.0
-    max_distance = int(request.args.get('distance'))
-    origin_dist_degrees = max_distance / MILES_TO_DEGREES
-
-    session['max_distance'] = max_distance
+    
+    session['max_distance'] = int(request.args.get('distance'))
     session['origin_latitude'] = float(request.args.get('lat')) # sample 37.7914448
     session['origin_longitude'] = float(request.args.get('lon')) # sample -122.3929672
     session['bedrooms'] = request.args.get('bedrooms')
