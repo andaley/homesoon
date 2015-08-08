@@ -25,7 +25,6 @@ class Posting(db.Model):
     def __repr__(self):
         return "<Post: %s price: %s bedrooms: %s>" % (self.post_id, self.price, self.bedrooms)
 
-    # TODO: Wrap class methods into one 'get apartments' function.
 
     @classmethod
     def get_lat_lons(cls, max_rent, num_rooms):
@@ -41,8 +40,9 @@ class Posting(db.Model):
 
         return all_lat_lons
 
+
     @classmethod
-    def calculate_distance(cls, all_lat_lons, origin_lat, origin_lon, desired_distance):
+    def get_apartments(cls, max_rent, num_rooms, origin_lat, origin_lon, desired_distance):
         """
         Given list of tuples with (id, latitude, longitude), origin lat/lon, and desired distance, calculate distance from origin.
         If distance is within desired range, retrieve that apartment object and add to list.
@@ -51,6 +51,8 @@ class Posting(db.Model):
         """
 
         MILES_TO_DEGREES = 69.0
+
+        all_lat_lons = cls.get_lat_lons(max_rent, num_rooms)
 
         matching_apts = []
         for post_id, lat, lon in all_lat_lons:
@@ -61,21 +63,12 @@ class Posting(db.Model):
             # Convert distance to miles
             distance_mi = distance_deg * MILES_TO_DEGREES
 
+            # If apt is within distance, fetch object and add to list.
             if distance_mi < desired_distance:
                 matching_apts.append(cls.query.get(post_id))
 
         return matching_apts
 
-    @classmethod
-    def get_apartments(cls, max_rent, num_rooms, origin_lat, origin_lon, desired_distance):
-        """
-        Find apartments meeting the user's preferences. Returns a list of apartment objects.
-        """
-
-        l = cls.get_lat_lons(max_rent, num_rooms)
-        r = cls.calculate_distance(l, origin_lat, origin_lon, desired_distance)
-
-        return r
 
 ######### Helper Functions #########
 
