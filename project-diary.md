@@ -56,8 +56,15 @@ walked through google maps tutorial and added two points to sample map
 - Added map to results page!
 - Moved query to separate route; using AJAX to retrieve results
 
+8/7
+- Moved distance and get apartments function into model as class methods
+- Wrote two unit tests for model.py
+- Challenge: imgs aren't showing up
+
+
 TODO
 
+- re-seed database to see if img url is getting cut off
 - Test Google Distance Matrix w/ dummy data
 - Test adding info windows to map w/ dummy data
 - Sort results by distance

@@ -16,7 +16,7 @@ class Posting(db.Model):
     title = db.Column(db.String(50), nullable=False)
     date_posted = db.Column(db.Integer)
     url = db.Column(db.String(100), nullable=False)
-    img_url = db.Column(db.String(100), nullable=True)
+    img_url = db.Column(db.String(200), nullable=True)
     price = db.Column(db.Integer)
     bedrooms = db.Column(db.Integer)
     latitude = db.Column(db.Integer, nullable=False)
