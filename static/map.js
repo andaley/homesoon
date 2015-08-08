@@ -37,6 +37,7 @@ function initialize() {
         '<div class="window-content">'+
         '<a href="' + apartment['url'] + '">' + apartment['title'] + '</a>' + '<p>Price: ' + apartment['price'] + '</p>' +
         '<p>Bedrooms: ' + apartment['bedrooms'] + '</p>' +
+        '<img src="' + apartment['img_url'] + '" height="50px">' +
         '</div>'
       );
 
