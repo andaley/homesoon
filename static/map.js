@@ -28,7 +28,8 @@ function initialize() {
       position: new google.maps.LatLng(apts['origin_info']['origin_lat'], apts['origin_info']['origin_lon']),
       map: map,
       animation: google.maps.Animation.DROP,
-      title: 'Origin',
+      icon: 'https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_purple.png',
+      title: 'Origin'
     })
 
     var apartment, marker, contentString;
@@ -38,7 +39,8 @@ function initialize() {
     for (var key in listings) {
       apartment = listings[key];
 
-      // Define marker
+      // TODO: change marker color according to distance
+      // Define marker for all apts
       marker = new google.maps.Marker({
         position: new google.maps.LatLng(apartment['latitude'], apartment['longitude']),
         map: map,
