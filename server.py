@@ -49,7 +49,11 @@ def display_apartments():
         # return nothing
         pass
 
-    apartments = {apt.post_id: {
+    apartments = {"origin_lat": session['origin_latitude'],
+        "origin_lon": session['origin_longitude']}
+
+    for apt in search_results:
+        apartments[apt.post_id] = {
         "title": apt.title,
         "date_posted": apt.date_posted,
         "url": apt.url,
@@ -58,7 +62,7 @@ def display_apartments():
         "bedrooms": apt.bedrooms,
         "latitude": apt.latitude,
         "longitude": apt.longitude
-    } for apt in search_results}
+    }
 
     print len(apartments)
 
