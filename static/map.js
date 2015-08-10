@@ -3,15 +3,17 @@
 
 function initialize() {
 
+  // Define map canvas
+  var mapCanvas = document.getElementById('main-map');
+
   // Define global info window
   var infoWindow = new google.maps.InfoWindow({
         width: 200
     })
 
   // Retrieve apartment objects from server
-  $.get('/apartments.json', 'HELLO', function(apts) {
+  $.get('/apartments.json', function(apts) {
 
-    var mapCanvas = document.getElementById('main-map');
     var mapOptions = {
       center: new google.maps.LatLng(apts['origin_lat'], apts['origin_lon']),
       zoom: 13,
@@ -19,6 +21,13 @@ function initialize() {
     };
 
     var map = new google.maps.Map(mapCanvas, mapOptions);
+
+    var originMarker = new google.maps.Marker({
+      position: new google.maps.LatLng(apts['origin_lat'], apts['origin_lon']),
+      map: map,
+      animation: google.maps.Animation.DROP,
+      title: 'Origin',
+    })
 
     var apartment, marker, contentString;
 
@@ -30,6 +39,7 @@ function initialize() {
       marker = new google.maps.Marker({
         position: new google.maps.LatLng(apartment['latitude'], apartment['longitude']),
         map: map,
+        animation: google.maps.Animation.DROP,
         title: 'Apartment ID' + apartment['post_id'],
       });
 
