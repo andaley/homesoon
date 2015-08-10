@@ -49,11 +49,14 @@ def display_apartments():
         # return nothing
         pass
 
-    apartments = {"origin_lat": session['origin_latitude'],
-        "origin_lon": session['origin_longitude']}
+    apartments = {'origin_info':
+        {"origin_lat": session['origin_latitude'],
+        "origin_lon": session['origin_longitude']},
+        'listings': {}
+        }
 
     for apt in search_results:
-        apartments[apt.post_id] = {
+        apartments['listings'][apt.post_id] = {
         "title": apt.title,
         "date_posted": apt.date_posted,
         "url": apt.url,
