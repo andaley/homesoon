@@ -71,14 +71,20 @@ def display_apartments():
 
     return jsonify(apartments)
 
-@app.route('/calculate-distance.json')
-def calculate_distance(apt_id):
+@app.route('/calculate-distance/<lat>/<lon>')
+def calculate_distance(lat, lon):
+    print lat, lon
+    # target_lat = lat_lon['G']
+    # target_lon = lat_lon['K']
 
-    origin = str(session['origin_lat']) + ',' + str(session['origin_lon'])
+    origin = str(session['origin_latitude']) + ',' + str(session['origin_longitude'])
+    # Posting.query.get(apt_id)
+    #
+    # request('https://maps.googleapis.com/maps/api/distancematrix/json?origins=' + origin + '&destinations=' + apt.latitude + ',' + apt.longitude +
+    #
+    # '&mode=bicycling&key=AIzaSyAAnTQkvUjMsgt3RCdFTsFxidNNiRcv48I')
 
-    request('https://maps.googleapis.com/maps/api/distancematrix/json?origins=' + origin + '&destinations=' + apt.latitude + ',' + apt.longitude +
-
-    '&mode=bicycling&key=AIzaSyAAnTQkvUjMsgt3RCdFTsFxidNNiRcv48I')
+    return 'hi'
 
 
 ######### Helper Functions #########
