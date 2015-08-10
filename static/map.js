@@ -15,15 +15,17 @@ function initialize() {
   $.get('/apartments.json', function(apts) {
 
     var mapOptions = {
-      center: new google.maps.LatLng(apts['origin_lat'], apts['origin_lon']),
+      center: new google.maps.LatLng(apts['origin_info']['origin_lat'], apts['origin_info']['origin_lon']),
       zoom: 13,
       // mapTypeId: google.maps.mapTypeId.ROADMAP
     };
 
+    // Create the map!
     var map = new google.maps.Map(mapCanvas, mapOptions);
 
+    // Set origin marker
     var originMarker = new google.maps.Marker({
-      position: new google.maps.LatLng(apts['origin_lat'], apts['origin_lon']),
+      position: new google.maps.LatLng(apts['origin_info']['origin_lat'], apts['origin_info']['origin_lon']),
       map: map,
       animation: google.maps.Animation.DROP,
       title: 'Origin',
@@ -31,16 +33,17 @@ function initialize() {
 
     var apartment, marker, contentString;
 
+    var listings = apts['listings']
     // Iterate through keys in master apts object
-    for (var key in apts) {
-      apartment = apts[key];
+    for (var key in listings) {
+      apartment = listings[key];
 
       // Define marker
       marker = new google.maps.Marker({
         position: new google.maps.LatLng(apartment['latitude'], apartment['longitude']),
         map: map,
         animation: google.maps.Animation.DROP,
-        title: 'Apartment ID' + apartment['post_id'],
+        title: apartment['title']
       });
 
       // Define content of infoWindow
