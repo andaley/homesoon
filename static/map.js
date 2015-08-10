@@ -53,16 +53,16 @@ function initialize() {
         '<div class="window-content">'+
         '<a href="' + apartment['url'] + '">' + apartment['title'] + '</a>' + '<p>Price: ' + apartment['price'] + '</p>' +
         '<p>Bedrooms: ' + apartment['bedrooms'] + '</p>' +
-        '<img src="' + "apartment['img_url']" + '" height="50px">' + '<span id="distance">Distance goes here</span>' +
+        '<img src="' + apartment['img_url'] + '" height="50px">' +
         '</div>'
       );
 
-      bindinfoWindow(marker, map, infoWindow, contentString);
+      getinfoWindowDistance(marker, map, infoWindow, contentString);
     }
 
   });
 
-  function bindinfoWindow(marker, map, infoWindow, html) {
+  function getinfoWindowDistance(marker, map, infoWindow, html) {
     google.maps.event.addListener(marker, 'click', function() {
       infoWindow.close();
       infoWindow.setContent(html);
@@ -76,6 +76,8 @@ function initialize() {
       console.log('Making AJAX request now')
       $.get('/calculate-distance/' + lat + '/' + lon, function (distance) {
         console.log(distance);
+        html = html + '<p>distance: ' + distance + '</p>';
+        infoWindow.setContent(html);
       });
     });
   }
