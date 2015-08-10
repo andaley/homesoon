@@ -45,7 +45,7 @@ function initialize() {
         position: new google.maps.LatLng(apartment['latitude'], apartment['longitude']),
         map: map,
         animation: google.maps.Animation.DROP,
-        title: apartment['title']
+        title: 'ApartmentID ' + key
       });
 
       // Define content of infoWindow
