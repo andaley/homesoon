@@ -54,6 +54,7 @@ walked through google maps tutorial and added two points to sample map
 - Successfully connected html form with server
 - Displayed results of search as text with post id, latitude, longitude, and distance from origin
 - Added map to results page!
+- Modify query to check for price and bedrooms
 - Moved query to separate route; using AJAX to retrieve results
 
 8/7
@@ -66,7 +67,5 @@ TODO
 
 - re-seed database to see if img url is getting cut off
 - Test Google Distance Matrix w/ dummy data
-- Test adding info windows to map w/ dummy data
 - Sort results by distance
-- Modify query to check for price and bedrooms
 - Add support for East Bay and Portland
