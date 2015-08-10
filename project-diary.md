@@ -65,7 +65,8 @@ walked through google maps tutorial and added two points to sample map
 8/10
 - Centered map according to origin latitude and longitude
 - Created origin marker with special formatting [https://github.com/Concept211/Google-Maps-Markers#usage-premade]
-- 
+- Updated event listener to prepare for calculating distance
+- Wrote AJAX call and updated infoWindow with sample content
 
 
 TODO
