@@ -31,6 +31,8 @@ def find_apartments():
     session['bedrooms'] = request.args.get('bedrooms')
     session['price'] = request.args.get('cost')
 
+    # can I render a template and return the lat & long to be used by JS? Otherwise I can't render map until getting results
+
     return render_template("apts.html")
 
 
@@ -67,9 +69,17 @@ def display_apartments():
         "longitude": apt.longitude
     }
 
-    print len(apartments)
-
     return jsonify(apartments)
+
+@app.route('/calculate-distance.json')
+def calculate_distance(apt_id):
+
+    origin = str(session['origin_lat']) + ',' + str(session['origin_lon'])
+
+    request('https://maps.googleapis.com/maps/api/distancematrix/json?origins=' + origin + '&destinations=' + apt.latitude + ',' + apt.longitude +
+
+    '&mode=bicycling&key=AIzaSyAAnTQkvUjMsgt3RCdFTsFxidNNiRcv48I')
+
 
 ######### Helper Functions #########
 
