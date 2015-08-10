@@ -45,7 +45,7 @@ function initialize() {
         position: new google.maps.LatLng(apartment['latitude'], apartment['longitude']),
         map: map,
         animation: google.maps.Animation.DROP,
-        title: 'ApartmentID ' + key
+        title: key
       });
 
       // Define content of infoWindow
@@ -53,7 +53,7 @@ function initialize() {
         '<div class="window-content">'+
         '<a href="' + apartment['url'] + '">' + apartment['title'] + '</a>' + '<p>Price: ' + apartment['price'] + '</p>' +
         '<p>Bedrooms: ' + apartment['bedrooms'] + '</p>' +
-        '<img src="' + apartment['img_url'] + '" height="50px">' +
+        '<img src="' + "apartment['img_url']" + '" height="50px">' + '<span id="distance">Distance goes here</span>' +
         '</div>'
       );
 
@@ -67,6 +67,16 @@ function initialize() {
       infoWindow.close();
       infoWindow.setContent(html);
       infoWindow.open(map, marker);
+
+      console.log(marker)
+      lat = marker.position.G
+      lon = marker.position.K
+
+
+      console.log('Making AJAX request now')
+      $.get('/calculate-distance/' + lat + '/' + lon, function (distance) {
+        console.log(distance);
+      });
     });
   }
 
