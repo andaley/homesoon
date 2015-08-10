@@ -3,15 +3,6 @@
 
 function initialize() {
 
-  var mapCanvas = document.getElementById('main-map');
-  var mapOptions = {
-    center: new google.maps.LatLng(37.78, -122.41),
-    zoom: 13,
-    // mapTypeId: google.maps.mapTypeId.ROADMAP
-  };
-
-  var map = new google.maps.Map(mapCanvas, mapOptions);
-
   // Define global info window
   var infoWindow = new google.maps.InfoWindow({
         width: 200
@@ -19,6 +10,16 @@ function initialize() {
 
   // Retrieve apartment objects from server
   $.get('/apartments.json', 'HELLO', function(apts) {
+
+    var mapCanvas = document.getElementById('main-map');
+    var mapOptions = {
+      center: new google.maps.LatLng(apts['origin_lat'], apts['origin_lon']),
+      zoom: 13,
+      // mapTypeId: google.maps.mapTypeId.ROADMAP
+    };
+
+    var map = new google.maps.Map(mapCanvas, mapOptions);
+
     var apartment, marker, contentString;
 
     // Iterate through keys in master apts object
