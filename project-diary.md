@@ -67,15 +67,17 @@ walked through google maps tutorial and added two points to sample map
 - Created origin marker with special formatting [https://github.com/Concept211/Google-Maps-Markers#usage-premade]
 - Updated event listener to prepare for calculating distance
 - Wrote AJAX call and updated infoWindow with sample content
-- Test Google Distance Matrix w/ dummy data
+- Tested Google Distance Matrix w/ dummy data
 - Calculated distance with real data
 - Displayed distance results on marker
 
 
 TODO
 
+- add ability to select transportation method
 - distance is being calculated every time user clicks marker; need to fix
 - link distance to actual Google Maps directions
 - re-seed database to see if img url is getting cut off
-- Sort results by distance
+- Give markers special colors according to distance
 - Add support for East Bay and Portland
+- Add charts w/ average rent price, number of results
