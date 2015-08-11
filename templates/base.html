@@ -1,14 +1,25 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>{% block title %} Title goes here {% endblock %}</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../static/style.css">
-    {% block script %} {% endblock %}
+  <title>{% block title %} Title goes here {% endblock %}</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/style.css"> {% block script %} {% endblock %}
 </head>
+
 <body>
-    <div class="container-fluid">
-        {% block content %} Body content goes here! {% endblock %}
-    </div>
+  <nav>
+    <ul class="nav nav-pills">
+      <li role="presentation"><a href="/">Home</a></li>
+      <li role="presentation"><a href="#">Sign In</a></li>
+      <li role="presentation"><a href="#">Sign Up</a></li>
+    </ul>
+    <span id="redo-search">{% block search %} {% endblock %}</span>
+  </nav>
+
+  <div class="container-fluid">
+    {% block content %} Body content goes here! {% endblock %}
+  </div>
 </body>
+
 </html>
