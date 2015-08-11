@@ -8,8 +8,8 @@ function initialize() {
 
   // Define global info window
   var infoWindow = new google.maps.InfoWindow({
-        width: 200
-    })
+    width: 200
+  })
 
   // Retrieve apartment objects from server
   $.get('/apartments.json', function(apts) {
@@ -35,7 +35,7 @@ function initialize() {
     var apartment, marker, contentString;
 
     var listings = apts['listings']
-    // Iterate through keys in master apts object
+      // Iterate through keys in master apts object
     for (var key in listings) {
       apartment = listings[key];
 
@@ -50,7 +50,7 @@ function initialize() {
 
       // Define content of infoWindow
       contentString = (
-        '<div class="window-content">'+
+        '<div class="window-content">' +
         '<a href="' + apartment['url'] + '">' + apartment['title'] + '</a>' + '<p>Price: ' + apartment['price'] + '</p>' +
         '<p>Bedrooms: ' + apartment['bedrooms'] + '</p>' +
         '<img src="' + apartment['img_url'] + '" height="50px">' + '<span id="distance">' + '</span>' +
@@ -76,8 +76,8 @@ function bindinfoWindow(marker, map, infoWindow, html) {
     lon = marker.position.K
 
     console.log('Making AJAX request now')
-    $.get('/calculate-distance/' + lat + '/' + lon, function (total_distance) {
-      html = html + '<p>Commute time: ' + total_distance.duration + '</p>' + '<p>Miles from origin:' + total_distance.distance +'</p>';
+    $.get('/calculate-distance/' + lat + '/' + lon, function(total_distance) {
+      html = html + '<p>Commute time: ' + total_distance.duration + '</p>' + '<p>Miles from origin:' + total_distance.distance + '</p>';
       infoWindow.setContent(html);
     });
 
