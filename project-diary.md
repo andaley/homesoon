@@ -67,11 +67,13 @@ walked through google maps tutorial and added two points to sample map
 - Created origin marker with special formatting [https://github.com/Concept211/Google-Maps-Markers#usage-premade]
 - Updated event listener to prepare for calculating distance
 - Wrote AJAX call and updated infoWindow with sample content
+- Test Google Distance Matrix w/ dummy data
+- Calculated distance with real data
 
 
 TODO
 
+- link distance to actual Google Maps directions
 - re-seed database to see if img url is getting cut off
-- Test Google Distance Matrix w/ dummy data
 - Sort results by distance
 - Add support for East Bay and Portland
