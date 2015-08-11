@@ -1,7 +1,3 @@
-body {
-  /* margin-bottom must equal height of footer */
-  margin-bottom: 40px;
-}
 
 /* SEARCH FORM */
 #address-box {
@@ -20,12 +16,13 @@ body {
   height: 680px;
 }
 
+
 /* FOOTER */
 .footer {
   position: absolute;
+  text-align: center;
   bottom: 0;
   width: 100%;
-  /* Set the fixed height of the footer here */
   height: 40px;
   background-color: #fff;
 }
