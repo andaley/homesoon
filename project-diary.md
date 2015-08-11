@@ -70,14 +70,20 @@ walked through google maps tutorial and added two points to sample map
 - Tested Google Distance Matrix w/ dummy data
 - Calculated distance with real data
 - Displayed distance results on marker
+- Challenge: adding event listener to each marker that calculates distance; currently piggy backed onto listener for bindinfoWindow but isn't a good long term solution
 
+8/11
+- add ability to select transportation method
+- add geocoding user address
 
 TODO
 
-- add ability to select transportation method
+
 - distance is being calculated every time user clicks marker; need to fix
 - link distance to actual Google Maps directions
 - re-seed database to see if img url is getting cut off
+- Add signup & sign in form
+- Allow registered users to save listings to their favorites
 - Give markers special colors according to distance
 - Add support for East Bay and Portland
 - Add charts w/ average rent price, number of results
