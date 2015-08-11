@@ -83,6 +83,8 @@ TODO
 - link distance to actual Google Maps directions
 - re-seed database to see if img url is getting cut off
 - Add signup & sign in form
+- switch form submission from GET to POST
+- Add nav bar to allow people to modify search
 - Allow registered users to save listings to their favorites
 - Give markers special colors according to distance
 - Add support for East Bay and Portland
