@@ -1,14 +1,19 @@
 import unittest
 import server
 import os
+import requests
 import googlemaps
 from model import Posting
+from seed import load_posts
 
 class TestApp(unittest.TestCase):
 
     def test_get_lat_lons(self):
+        """
+        Checks that function returns list of tuples.
+        """
 
-        example_call = Posting.get_lat_lons(7000, 1)
+        example_call = Posting.get_lat_lons(max_rent=7000, num_rooms=1)
 
         # Result should always be a list.
         self.assertTrue(type(example_call) is list)
@@ -28,8 +33,11 @@ class TestApp(unittest.TestCase):
 
 
     def test_get_apartments(self):
+        """
+        Checks that database query returns correct data.
+        """
 
-        example_call = Posting.get_apartments(7000, 1, 37.7914448, -122.3929672, 10)
+        example_call = Posting.get_apartments(max_rent=7000, num_rooms=1, origin_lat=37.7914448, origin_lon=-122.3929672, desired_distance=10)
 
         # Result should always be a list.
         self.assertTrue(type(example_call) is list)
@@ -45,11 +53,13 @@ class TestApp(unittest.TestCase):
             self.assertTrue(type(example_call[0]) is Posting)
 
     def test_calculate_distance(self):
+        """
+        Checks that geocoding and distance matrix API are working.
+        """
 
         # Check that Google Maps API key has been sourced.
         self.assertTrue('GOOGLE_MAPS_TOKEN' in os.environ)
 
-        # Checks that geocoding and distance matrix API are working.
         origin = '188 Spear Street, San Francisco, CA'
         destination = '37.7857435,-122.4112531'
 
@@ -58,12 +68,22 @@ class TestApp(unittest.TestCase):
         duration = matrix['rows'][0]['elements'][0]['duration']['text']
         distance = matrix['rows'][0]['elements'][0]['distance']['text']
 
-        print type(duration)
-        print type(distance)
-
         self.assertTrue(type(duration) is unicode)
         self.assertTrue(type(distance) is unicode)
 
+    def test_load_posts(self):
+        """
+        Tests that seed.py is successfully pulling data from Craigslist.
+        """
+
+        endpoint = 'http://sfbay.craigslist.org/jsonsearch/apa/'
+        cl_json = requests.get(endpoint)
+        parsed_json = cl_json.json()
+        list_of_posts = parsed_json[0]
+
+        self.assertTrue(type(parsed_json) is list)
+        self.assertTrue(type(parsed_json[0]) is list)
+        self.assertTrue(type(parsed_json[0][0]) is dict)
 
 if __name__ == '__main__':
     from server import app
