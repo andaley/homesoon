@@ -4,6 +4,7 @@ from jinja2 import StrictUndefined
 import math
 import requests
 import json
+import os
 
 app = Flask(__name__)
 app.secret_key = "oakzebraland"
@@ -84,8 +85,12 @@ def calculate_distance(lat, lon):
     origin = str(session['origin_latitude']) + ',' + str(session['origin_longitude'])
 
     # TODO: get method of transportation
-    
-    endpoint = 'https://maps.googleapis.com/maps/api/distancematrix/json?origins=' + origin + '&destinations=' + lat + ',' + lon + '&mode=transit&units=imperial&key=AIzaSyAAnTQkvUjMsgt3RCdFTsFxidNNiRcv48I'
+
+    # Grab Google API key
+    # note: must source Google API key in the shell before running this function.
+    google_key = os.environ['GOOGLE_MAPS_TOKEN']
+
+    endpoint = 'https://maps.googleapis.com/maps/api/distancematrix/json?origins=' + origin + '&destinations=' + lat + ',' + lon + '&mode=transit&units=imperial&key=' + google_key
 
     distance_results = requests.get(endpoint).json()
 
