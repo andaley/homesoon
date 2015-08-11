@@ -34,9 +34,7 @@ def find_apartments():
     session['bedrooms'] = request.args.get('bedrooms')
     session['price'] = request.args.get('cost')
     # TODO: add preferred method of transportation
-    # session['transit_method'] = request.args.get('transit')
-
-    # can I render a template and return the lat & long to be used by JS? Otherwise I can't render map until getting results
+    session['transit_method'] = request.args.get('transportation')
 
     return render_template("apts.html")
 
@@ -90,7 +88,7 @@ def calculate_distance(lat, lon):
     # note: must source Google API key in the shell before running this function.
     google_key = os.environ['GOOGLE_MAPS_TOKEN']
 
-    endpoint = 'https://maps.googleapis.com/maps/api/distancematrix/json?origins=' + origin + '&destinations=' + lat + ',' + lon + '&mode=transit&units=imperial&key=' + google_key
+    endpoint = 'https://maps.googleapis.com/maps/api/distancematrix/json?origins=' + origin + '&destinations=' + lat + ',' + lon + '&mode=' + session['transit_method'] + '&units=imperial&key=' + google_key
 
     distance_results = requests.get(endpoint).json()
 
