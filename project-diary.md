@@ -81,6 +81,8 @@ walked through google maps tutorial and added two points to sample map
 - researched Python Google Maps wrapper
 - Added nav bar to allow people to modify search
 - updated CSS with navbar and footer
+- wrote Google Distance Matrix and Geocoding test
+- wrote test for seed.py
 
 
 TODO
@@ -90,7 +92,6 @@ TODO
 - Euclidean distance isn't quite accurate; still returns results that are slightly out of bounds. Need to update equation.
 - Add signup & sign in form
 - switch form submission from GET to POST
-
 - Allow registered users to save listings to their favorites
 - Give markers special colors according to distance
 - Add support for East Bay and Portland
