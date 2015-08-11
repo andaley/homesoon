@@ -70,18 +70,21 @@ walked through google maps tutorial and added two points to sample map
 - Tested Google Distance Matrix w/ dummy data
 - Calculated distance with real data
 - Displayed distance results on marker
-- Challenge: adding event listener to each marker that calculates distance; currently piggy backed onto listener for bindinfoWindow but isn't a good long term solution
+- Challenges:
+  - adding event listener to each marker that calculates distance; currently piggy backed onto listener for bindinfoWindow but isn't a good long term solution
+  - distance is being calculated every time user clicks marker; need to fix
 
 8/11
-- add ability to select transportation method
+- added ability to select transportation method
 - add geocoding user address
+- Challenge: re-seeded database & img url is still getting cut off
 
 TODO
 
 
 - distance is being calculated every time user clicks marker; need to fix
 - link distance to actual Google Maps directions
-- re-seed database to see if img url is getting cut off
+
 - Add signup & sign in form
 - switch form submission from GET to POST
 - Add nav bar to allow people to modify search
