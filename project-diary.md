@@ -82,7 +82,6 @@ walked through google maps tutorial and added two points to sample map
 
 TODO
 
-
 - distance is being calculated every time user clicks marker; need to fix
 - link distance to actual Google Maps directions
 - Euclidean distance isn't quite accurate; still returns results that are slightly out of bounds. Need to update equation.
