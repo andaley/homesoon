@@ -1,13 +1,31 @@
+body {
+  /* margin-bottom must equal height of footer */
+  margin-bottom: 40px;
+}
+
+/* SEARCH FORM */
+#address-box {
+  display: block;
+}
+
+
+/* MAIN */
 #main-img {
     background-color: #ccc;
     height: 400px;
 }
 
-#address-box {
-  display: block;
-}
-
 #main-map{
   background-color: #ccc;
-  height: 600px;
+  height: 680px;
+}
+
+/* FOOTER */
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 40px;
+  background-color: #fff;
 }
