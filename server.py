@@ -3,7 +3,6 @@ from model import Posting, db, connect_to_db
 from jinja2 import StrictUndefined
 import math
 import googlemaps
-import requests
 import json
 import os
 
@@ -44,7 +43,7 @@ def find_apartments():
     session['price'] = request.args.get('cost')
     session['transit_method'] = request.args.get('transportation')
 
-    return render_template("apts.html", raw_location=raw_location, price=session['price'])
+    return render_template("apts.html", raw_location=raw_location, price=session['price'], )
 
 
 @app.route('/apartments.json')
