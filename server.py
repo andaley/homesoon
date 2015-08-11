@@ -2,6 +2,8 @@ from flask import Flask, render_template, request, jsonify, session
 from model import Posting, db, connect_to_db
 from jinja2 import StrictUndefined
 import math
+import requests
+import json
 
 app = Flask(__name__)
 app.secret_key = "oakzebraland"
@@ -73,18 +75,26 @@ def display_apartments():
 
 @app.route('/calculate-distance/<lat>/<lon>')
 def calculate_distance(lat, lon):
-    print lat, lon
-    # target_lat = lat_lon['G']
-    # target_lon = lat_lon['K']
+    """
+    Calculate commute time and distance using Google Distance Matrix.
+    """
 
     origin = str(session['origin_latitude']) + ',' + str(session['origin_longitude'])
-    # Posting.query.get(apt_id)
-    #
-    # request('https://maps.googleapis.com/maps/api/distancematrix/json?origins=' + origin + '&destinations=' + apt.latitude + ',' + apt.longitude +
-    #
-    # '&mode=bicycling&key=AIzaSyAAnTQkvUjMsgt3RCdFTsFxidNNiRcv48I')
 
-    return 'hi'
+    endpoint = 'https://maps.googleapis.com/maps/api/distancematrix/json?origins=' + origin + '&destinations=' + lat + ',' + lon + '&mode=transit&units=imperial&key=AIzaSyAAnTQkvUjMsgt3RCdFTsFxidNNiRcv48I'
+
+    distance_results = requests.get(endpoint).json()
+
+    duration = distance_results['rows'][0]['elements'][0]['duration']['text']
+    distance = distance_results['rows'][0]['elements'][0]['distance']['text']
+
+    total_distance = {'duration': duration, 'distance': distance}
+
+    # {u'status': u'OK', u'rows': [{u'elements': [{u'duration': {u'text': u'7 mins', u'value': 431}, u'distance': {u'text': u'0.6 km', u'value': 558}, u'status': u'OK'}]}], u'origin_addresses': [u'121-199 Spear Street, San Francisco, CA 94105, USA'], u'destination_addresses': [u'1-19 Tehama Street, San Francisco, CA 94105, USA']}
+
+    # TODO: link distance to actual Google maps directions
+
+    return jsonify(total_distance)
 
 
 ######### Helper Functions #########
