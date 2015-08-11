@@ -1,47 +1,52 @@
-{% extends 'base.html'%}
-
-{% block title %} Apartment Search {% endblock %}
-
-{% block content %}
-  <div class="row" id="main-img"></div>
-  <div class="row">
-      <div class="col-md-6"><h1>Find me an apartment near...</h1></div>
+{% extends 'base.html'%} {% block title %} Apartment Search {% endblock %} {% block content %}
+<div class="row" id="main-img"></div>
+<div class="row">
+  <div class="col-md-6">
+    <h1>Find me an apartment near...</h1>
   </div>
-  <div class="row">
-    <div class="col-md-6">
-      <form action="/apartments">
-        <input type="address" name="lat" class="address-box">
-        <input type="address" name="lon" class="address-box">
-        <p></p>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <form action="/apartments">
+      <input type="address" name="lat" class="address-box">
+      <input type="address" name="lon" class="address-box">
+      <p></p>
 
-        <label>within
-          <select name="distance">
-            <option value="1">1</option>
-            <option value="5">5</option>
-            <option value="10">10</option>
-            <option value="25">25</option>
-            <option value="50">50</option>
-          </select>
+      <label>within
+        <select name="distance">
+          <option value="1">1</option>
+          <option value="3">3</option>
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="25">25</option>
+          <option value="50">50</option>
+        </select>
         miles.</label>
 
-        <label>That has
-          <select name="bedrooms">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-          </select>
+      <label>That has
+        <select name="bedrooms">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+        </select>
         bedrooms,</label>
-        <p></p>
+      <p></p>
 
-        <label>and costs less than
-          <input type="number" name="cost">
-        per month.</label>
-        <p></p>
+      <label>and costs less than
+        <input type="number" name="cost"> per month.</label>
+      <p></p>
 
-        <!--TODO: give option to pick transportation type  -->
+      <label>I like to commute by:
+        <select name="transportation">
+          <option value="driving">driving</option>
+          <option value="transit">public transportation</option>
+          <option value="cycling">cycling</option>
+          <option value="walking">walking</option>
 
-        <input type="submit" id="search-btn">
-    </div>
+          <!--TODO: give option to pick transportation type  -->
+
+          <input type="submit" class="btn" id="search-btn">
   </div>
+</div>
 {% endblock %}
