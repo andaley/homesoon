@@ -76,15 +76,16 @@ walked through google maps tutorial and added two points to sample map
 
 8/11
 - added ability to select transportation method
-- add geocoding user address
+- added geocoding to user inputted address
 - Challenge: re-seeded database & img url is still getting cut off
+- researched Python Google Maps wrapper
 
 TODO
 
 
 - distance is being calculated every time user clicks marker; need to fix
 - link distance to actual Google Maps directions
-
+- Euclidean distance isn't quite accurate; still returns results that are slightly out of bounds. Need to update equation.
 - Add signup & sign in form
 - switch form submission from GET to POST
 - Add nav bar to allow people to modify search
