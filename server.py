@@ -84,7 +84,7 @@ def display_apartments():
 @app.route('/calculate-distance/<lat>/<lon>')
 def calculate_distance(lat, lon):
     """
-    Calculate commute time and distance using Google Distance Matrix.
+    Calculate commute time and distance using Google Distance Matrix. Returns JSON object.
     """
 
     # Convert origin and destination to format recognized by Google Maps Python wrapper.
@@ -94,10 +94,6 @@ def calculate_distance(lat, lon):
     # '37.7857435,-122.4112531'
 
     distance_results = gmaps.distance_matrix(origin, destination, mode=session['transit_method'], units='imperial') # returns dictionary
-
-    if distance_results != 'OK':
-        # TODO: figure out what to do if no results
-        pass
 
     duration = distance_results['rows'][0]['elements'][0]['duration']['text']
     distance = distance_results['rows'][0]['elements'][0]['distance']['text']

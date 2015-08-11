@@ -1,4 +1,7 @@
 import unittest
+import server
+import os
+import googlemaps
 from model import Posting
 
 class TestApp(unittest.TestCase):
@@ -40,6 +43,27 @@ class TestApp(unittest.TestCase):
         # All items in list should be apartment objects.
         if len(example_call) > 0:
             self.assertTrue(type(example_call[0]) is Posting)
+
+    def test_calculate_distance(self):
+
+        # Check that Google Maps API key has been sourced.
+        self.assertTrue('GOOGLE_MAPS_TOKEN' in os.environ)
+
+        # Checks that geocoding and distance matrix API are working.
+        origin = '188 Spear Street, San Francisco, CA'
+        destination = '37.7857435,-122.4112531'
+
+        matrix = server.gmaps.distance_matrix(origin, destination)
+
+        duration = matrix['rows'][0]['elements'][0]['duration']['text']
+        distance = matrix['rows'][0]['elements'][0]['distance']['text']
+
+        print type(duration)
+        print type(distance)
+
+        self.assertTrue(type(duration) is unicode)
+        self.assertTrue(type(distance) is unicode)
+
 
 if __name__ == '__main__':
     from server import app
