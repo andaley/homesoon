@@ -29,19 +29,22 @@ def find_apartments():
     Add users' search preferences to their session and display apartment results page.
     """
 
-    # TODO: convert address to lat/long
-
-    location = gmaps.geocode(request.args.get('address')) # returns list
+    raw_location = request.args.get('address')
+    location = gmaps.geocode(raw_location) # returns list
 
     session['max_distance'] = int(request.args.get('distance'))
-    session['origin_latitude'] = float(location[0]['geometry']['location']['lat']) # sample 37.7914448
-    session['origin_longitude'] = float(location[0]['geometry']['location']['lng']) # sample -122.3929672
+
+    # Test values:
+    # session['origin_latitude'] = 37.7914448
+    # session['origin_longitude'] = -122.3929672
+
+    session['origin_latitude'] = float(location[0]['geometry']['location']['lat'])
+    session['origin_longitude'] = float(location[0]['geometry']['location']['lng'])
     session['bedrooms'] = request.args.get('bedrooms')
     session['price'] = request.args.get('cost')
-    # TODO: add preferred method of transportation
     session['transit_method'] = request.args.get('transportation')
 
-    return render_template("apts.html")
+    return render_template("apts.html", raw_location=raw_location, price=session['price'])
 
 
 @app.route('/apartments.json')
