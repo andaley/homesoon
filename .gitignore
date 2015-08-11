@@ -1,4 +1,5 @@
 *.json
+*.db
 env/
 *.pyc
 *secret*
