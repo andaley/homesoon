@@ -10,11 +10,12 @@
 <form class="navbar-form" action="/apartments">
   <label>Modify your search: </label>
   <label>Starting address:
-    <input type="address" name="address" class="address-box" value={{raw_location}}>
+    <input type="text" name="address" class="address-box" value="{{raw_location}}">
   </label>
 
   <label>Miles away:
     <select name="distance">
+      <option></option>
       <option value="1">1</option>
       <option value="3">3</option>
       <option value="5">5</option>
@@ -26,6 +27,7 @@
 
   <label>Bedrooms:
     <select name="bedrooms">
+      <option></option>
       <option value="1">1</option>
       <option value="2">2</option>
       <option value="3">3</option>
