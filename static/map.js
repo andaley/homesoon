@@ -77,7 +77,7 @@ function bindinfoWindow(marker, map, infoWindow, html) {
 
     console.log('Making AJAX request now')
     $.get('/calculate-distance/' + lat + '/' + lon, function(total_distance) {
-      html = html + '<p>Commute time: ' + total_distance.duration + '</p>' + '<p>Miles from origin:' + total_distance.distance + '</p>';
+      html = html + '<p>Commute time: ' + total_distance.duration + '</p>' + '<p>Miles from origin: ' + total_distance.distance + '</p>';
       infoWindow.setContent(html);
     });
 
