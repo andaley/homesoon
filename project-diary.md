@@ -69,10 +69,12 @@ walked through google maps tutorial and added two points to sample map
 - Wrote AJAX call and updated infoWindow with sample content
 - Test Google Distance Matrix w/ dummy data
 - Calculated distance with real data
+- Displayed distance results on marker
 
 
 TODO
 
+- distance is being calculated every time user clicks marker; need to fix
 - link distance to actual Google Maps directions
 - re-seed database to see if img url is getting cut off
 - Sort results by distance
