@@ -32,6 +32,8 @@ def find_apartments():
     session['origin_longitude'] = float(request.args.get('lon')) # sample -122.3929672
     session['bedrooms'] = request.args.get('bedrooms')
     session['price'] = request.args.get('cost')
+    # TODO: add preferred method of transportation
+    # session['transit_method'] = request.args.get('transit')
 
     # can I render a template and return the lat & long to be used by JS? Otherwise I can't render map until getting results
 
@@ -81,6 +83,8 @@ def calculate_distance(lat, lon):
 
     origin = str(session['origin_latitude']) + ',' + str(session['origin_longitude'])
 
+    # TODO: get method of transportation
+    
     endpoint = 'https://maps.googleapis.com/maps/api/distancematrix/json?origins=' + origin + '&destinations=' + lat + ',' + lon + '&mode=transit&units=imperial&key=AIzaSyAAnTQkvUjMsgt3RCdFTsFxidNNiRcv48I'
 
     distance_results = requests.get(endpoint).json()
