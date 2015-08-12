@@ -32,6 +32,8 @@ class Posting(db.Model):
         Given price, # of bedrooms, and desired distance, return list of ids, latitudes and longitudes.
         """
 
+        # TODO: merge this with get_apartments
+
         # X and Y correspond to latitudes and longitudes that form a square boundary from the origin. Use these values inititally to query database, then check Euclidean distance after to ensure they fall within the circular boundary.
         MILES_TO_DEGREES = 69.0
         distance_degrees = desired_distance * MILES_TO_DEGREES
