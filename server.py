@@ -102,10 +102,9 @@ def calculate_distance(lat, lon):
 
     duration = distance_results['rows'][0]['elements'][0]['duration']['text']
     distance = distance_results['rows'][0]['elements'][0]['distance']['text']
+    directions = 'https://www.google.com/maps/dir/' + destination + '/' + origin + '/'
 
-    total_distance = {'duration': duration, 'distance': distance}
-
-    # TODO: link distance to actual Google maps directions
+    total_distance = {'duration': duration, 'distance': distance, 'directions': directions}
 
     return jsonify(total_distance)
 

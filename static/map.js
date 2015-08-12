@@ -1,5 +1,3 @@
-// TODO: add event listener to info window; calculate commute distance with Google Distance Matrix
-
 
 function initialize() {
 
@@ -35,7 +33,7 @@ function initialize() {
     var apartment, marker, contentString;
 
     var listings = apts['listings']
-      // Iterate through keys in master apts object
+    // Iterate through keys in master apts object
     for (var key in listings) {
       apartment = listings[key];
 
@@ -53,17 +51,14 @@ function initialize() {
         '<div class="window-content">' +
         '<a href="' + apartment['url'] + '">' + apartment['title'] + '</a>' + '<p>Price: ' + apartment['price'] + '</p>' +
         '<p>Bedrooms: ' + apartment['bedrooms'] + '</p>' +
-        '<img src="' + apartment['img_url'] + '" height="50px">' +
-        '<p>Commute time: ' +
-        '<span id="' + key + '-time">' + '</span></p>' +
-        '<p>Commute distance: ' +
-        '<span id="' + key + '-distance">' + '</span></p>' +
+        '<img src="' + apartment.img_url + '" height="50px">' +
+        '<a href="#" target="_blank" id="' + key + '-dir"><p>Commute time: <span id="' + key + '-time"></span></p></a>' +
+        '<p>Commute distance: <span id="' + key + '-distance">' + '</span></p>' +
         '</div>'
       );
 
       bindinfoWindow(marker, map, infoWindow, contentString);
     }
-
 
   });
 
@@ -83,8 +78,10 @@ function bindinfoWindow(marker, map, infoWindow, html) {
     console.log('Calculating distance.')
     $.get('/calculate-distance/' + lat + '/' + lon, function(total_distance) {
 
-      $('#' + marker.title + '-time').html(total_distance.duration)
-      $('#' + marker.title + '-distance').html(total_distance.distance)
+      // Updating infoWindow with commute times and distance.
+      $('#' + marker.title + '-time').html(total_distance.duration);
+      $('#' + marker.title + '-distance').html(total_distance.distance);
+      $('#' + marker.title + '-dir').attr('href', total_distance.directions);
     });
 
   });
