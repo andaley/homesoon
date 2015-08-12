@@ -38,6 +38,8 @@ class Posting(db.Model):
 
         all_lat_lons = query.all()
 
+        # TODO: modify search to query databse for objects where x < lat < y and x < lon < y
+
         return all_lat_lons
 
 
