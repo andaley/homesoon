@@ -88,15 +88,15 @@ walked through google maps tutorial and added two points to sample map
 - switch form submission from GET to POST
 - added sign in route
 - added sign in form (but formatting is messed up)
+- fixed bug where distance was being displayed multiple times by replacing setContent with span IDs and jQuery
+- linked distance to actual Google Maps directions; however link defaults to driving directions
 
 
 TODO
 
-
-- distance is being calculated every time user clicks marker; need to fix
-- link distance to actual Google Maps directions
+- switch google maps directions link to users' preferred transportation method
 - Euclidean distance isn't quite accurate; still returns results that are slightly out of bounds. Need to update equation.
-- Add signup & sign in form
+- Add sign in form
 - Allow registered users to save listings to their favorites
 - Give markers special colors according to distance
 - Add support for East Bay and Portland
