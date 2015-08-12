@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block search %}
-<form class="navbar-form" action="/apartments">
+<form class="navbar-form" action="/apartments" method="POST">
   <label>Modify your search: </label>
   <label>Starting address:
     <input type="text" name="address" class="address-box" value="{{raw_location}}">

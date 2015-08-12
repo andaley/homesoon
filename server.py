@@ -22,16 +22,16 @@ def home():
     return render_template('index.html')
 
 
-@app.route('/apartments')
+@app.route('/apartments', methods=['POST'])
 def find_apartments():
     """
     Add users' search preferences to their session and display apartment results page.
     """
 
-    raw_location = request.args.get('address')
+    raw_location = request.form.get('address')
     location = gmaps.geocode(raw_location) # returns list
 
-    session['max_distance'] = int(request.args.get('distance'))
+    session['max_distance'] = int(request.form.get('distance'))
 
     # Test values:
     # session['origin_latitude'] = 37.7914448
@@ -39,9 +39,9 @@ def find_apartments():
 
     session['origin_latitude'] = float(location[0]['geometry']['location']['lat'])
     session['origin_longitude'] = float(location[0]['geometry']['location']['lng'])
-    session['bedrooms'] = request.args.get('bedrooms')
-    session['price'] = request.args.get('cost')
-    session['transit_method'] = request.args.get('transportation')
+    session['bedrooms'] = request.form.get('bedrooms')
+    session['price'] = request.form.get('cost')
+    session['transit_method'] = request.form.get('transportation')
 
     return render_template("apts.html", raw_location=raw_location, price=session['price'], )
 
