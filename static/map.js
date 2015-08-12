@@ -53,7 +53,11 @@ function initialize() {
         '<div class="window-content">' +
         '<a href="' + apartment['url'] + '">' + apartment['title'] + '</a>' + '<p>Price: ' + apartment['price'] + '</p>' +
         '<p>Bedrooms: ' + apartment['bedrooms'] + '</p>' +
-        '<img src="' + apartment['img_url'] + '" height="50px">' + '<span id="distance">' + '</span>' +
+        '<img src="' + apartment['img_url'] + '" height="50px">' +
+        '<p>Commute time: ' +
+        '<span id="' + key + '-time">' + '</span></p>' +
+        '<p>Commute distance: ' +
+        '<span id="' + key + '-distance">' + '</span></p>' +
         '</div>'
       );
 
@@ -68,17 +72,19 @@ function initialize() {
 
 function bindinfoWindow(marker, map, infoWindow, html) {
   google.maps.event.addListener(marker, 'click', function() {
-    infoWindow.close();
+    // Set infoWindow content and open it when user clicks.
     infoWindow.setContent(html);
     infoWindow.open(map, marker);
 
-    lat = marker.position.G
-    lon = marker.position.K
+    lat = marker.position.G;
+    lon = marker.position.K;
 
-    console.log('Making AJAX request now')
+    // Given latitude and longitude of marker, retrieve distance and duration from Google Distance Matrix.
+    console.log('Calculating distance.')
     $.get('/calculate-distance/' + lat + '/' + lon, function(total_distance) {
-      html = html + '<p>Commute time: ' + total_distance.duration + '</p>' + '<p>Miles from origin: ' + total_distance.distance + '</p>';
-      infoWindow.setContent(html);
+
+      $('#' + marker.title + '-time').html(total_distance.duration)
+      $('#' + marker.title + '-distance').html(total_distance.distance)
     });
 
   });
