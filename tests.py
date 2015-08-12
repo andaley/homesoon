@@ -13,7 +13,7 @@ class TestApp(unittest.TestCase):
         Checks that function returns list of tuples.
         """
 
-        example_call = Posting.get_lat_lons(max_rent=7000, num_rooms=1)
+        example_call = Posting.get_lat_lons(max_rent=7000, num_rooms=1, desired_distance=5)
 
         # Result should always be a list.
         self.assertTrue(type(example_call) is list)
