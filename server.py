@@ -21,6 +21,11 @@ def home():
 
     return render_template('index.html')
 
+@app.route('/sign-in')
+def sign_in():
+    """ Show sign-in and sign-up page."""
+
+    return render_template('sign-in.html')
 
 @app.route('/apartments', methods=['POST'])
 def find_apartments():
