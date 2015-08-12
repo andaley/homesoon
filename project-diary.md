@@ -85,11 +85,13 @@ walked through google maps tutorial and added two points to sample map
 - wrote test for seed.py
 
 8/12
-
+- switch form submission from GET to POST
+- added sign in route
+- added sign in form (but formatting is messed up)
 
 
 TODO
-- switch form submission from GET to POST
+
 
 - distance is being calculated every time user clicks marker; need to fix
 - link distance to actual Google Maps directions
