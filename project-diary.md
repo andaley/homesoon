@@ -90,13 +90,15 @@ walked through google maps tutorial and added two points to sample map
 - added sign in form (but formatting is messed up)
 - fixed bug where distance was being displayed multiple times by replacing setContent with span IDs and jQuery
 - linked distance to actual Google Maps directions; however link defaults to driving directions
+- improved efficiency of get_lat_lons database query; checks that objects are within square boundary before checking Euclidean distance
+- Challenge: is it faster to query for tuples first, check tuples, and then pull object? Or to pull list of objects, then check if object attributes fit Euclidean distance?
 
 
 TODO
 
+- fix sign in form
 - switch google maps directions link to users' preferred transportation method
-- Euclidean distance isn't quite accurate; still returns results that are slightly out of bounds. Need to update equation.
-- Add sign in form
+- Add sign up form
 - Allow registered users to save listings to their favorites
 - Give markers special colors according to distance
 - Add support for East Bay and Portland
