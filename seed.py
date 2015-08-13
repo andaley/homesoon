@@ -1,10 +1,12 @@
 from model import Posting, connect_to_db, db
 import json
 import requests
-
+import sqlite3
 
 def load_posts():
     """Load Craigslist posts from JSON into database."""
+
+    # TODO: drop Craigslist table only
 
     # Retrieve JSON from Craigslist
     endpoint = 'http://sfbay.craigslist.org/jsonsearch/apa/'
@@ -16,13 +18,11 @@ def load_posts():
 
     # Testing the Craigslist data by iterating through list of dictionaries up to the 10th index.
 
-    i = 0
-    while i < len(list_of_posts)-1:
-        posting = list_of_posts[i]
+    for posting in list_of_posts:
 
         # If this object has a GeoCluster key, skip it, since it's not an actual post.
         if posting.get("GeoCluster"):
-            i+= 1
+            continue
         else:
 
             # 0 Ask: 2400
@@ -49,13 +49,14 @@ def load_posts():
             new_post = Posting(post_id=post_id, title=title, date_posted=date_posted, url=url, img_url=img_url, price=price, bedrooms=bedrooms, latitude=latitude, longitude=longitude)
             db.session.add(new_post)
 
-        i += 1
     db.session.commit()
 
 if __name__ == '__main__':
     from server import app
 
     connect_to_db(app)
+    query = """DROP TABLE postings;"""
+    db.session.execute(query)
     db.create_all()
     load_posts()
     # db.session.commit()
