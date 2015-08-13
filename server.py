@@ -44,6 +44,24 @@ def sign_in():
 
     return redirect ('/')
 
+@app.route('/add-user', methods=['POST'])
+def add_user():
+    """Adds new user to database."""
+
+    username = request.form.get('new-username')
+    email = request.form.get('new-email')
+    password = request.form.get('new-password')
+
+    new_user = User(username=username, email=email, password=password)
+    db.session.add(new_user)
+    db.session.commit()
+
+    session['username'] = username
+    session['id'] = new_user.user_id
+
+    return redirect ('/')
+
+
 @app.route('/apartments', methods=['POST'])
 def find_apartments():
     """
