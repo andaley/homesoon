@@ -46,7 +46,7 @@ def load_posts():
             latitude = posting.get('Latitude')
             longitude = posting.get('Longitude')
 
-            new_post = Posting(post_id=post_id, title=title, date_posted=date_posted, url=url, img_url=img_url, price=price, bedrooms=bedrooms, latitude=latitude, longitude=longitude)
+            new_post = Posting(post_id=post_id, title=title, date_posted=date_posted, url=url, img_url=img_url, price=price, bedrooms=bedrooms, latitude=latitude, longitude=longitude, expired=False)
             db.session.add(new_post)
 
     db.session.commit()
