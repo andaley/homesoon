@@ -17,6 +17,12 @@
 }
 
 
+/* SIGN IN */
+
+.form-signin{
+  margin-top: 100px;
+}
+
 /* FOOTER */
 .footer {
   position: absolute;
