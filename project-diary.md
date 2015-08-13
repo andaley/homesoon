@@ -96,16 +96,18 @@ walked through google maps tutorial and added two points to sample map
 8/13
 - added users class and table
 - improved efficiency of get_apartments db query
+- added expired column to Posting table
 - added test user to user table
+- added sign in route; linked to sign in form
+- added sign up form
+- added Favorites table
+- inserted test favorite data
 
 TODO
-
+- toggle sign in / sign out based on login status
 - update tests.py to check class methods
 - add selenium tests
-- Add Favorites table
-- Add expired column to Posting table
 - Refactor seed file to remove Postings not in Favorites & update db with new posts
-- fix sign in form
 - switch google maps directions link to users' preferred transportation method
 - Add sign up form
 - Allow registered users to save listings to their favorites
