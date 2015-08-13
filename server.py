@@ -78,6 +78,13 @@ def sign_out():
     return redirect('/')
 
 
+@app.route('/favorites')
+def show_favorites():
+    """Display favorites page."""
+
+    return render_template('favorites.html')
+
+
 #### Search for apartments ####
 
 @app.route('/apartments', methods=['POST'])
