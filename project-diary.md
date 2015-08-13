@@ -93,9 +93,16 @@ walked through google maps tutorial and added two points to sample map
 - improved efficiency of get_lat_lons database query; checks that objects are within square boundary before checking Euclidean distance
 - Challenge: is it faster to query for tuples first, check tuples, and then pull object? Or to pull list of objects, then check if object attributes fit Euclidean distance?
 
+8/13
+- add user and favorites table to db
+- improved efficiency of get_apartments db query
 
 TODO
 
+- Add Users table
+- Add Favorites table
+- Add expired column to Posting table
+- Refactor seed file to remove Postings not in Favorites & update db with new posts
 - fix sign in form
 - switch google maps directions link to users' preferred transportation method
 - Add sign up form
