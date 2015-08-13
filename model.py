@@ -21,6 +21,7 @@ class Posting(db.Model):
     bedrooms = db.Column(db.Integer)
     latitude = db.Column(db.Float, nullable=False)
     longitude = db.Column(db.Float, nullable=False)
+    expired = db.Column(db.Boolean, nullable=False)
 
     def __repr__(self):
         return "<Post: %s, price: %s, bedrooms: %s>" % (self.post_id, self.price, self.bedrooms)
