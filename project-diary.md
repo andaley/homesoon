@@ -96,6 +96,7 @@ walked through google maps tutorial and added two points to sample map
 8/13
 - added users class and table
 - improved efficiency of get_apartments db query
+- added test user to user table
 
 TODO
 
