@@ -92,7 +92,7 @@ class User(db.Model):
         return "<user_id: %s, username: %s>" % (self.user_id, self.username)
 
 
-class Favorites(db.Model):
+class Favorite(db.Model):
     """Stores all apartments that users have favorited."""
 
     __tablename__ = "favorites"
