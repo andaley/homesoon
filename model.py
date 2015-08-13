@@ -19,15 +19,15 @@ class Posting(db.Model):
     img_url = db.Column(db.String(200), nullable=True)
     price = db.Column(db.Integer)
     bedrooms = db.Column(db.Integer)
-    latitude = db.Column(db.Integer, nullable=False)
-    longitude = db.Column(db.Integer, nullable=False)
+    latitude = db.Column(db.Float, nullable=False)
+    longitude = db.Column(db.Float, nullable=False)
 
     def __repr__(self):
         return "<Post: %s price: %s bedrooms: %s>" % (self.post_id, self.price, self.bedrooms)
 
 
     @classmethod
-    def get_lat_lons(cls, max_rent, num_rooms, desired_distance):
+    def get_apartments(cls, max_rent, num_rooms, origin_lat, origin_lon, desired_distance):
         """
         Given price, # of bedrooms, and desired distance, return list of ids, latitudes and longitudes.
         """
@@ -38,26 +38,26 @@ class Posting(db.Model):
         MILES_TO_DEGREES = 69.0
         distance_degrees = desired_distance * MILES_TO_DEGREES
 
-        x = cls.latitude - distance_degrees
-        x2 = cls.latitude + distance_degrees
-        y = cls.longitude - distance_degrees
-        y2 = cls.longitude + distance_degrees
+        x = origin_lat - distance_degrees
+        x2 = origin_lon + distance_degrees
+        y = origin_lat - distance_degrees
+        y2 = origin_lon + distance_degrees
 
         # Retrieve list of ids, latitudes, and longitudes of apts
         # with desired number of bedrooms, within budget, and that are within desired distance range.
-        query = db.session.query(cls.post_id, cls.latitude, cls.longitude).filter(cls.price < max_rent, cls.bedrooms == num_rooms, cls.latitude > x, cls.latitude < x2, cls.longitude > y, cls.longitude < y2)
+        query = cls.query.filter(cls.price < max_rent, cls.bedrooms == num_rooms, cls.latitude > x, cls.latitude < x2, cls.longitude > y, cls.longitude < y2)
 
-        all_lat_lons = query.all()
+        apartment_list = query.all()
 
-        # TODO: modify search to query databse for objects where x < lat < y and x < lon < y
+        matching_apts = cls.check_distance(apartment_list, origin_lat, origin_lon, desired_distance)
 
-        return all_lat_lons
+        return matching_apts
 
 
     @classmethod
-    def get_apartments(cls, max_rent, num_rooms, origin_lat, origin_lon, desired_distance):
+    def check_distance(cls, apartments, origin_lat, origin_lon, desired_distance):
         """
-        Given list of tuples with (id, latitude, longitude), origin lat/lon, and desired distance, calculate distance from origin.
+        Given list of apartment objects, origin latitude/longitude, and desired radius, calculate Euclidean distance.
         If distance is within desired range, retrieve that apartment object and add to list.
 
         Returns list of apartment objects.
@@ -65,23 +65,34 @@ class Posting(db.Model):
 
         MILES_TO_DEGREES = 69.0
 
-        all_lat_lons = cls.get_lat_lons(max_rent, num_rooms, desired_distance)
-
         matching_apts = []
-        for post_id, lat, lon in all_lat_lons:
+        for apt in apartments:
 
             # Calculate Euclidean distance
-            distance_deg = math.sqrt((lat - origin_lat)**2 + (lon - origin_lon)**2)
+            distance_deg = math.sqrt((apt.latitude - origin_lat)**2 + (apt.longitude - origin_lon)**2)
 
             # Convert distance to miles
             distance_mi = distance_deg * MILES_TO_DEGREES
 
             # If apt is within distance, fetch object and add to list.
             if distance_mi < desired_distance:
-                matching_apts.append(cls.query.get(post_id))
+                matching_apts.append(apt)
 
         return matching_apts
 
+
+class User(db.Model):
+    """Represents a user."""
+
+    __tablename__ = "users"
+
+    user_id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(20), nullable=False)
+    email = db.Column(db.String(30), nullable=False)
+    password = db.Column(db.String(20), nullable=False)
+
+    def __repr__(self):
+        return "<user_id: %s username: %s>" % (self.user_id, self.username)
 
 ######### Helper Functions #########
 
