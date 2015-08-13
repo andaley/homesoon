@@ -94,12 +94,13 @@ walked through google maps tutorial and added two points to sample map
 - Challenge: is it faster to query for tuples first, check tuples, and then pull object? Or to pull list of objects, then check if object attributes fit Euclidean distance?
 
 8/13
-- add user and favorites table to db
+- added users class and table
 - improved efficiency of get_apartments db query
 
 TODO
 
-- Add Users table
+- update tests.py to check class methods
+- add selenium tests
 - Add Favorites table
 - Add expired column to Posting table
 - Refactor seed file to remove Postings not in Favorites & update db with new posts
