@@ -23,7 +23,7 @@ class Posting(db.Model):
     longitude = db.Column(db.Float, nullable=False)
 
     def __repr__(self):
-        return "<Post: %s price: %s bedrooms: %s>" % (self.post_id, self.price, self.bedrooms)
+        return "<Post: %s, price: %s, bedrooms: %s>" % (self.post_id, self.price, self.bedrooms)
 
 
     @classmethod
@@ -88,7 +88,23 @@ class User(db.Model):
     password = db.Column(db.String(20), nullable=False)
 
     def __repr__(self):
-        return "<user_id: %s username: %s>" % (self.user_id, self.username)
+        return "<user_id: %s, username: %s>" % (self.user_id, self.username)
+
+
+class Favorites(db.Model):
+    """Stores all apartments that users have favorited."""
+
+    __tablename__ = "favorites"
+
+    favorite_id = db.Column(db.Integer, primary_key=True)
+    post_id = db.Column(db.ForeignKey("postings.post_id"))
+    user_id = db.Column(db.ForeignKey("users.user_id"))
+
+    post = db.relationship("Posting", backref=db.backref("favorites", order_by=post_id))
+    user = db.relationship("User", backref=db.backref("users", order_by=user_id))
+
+    def __repr__(self):
+        return "<favorite_id: %s, post_id: %s, user_id: %s>" % (self.favorite_id, self.post_id, self.user_id)
 
 ######### Helper Functions #########
 
