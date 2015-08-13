@@ -102,9 +102,11 @@ walked through google maps tutorial and added two points to sample map
 - added sign up form
 - added Favorites table
 - inserted test favorite data
+- new users can now sign up and be added to database
+- toggle sign in / sign out based on login status
+- added sign out route
 
 TODO
-- toggle sign in / sign out based on login status
 - update tests.py to check class methods
 - add selenium tests
 - Refactor seed file to remove Postings not in Favorites & update db with new posts
