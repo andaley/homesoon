@@ -13,6 +13,7 @@ app.jinja_env.undefined = StrictUndefined
 google_key = os.environ['GOOGLE_MAPS_TOKEN']
 gmaps = googlemaps.Client(key=google_key)
 
+
 ######### Routes #########
 
 @app.route('/')
@@ -21,11 +22,15 @@ def home():
 
     return render_template('index.html')
 
+
+### Log in / out ###
+
 @app.route('/sign-in')
 def show_sign_in():
     """Show sign-in and sign-up page."""
 
     return render_template('sign-in.html')
+
 
 @app.route('/process-login', methods=['POST'])
 def sign_in():
@@ -44,6 +49,7 @@ def sign_in():
 
     return redirect ('/')
 
+
 @app.route('/add-user', methods=['POST'])
 def add_user():
     """Adds new user to database."""
@@ -61,6 +67,18 @@ def add_user():
 
     return redirect ('/')
 
+
+@app.route('/sign-out')
+def sign_out():
+    """Logs user out."""
+
+    for key in session.keys():
+        del session[key]
+
+    return redirect('/')
+
+
+#### Search for apartments ####
 
 @app.route('/apartments', methods=['POST'])
 def find_apartments():
