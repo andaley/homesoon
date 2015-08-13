@@ -1,5 +1,5 @@
-from flask import Flask, render_template, request, jsonify, session
-from model import Posting, db, connect_to_db
+from flask import Flask, render_template, request, jsonify, session, flash, redirect
+from model import Posting, User, Favorite, db, connect_to_db
 from jinja2 import StrictUndefined
 import math
 import googlemaps
@@ -22,10 +22,27 @@ def home():
     return render_template('index.html')
 
 @app.route('/sign-in')
-def sign_in():
-    """ Show sign-in and sign-up page."""
+def show_sign_in():
+    """Show sign-in and sign-up page."""
 
     return render_template('sign-in.html')
+
+@app.route('/process-login', methods=['POST'])
+def sign_in():
+    """Check user's credentials and login."""
+
+    username = request.form.get('username')
+    user = User.query.filter_by(username = username).first()
+    password = request.form.get('password')
+
+    if not user or user.password != password:
+        flash('Oh no! Your email address or password is incorrect. Please try again.')
+        return redirect('/sign-in')
+
+    session['username'] = username
+    session['id'] = user.user_id
+
+    return redirect ('/')
 
 @app.route('/apartments', methods=['POST'])
 def find_apartments():
