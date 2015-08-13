@@ -29,10 +29,8 @@ class Posting(db.Model):
     @classmethod
     def get_apartments(cls, max_rent, num_rooms, origin_lat, origin_lon, desired_distance):
         """
-        Given price, # of bedrooms, and desired distance, return list of ids, latitudes and longitudes.
+        Given price, # of bedrooms, max price, and origin, return list of apartment objects within desired distance.
         """
-
-        # TODO: merge this with get_apartments
 
         # X and Y correspond to latitudes and longitudes that form a square boundary from the origin. Use these values inititally to query database, then check Euclidean distance after to ensure they fall within the circular boundary.
         MILES_TO_DEGREES = 69.0
@@ -43,12 +41,10 @@ class Posting(db.Model):
         y = origin_lat - distance_degrees
         y2 = origin_lon + distance_degrees
 
-        # Retrieve list of ids, latitudes, and longitudes of apts
-        # with desired number of bedrooms, within budget, and that are within desired distance range.
-        query = cls.query.filter(cls.price < max_rent, cls.bedrooms == num_rooms, cls.latitude > x, cls.latitude < x2, cls.longitude > y, cls.longitude < y2)
+        # Retrieve list of apts with desired number of bedrooms, within budget, and that are within desired distance range.
+        apartment_list = cls.query.filter(cls.price < max_rent, cls.bedrooms == num_rooms, cls.latitude > x, cls.latitude < x2, cls.longitude > y, cls.longitude < y2).all()
 
-        apartment_list = query.all()
-
+        # Check Euclidean distance
         matching_apts = cls.check_distance(apartment_list, origin_lat, origin_lon, desired_distance)
 
         return matching_apts
