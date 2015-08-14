@@ -90,7 +90,7 @@ def show_favorites():
     return render_template('favorites.html', favorites=user_favorites)
 
 
-@app.route('/add-favorite/<marker_id>')
+@app.route('/add-favorite')
 def add_favorite(marker_id):
     """Add new Favorite to the database."""
 
@@ -98,7 +98,7 @@ def add_favorite(marker_id):
     # db.session.add(new_favorite)
     # db.session.commit()
 
-    return
+    return 'Saved.'
 
 #### Search for apartments ####
 
