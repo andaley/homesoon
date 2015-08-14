@@ -98,7 +98,7 @@ def add_favorite(marker_id):
     # db.session.add(new_favorite)
     # db.session.commit()
 
-    return 'Saved.'
+    return
 
 #### Search for apartments ####
 
