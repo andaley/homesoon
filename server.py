@@ -78,11 +78,14 @@ def sign_out():
     return redirect('/')
 
 
-@app.route('/favorites')
+@app.route('/favorites/')
 def show_favorites():
     """Display favorites page."""
 
-    return render_template('favorites.html')
+    # return list of apartment objects
+    user_favorites = Posting.query.join(Favorite).filter(Favorite.user_id == session['id']).all()
+
+    return render_template('favorites.html', favorites=user_favorites)
 
 
 #### Search for apartments ####
