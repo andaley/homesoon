@@ -102,8 +102,8 @@ function bindinfoWindow(marker, map, infoWindow, html) {
         console.log('Adding to favorites.');
 
         // Add favorite to database & disable button.
-        $.get('/add-favorite', {'id': marker.title, 'commute_time': $('#' + marker.title + '-time').text()}, function(){
-          $('#' + marker.title + '-fav').html('Saved.');
+        $.get('/add-favorite', {'id': marker.title, 'commute_time': $('#' + marker.title + '-time').text()}, function(message){
+          $('#' + marker.title + '-fav').html(message);
           $('#' + marker.title + '-fav').attr('disabled');
           // disable button
         });
