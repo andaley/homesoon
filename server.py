@@ -96,9 +96,11 @@ def add_favorite():
 
     marker_id = request.args.get('id')
     commute_time = request.args.get('commute_time')
+    print marker_id
+    print commute_time
 
-    if not session['id']:
-        message = 'Log in to save!'
+    if not session.get('id'):
+        message = 'Sign in to save!'
         return message
 
     new_favorite = Favorite(user_id = session['id'], post_id = marker_id, commute_time = commute_time, origin = session['raw_location'])
