@@ -110,13 +110,13 @@ walked through google maps tutorial and added two points to sample map
 
 8/14
 - added button to save to favorites
-- fix tests
-- create add to favorites route
+- created add to favorites route
 - store favorite in database
-- create add to favorites event listener and ajax call
-- calculate average price per search
+- created add to favorites event listener and ajax call
+
 
 TODO
+- calculate average price per search
 - update tests.py to check class methods
 - add selenium tests
 - switch google maps directions link to users' preferred transportation method
