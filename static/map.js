@@ -51,9 +51,10 @@ function initialize() {
         '<div class="window-content">' +
         '<a href="' + apartment['url'] + '">' + apartment['title'] + '</a>' + '<p>Price: ' + apartment['price'] + '</p>' +
         '<p>Bedrooms: ' + apartment['bedrooms'] + '</p>' +
-        '<img src="' + apartment.img_url + '" height="50px">' +
+        // '<img src="' + apartment.img_url + '" height="50px">' +
         '<a href="#" target="_blank" id="' + key + '-dir"><p>Commute time: <span id="' + key + '-time"></span></p></a>' +
         '<p>Commute distance: <span id="' + key + '-distance">' + '</span></p>' +
+        '<form class="favorite" action="/favorite"><input type="submit" class="btn"></form>' +
         '</div>'
       );
 
