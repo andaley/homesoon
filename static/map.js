@@ -94,17 +94,17 @@ function bindinfoWindow(marker, map, infoWindow, html) {
       $('#' + marker.title + '-time').html(total_distance.duration);
       $('#' + marker.title + '-distance').html(total_distance.distance);
       $('#' + marker.title + '-dir').attr('href', total_distance.directions);
+      console.log($('#' + marker.title + '-distance').text())
     })
 
     // Add event listener to each 'favorite' button after distance has been calculated.
     $('#' + marker.title + '-fav').on('click', function() {
         console.log('Adding to favorites.');
-        console.log($('#' + marker.title + '-distance').val())
-        console.log($('#' + marker.title + '-time').val())
 
         // Add favorite to database & disable button.
-        $.get('/add-favorite', {'id': marker.title, 'distance': $('#' + marker.title + '-distance').val()}, function(){
+        $.get('/add-favorite', {'id': marker.title, 'commute_time': $('#' + marker.title + '-time').text()}, function(){
           $('#' + marker.title + '-fav').html('Saved.');
+          $('#' + marker.title + '-fav').attr('disabled');
           // disable button
         });
 
