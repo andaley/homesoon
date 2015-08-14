@@ -1,9 +1,18 @@
-var post_ids;
+
+// Define map canvas
+var mapCanvas = document.getElementById('main-map');
+
+var mapOptions = {
+  center: new google.maps.LatLng(37.7577, -122.4376),
+  zoom: 12,
+};
+
+// Create the map!
+var map = new google.maps.Map(mapCanvas, mapOptions);
+
 
 function initialize() {
-
-  // Define map canvas
-  var mapCanvas = document.getElementById('main-map');
+  // Upon page load, recenters map and adds all apartments markers.
 
   // Define global info window
   var infoWindow = new google.maps.InfoWindow({
@@ -13,14 +22,9 @@ function initialize() {
   // Retrieve apartment objects from server
   $.get('/apartments.json', function(apts) {
 
-      var mapOptions = {
-        center: new google.maps.LatLng(apts['origin_info']['origin_lat'], apts['origin_info']['origin_lon']),
-        zoom: 13,
-        // mapTypeId: google.maps.mapTypeId.ROADMAP
-      };
-
-      // Create the map!
-      var map = new google.maps.Map(mapCanvas, mapOptions);
+      // Re-center map according to user's origin.
+      var center = new google.maps.LatLng(apts['origin_info']['origin_lat'], apts['origin_info']['origin_lon'])
+      map.setCenter(center);
 
       // Set origin marker
       var originMarker = new google.maps.Marker({
@@ -32,17 +36,15 @@ function initialize() {
       })
 
 
-    ////////////////////////////////////////////////////////////
     // PUTTING POINTS ON THE MAP, USE DB data
       var apartment, marker, contentString;
 
-      // MAKE EACH MARKER
+      // Make each marker
       var listings = apts['listings']
-      // Iterate through keys in master apts object
+
       for (var key in listings) {
         apartment = listings[key];
 
-            // TODO: change marker color according to distance
             // Define marker for all apts
             marker = new google.maps.Marker({
               position: new google.maps.LatLng(apartment['latitude'], apartment['longitude']),
@@ -68,25 +70,11 @@ function initialize() {
             // ADD EVENT LISTENER, PER MARKER
             bindinfoWindow(marker, map, infoWindow, contentString);
 
-            // console.log('Distance:' + $('#' + key + '-distance').val())
-
-        // // Add event listener to favorite button so user can save a post.
-        // $('#' + key + '-fav').on('click', function() {
-        //     console.log('Adding to favorites.');
-        //
-        //
-        //     $.get('/add-favorite', key, function(){
-        //       $("#" + key + '-fav').html('Saved.');
-        //     });
-        // });
-
     }  // END for loop
 
   });  // END $.get
 
 } // END INITIALIZE
-
-
 
 
 function bindinfoWindow(marker, map, infoWindow, html) {
@@ -108,11 +96,16 @@ function bindinfoWindow(marker, map, infoWindow, html) {
       $('#' + marker.title + '-dir').attr('href', total_distance.directions);
     })
 
+    // Add event listener to each 'favorite' button after distance has been calculated.
     $('#' + marker.title + '-fav').on('click', function() {
         console.log('Adding to favorites.');
+        console.log($('#' + marker.title + '-distance').val())
+        console.log($('#' + marker.title + '-time').val())
 
-        $.get('/add-favorite', {'id': marker.title}, function(){
+        // Add favorite to database & disable button.
+        $.get('/add-favorite', {'id': marker.title, 'distance': $('#' + marker.title + '-distance').val()}, function(){
           $('#' + marker.title + '-fav').html('Saved.');
+          // disable button
         });
 
       });
