@@ -108,6 +108,13 @@ walked through google maps tutorial and added two points to sample map
 - populated favorites page
 - Refactored seed file to remove Postings not in Favorites & update db with new posts
 
+8/14
+- added button to save to favorites
+- create add to favorites route
+- store favorite in database
+- create add to favorites event listener and ajax call
+- calculate average price per search
+
 TODO
 - update tests.py to check class methods
 - add selenium tests
