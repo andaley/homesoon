@@ -1,3 +1,4 @@
+var post_ids;
 
 function initialize() {
 
@@ -54,16 +55,46 @@ function initialize() {
         // '<img src="' + apartment.img_url + '" height="50px">' +
         '<a href="#" target="_blank" id="' + key + '-dir"><p>Commute time: <span id="' + key + '-time"></span></p></a>' +
         '<p>Commute distance: <span id="' + key + '-distance">' + '</span></p>' +
-        '<form class="favorite" action="/favorite"><input type="submit" class="btn"></form>' +
+        '<button class="btn" id="' + key + '-fav">Save to Favorites</button>' +
         '</div>'
       );
 
+      post_ids.push('#' + key + '-fav');
+
       bindinfoWindow(marker, map, infoWindow, contentString);
-    }
+
+      console.log('Distance:' + $('#' + key + '-distance').val())
+
+      // // Add event listener to favorite button so user can save a post.
+      // $('#' + key + '-fav').on('click', function() {
+      //     console.log('Adding to favorites.');
+      //
+      //
+      //     $.get('/add-favorite', key, function(){
+      //       $("#" + key + '-fav').html('Saved.');
+      //     });
+      // });
+
+    };
 
   });
 
 }
+
+$.each(post_ids, function(idx, id_selector){
+    // Add event listener to favorite button so user can save a post.
+    $(id_selector).on('click', function() {
+        console.log('Adding to favorites.');
+
+
+        $.get('/add-favorite', key, function(){
+          $(id_selector).html('Saved.');
+        });
+    });
+});
+
+
+
 
 
 function bindinfoWindow(marker, map, infoWindow, html) {
