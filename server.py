@@ -90,15 +90,24 @@ def show_favorites():
     return render_template('favorites.html', favorites=user_favorites)
 
 
-@app.route('/add-favorite')
-def add_favorite(marker_id):
+@app.route('/add-favorite', methods=['GET'])
+def add_favorite():
     """Add new Favorite to the database."""
 
-    # new_favorite = Favorite(user_id = session['id'], post_id = marker_id, commute_time = , origin = session['raw_location'])
-    # db.session.add(new_favorite)
-    # db.session.commit()
+    marker_id = request.args.get('id')
+    commute_time = request.args.get('commute_time')
 
-    return
+    if not session['id']:
+        message = 'Log in to save!'
+        return message
+
+    new_favorite = Favorite(user_id = session['id'], post_id = marker_id, commute_time = commute_time, origin = session['raw_location'])
+    db.session.add(new_favorite)
+    db.session.commit()
+
+    message = 'Saved.'
+
+    return message
 
 #### Search for apartments ####
 
