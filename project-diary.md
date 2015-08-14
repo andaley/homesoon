@@ -110,6 +110,7 @@ walked through google maps tutorial and added two points to sample map
 
 8/14
 - added button to save to favorites
+- fix tests
 - create add to favorites route
 - store favorite in database
 - create add to favorites event listener and ajax call
