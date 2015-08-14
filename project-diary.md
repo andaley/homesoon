@@ -105,13 +105,13 @@ walked through google maps tutorial and added two points to sample map
 - new users can now sign up and be added to database
 - toggle sign in / sign out based on login status
 - added sign out route
+- populated favorites page
+- Refactored seed file to remove Postings not in Favorites & update db with new posts
 
 TODO
 - update tests.py to check class methods
 - add selenium tests
-- Refactor seed file to remove Postings not in Favorites & update db with new posts
 - switch google maps directions link to users' preferred transportation method
-- Add sign up form
 - Allow registered users to save listings to their favorites
 - Give markers special colors according to distance
 - Add support for East Bay and Portland
