@@ -100,6 +100,8 @@ class Favorite(db.Model):
     favorite_id = db.Column(db.Integer, primary_key=True)
     post_id = db.Column(db.ForeignKey("postings.post_id"))
     user_id = db.Column(db.ForeignKey("users.user_id"))
+    origin = db.Column(db.String(50))
+    commute_time = db.Column(db.Float)
 
     post = db.relationship("Posting", backref=db.backref("favorites", order_by=post_id))
     user = db.relationship("User", backref=db.backref("users", order_by=user_id))

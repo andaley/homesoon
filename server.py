@@ -96,7 +96,7 @@ def find_apartments():
     Add users' search preferences to their session and display apartment results page.
     """
 
-    raw_location = request.form.get('address')
+    session['raw_location'] = request.form.get('address')
     location = gmaps.geocode(raw_location) # returns list
 
     session['max_distance'] = int(request.form.get('distance'))
