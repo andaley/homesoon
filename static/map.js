@@ -13,86 +13,78 @@ function initialize() {
   // Retrieve apartment objects from server
   $.get('/apartments.json', function(apts) {
 
-    var mapOptions = {
-      center: new google.maps.LatLng(apts['origin_info']['origin_lat'], apts['origin_info']['origin_lon']),
-      zoom: 13,
-      // mapTypeId: google.maps.mapTypeId.ROADMAP
-    };
+      var mapOptions = {
+        center: new google.maps.LatLng(apts['origin_info']['origin_lat'], apts['origin_info']['origin_lon']),
+        zoom: 13,
+        // mapTypeId: google.maps.mapTypeId.ROADMAP
+      };
 
-    // Create the map!
-    var map = new google.maps.Map(mapCanvas, mapOptions);
+      // Create the map!
+      var map = new google.maps.Map(mapCanvas, mapOptions);
 
-    // Set origin marker
-    var originMarker = new google.maps.Marker({
-      position: new google.maps.LatLng(apts['origin_info']['origin_lat'], apts['origin_info']['origin_lon']),
-      map: map,
-      animation: google.maps.Animation.DROP,
-      icon: 'https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_purple.png',
-      title: 'Origin'
-    })
-
-    var apartment, marker, contentString;
-
-    var listings = apts['listings']
-    // Iterate through keys in master apts object
-    for (var key in listings) {
-      apartment = listings[key];
-
-      // TODO: change marker color according to distance
-      // Define marker for all apts
-      marker = new google.maps.Marker({
-        position: new google.maps.LatLng(apartment['latitude'], apartment['longitude']),
+      // Set origin marker
+      var originMarker = new google.maps.Marker({
+        position: new google.maps.LatLng(apts['origin_info']['origin_lat'], apts['origin_info']['origin_lon']),
         map: map,
         animation: google.maps.Animation.DROP,
-        title: key
-      });
-
-      // Define content of infoWindow
-      contentString = (
-        '<div class="window-content">' +
-        '<a href="' + apartment['url'] + '">' + apartment['title'] + '</a>' + '<p>Price: ' + apartment['price'] + '</p>' +
-        '<p>Bedrooms: ' + apartment['bedrooms'] + '</p>' +
-        // '<img src="' + apartment.img_url + '" height="50px">' +
-        '<a href="#" target="_blank" id="' + key + '-dir"><p>Commute time: <span id="' + key + '-time"></span></p></a>' +
-        '<p>Commute distance: <span id="' + key + '-distance">' + '</span></p>' +
-        '<button class="btn" id="' + key + '-fav">Save to Favorites</button>' +
-        '</div>'
-      );
-
-      post_ids.push('#' + key + '-fav');
-
-      bindinfoWindow(marker, map, infoWindow, contentString);
-
-      console.log('Distance:' + $('#' + key + '-distance').val())
-
-      // // Add event listener to favorite button so user can save a post.
-      // $('#' + key + '-fav').on('click', function() {
-      //     console.log('Adding to favorites.');
-      //
-      //
-      //     $.get('/add-favorite', key, function(){
-      //       $("#" + key + '-fav').html('Saved.');
-      //     });
-      // });
-
-    };
-
-  });
-
-}
-
-$.each(post_ids, function(idx, id_selector){
-    // Add event listener to favorite button so user can save a post.
-    $(id_selector).on('click', function() {
-        console.log('Adding to favorites.');
+        icon: 'https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_purple.png',
+        title: 'Origin'
+      })
 
 
-        $.get('/add-favorite', key, function(){
-          $(id_selector).html('Saved.');
-        });
-    });
-});
+    ////////////////////////////////////////////////////////////
+    // PUTTING POINTS ON THE MAP, USE DB data
+      var apartment, marker, contentString;
 
+      // MAKE EACH MARKER
+      var listings = apts['listings']
+      // Iterate through keys in master apts object
+      for (var key in listings) {
+        apartment = listings[key];
+
+            // TODO: change marker color according to distance
+            // Define marker for all apts
+            marker = new google.maps.Marker({
+              position: new google.maps.LatLng(apartment['latitude'], apartment['longitude']),
+              map: map,
+              animation: google.maps.Animation.DROP,
+              title: key
+            });
+
+            // CONTENT STRING PER MARKER
+            // Define content of infoWindow
+            contentString = (
+              '<div class="window-content">' +
+              '<a href="' + apartment['url'] + '">' + apartment['title'] + '</a>' + '<p>Price: ' + apartment['price'] + '</p>' +
+              '<p>Bedrooms: ' + apartment['bedrooms'] + '</p>' +
+              // '<img src="' + apartment.img_url + '" height="50px">' +
+              '<a href="#" target="_blank" id="' + key + '-dir"><p>Commute time: <span id="' + key + '-time"></span></p></a>' +
+              '<p>Commute distance: <span id="' + key + '-distance">' + '</span></p>' +
+              '<button class="btn" id="' + key + '-fav">Save to Favorites</button>' +
+              '</div>'
+            );
+
+
+            // ADD EVENT LISTENER, PER MARKER
+            bindinfoWindow(marker, map, infoWindow, contentString);
+
+            // console.log('Distance:' + $('#' + key + '-distance').val())
+
+        // // Add event listener to favorite button so user can save a post.
+        // $('#' + key + '-fav').on('click', function() {
+        //     console.log('Adding to favorites.');
+        //
+        //
+        //     $.get('/add-favorite', key, function(){
+        //       $("#" + key + '-fav').html('Saved.');
+        //     });
+        // });
+
+    }  // END for loop
+
+  });  // END $.get
+
+} // END INITIALIZE
 
 
 
@@ -114,9 +106,18 @@ function bindinfoWindow(marker, map, infoWindow, html) {
       $('#' + marker.title + '-time').html(total_distance.duration);
       $('#' + marker.title + '-distance').html(total_distance.distance);
       $('#' + marker.title + '-dir').attr('href', total_distance.directions);
-    });
+    })
 
-  });
+    $('#' + marker.title + '-fav').on('click', function() {
+        console.log('Adding to favorites.');
+
+        $.get('/add-favorite', {'id': marker.title}, function(){
+          $('#' + marker.title + '-fav').html('Saved.');
+        });
+
+      });
+
+})
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
