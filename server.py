@@ -78,6 +78,8 @@ def sign_out():
     return redirect('/')
 
 
+#### View / Add Favorites ####
+
 @app.route('/favorites/')
 def show_favorites():
     """Display favorites page."""
@@ -88,6 +90,16 @@ def show_favorites():
     return render_template('favorites.html', favorites=user_favorites)
 
 
+@app.route('/add-favorite/<marker_id>')
+def add_favorite(marker_id):
+    """Add new Favorite to the database."""
+
+    # new_favorite = Favorite(user_id = session['id'], post_id = marker_id, commute_time = , origin = session['raw_location'])
+    # db.session.add(new_favorite)
+    # db.session.commit()
+
+    return
+
 #### Search for apartments ####
 
 @app.route('/apartments', methods=['POST'])
@@ -97,7 +109,7 @@ def find_apartments():
     """
 
     session['raw_location'] = request.form.get('address')
-    location = gmaps.geocode(raw_location) # returns list
+    location = gmaps.geocode(session['raw_location']) # returns list
 
     session['max_distance'] = int(request.form.get('distance'))
 
@@ -111,7 +123,7 @@ def find_apartments():
     session['price'] = request.form.get('cost')
     session['transit_method'] = request.form.get('transportation')
 
-    return render_template("apts.html", raw_location=raw_location, price=session['price'], )
+    return render_template("apts.html", raw_location=session['raw_location'], price=session['price'], )
 
 
 @app.route('/apartments.json')
