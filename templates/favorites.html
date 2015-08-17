@@ -14,16 +14,18 @@
             <th>Price</th>
             <th>Bedrooms</th>
             <th>Date Posted</th>
+            <th>Commute Time</th>
         </tr>
         </thead>
 
         <tbody>
-            {% for posting in favorites %}
+            {% for favorite in favorites %}
                 <tr>
-                    <td>{{posting.title}}</td>
-                    <td>{{posting.price}}</td>
-                    <td>{{posting.bedrooms}}</td>
-                    <td>{{posting.date_posted}}</td>
+                    <td>{{favorite.post.title}}</td>
+                    <td>{{favorite.post.price}}</td>
+                    <td>{{favorite.post.bedrooms}}</td>
+                    <td>{{favorite.post.date_posted}}</td>
+                    <td>{{favorite.commute_time}} from  {{favorite.origin}}</td>
                 </tr>
             {% endfor %}
         </tbody>
