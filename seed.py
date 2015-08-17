@@ -3,7 +3,11 @@ import json
 import requests
 import sqlite3
 
-def load_posts():
+# http://newyork.craigslist.org/jsonsearch/apa/
+bay_area = 'http://sfbay.craigslist.org/jsonsearch/apa/'
+portland = 'http://portland.craigslist.org/jsonsearch/apa/'
+
+def load_posts(city_link):
     """Load Craigslist posts from JSON into database. Keep any posting that a user has favorited."""
 
     # Delete any post that hasn't been favorited.
@@ -12,8 +16,7 @@ def load_posts():
     db.session.commit()
 
     # Retrieve JSON from Craigslist
-    endpoint = 'http://sfbay.craigslist.org/jsonsearch/apa/'
-    cl_json = requests.get(endpoint)
+    cl_json = requests.get(city_link)
 
     parsed_json = cl_json.json() # returns list
 
@@ -60,7 +63,8 @@ if __name__ == '__main__':
 
     connect_to_db(app)
     db.create_all()
-    load_posts()
+    load_posts(bay_area)
+    load_posts(portland)
     # db.session.commit()
     print "Database updated."
     # If creating database from scratch, run db.create_all()
