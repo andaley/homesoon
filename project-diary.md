@@ -117,12 +117,17 @@ walked through google maps tutorial and added two points to sample map
 8/16
 - Successfully added data from other city (Portland)
 
+8/17
+- researched Google directions API
+- got majorly stuck trying to refactor Javascript; ended up discovering bug where city data was being overwritten
+  - fixed this!
+- switch google maps directions link to users' preferred transportation method
+
 TODO
 - compartmentalize map.js for easier legibility
 - calculate average price per search
 - update tests.py to check class methods
 - add selenium tests
-- switch google maps directions link to users' preferred transportation method
 - Give markers special colors according to distance
 - Add support for East Bay and Portland
 - Add charts w/ average rent price, number of results
