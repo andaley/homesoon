@@ -186,9 +186,20 @@ def calculate_distance(lat, lon):
 
     distance_results = gmaps.distance_matrix(origin, destination, mode=session['transit_method'], units='imperial') # returns dictionary
 
+    print 'transit: ', session['transit_method']
+
+    if session['transit_method'] == 'transit':
+        method = 'data=!3m1!4b1!4m2!4m1!3e3'
+    elif session['transit_method'] == 'bicycling':
+        method = 'data=!3m1!4b1!4m2!4m1!3e1'
+    elif session['transit_method'] == 'walking':
+        method = 'data=!3m1!4b1!4m2!4m1!3e2'
+    else:
+        method = ""
+
     duration = distance_results['rows'][0]['elements'][0]['duration']['text']
     distance = distance_results['rows'][0]['elements'][0]['distance']['text']
-    directions = 'https://www.google.com/maps/dir/' + destination + '/' + origin + '/'
+    directions = 'https://www.google.com/maps/dir/' + destination + '/' + origin + '/' + method
 
     total_distance = {'duration': duration, 'distance': distance, 'directions': directions}
 
