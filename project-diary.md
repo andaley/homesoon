@@ -114,13 +114,15 @@ walked through google maps tutorial and added two points to sample map
 - created add to favorites event listener and ajax call
 - stored favorite in database if user is logged in
 
+8/16
+- Successfully added data from other city (Portland)
 
 TODO
+- compartmentalize map.js for easier legibility
 - calculate average price per search
 - update tests.py to check class methods
 - add selenium tests
 - switch google maps directions link to users' preferred transportation method
-- Allow registered users to save listings to their favorites
 - Give markers special colors according to distance
 - Add support for East Bay and Portland
 - Add charts w/ average rent price, number of results
