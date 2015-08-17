@@ -4,10 +4,9 @@ import requests
 import sqlite3
 
 # http://newyork.craigslist.org/jsonsearch/apa/
-bay_area = 'http://sfbay.craigslist.org/jsonsearch/apa/'
-portland = 'http://portland.craigslist.org/jsonsearch/apa/'
+city_list = ['http://sfbay.craigslist.org/jsonsearch/apa/', 'http://portland.craigslist.org/jsonsearch/apa/']
 
-def load_posts(city_link):
+def load_posts(city_list):
     """Load Craigslist posts from JSON into database. Keep any posting that a user has favorited."""
 
     # Delete any post that hasn't been favorited.
@@ -15,46 +14,48 @@ def load_posts(city_link):
     db.session.execute(query)
     db.session.commit()
 
-    # Retrieve JSON from Craigslist
-    cl_json = requests.get(city_link)
+    for link in city_list:
 
-    parsed_json = cl_json.json() # returns list
+        # Retrieve JSON from Craigslist
+        cl_json = requests.get(link)
 
-    list_of_posts = parsed_json[0] # returns list of 4000 dicts
+        parsed_json = cl_json.json() # returns list
 
-    # Testing the Craigslist data by iterating through list of dictionaries up to the 10th index.
+        list_of_posts = parsed_json[0] # returns list of 4000 dicts
 
-    for posting in list_of_posts:
+        # Testing the Craigslist data by iterating through list of dictionaries up to the 10th index.
 
-        # If this object has a GeoCluster key, skip it, since it's not an actual post.
-        if posting.get("GeoCluster"):
-            continue
-        else:
+        for posting in list_of_posts:
 
-            if not Posting.query.get(posting.get('PostingID')):
-                # 0 Ask: 2400
-                # 1 ImageThumb: 'http:\/\/images.craigslist.org...jpg'
-                # 2 Latitude: 38.927686
-                # 3 PostingTitle: 'title'
-                # 4 PostedDate: '1438725510'
-                # 5 Longitude: -122.3888
-                # 6 PostingURL: '\/\/sfbay.craigslist.org...html'
-                # 7 Bedrooms: '2'
-                # 8 CategoryID: '1'
-                # 9 PostingID: '5156767694'
+            # If this object has a GeoCluster key, skip it, since it's not an actual post.
+            if posting.get("GeoCluster"):
+                continue
+            else:
 
-                post_id = posting.get('PostingID')
-                title = posting.get('PostingTitle')
-                date_posted = posting.get('PostedDate')
-                url = posting.get('PostingURL')
-                img_url = posting.get('ImageThumb')
-                price = posting.get('Ask')
-                bedrooms = posting.get('Bedrooms')
-                latitude = posting.get('Latitude')
-                longitude = posting.get('Longitude')
+                if not Posting.query.get(posting.get('PostingID')):
+                    # 0 Ask: 2400
+                    # 1 ImageThumb: 'http:\/\/images.craigslist.org...jpg'
+                    # 2 Latitude: 38.927686
+                    # 3 PostingTitle: 'title'
+                    # 4 PostedDate: '1438725510'
+                    # 5 Longitude: -122.3888
+                    # 6 PostingURL: '\/\/sfbay.craigslist.org...html'
+                    # 7 Bedrooms: '2'
+                    # 8 CategoryID: '1'
+                    # 9 PostingID: '5156767694'
 
-                new_post = Posting(post_id=post_id, title=title, date_posted=date_posted, url=url, img_url=img_url, price=price, bedrooms=bedrooms, latitude=latitude, longitude=longitude)
-                db.session.add(new_post)
+                    post_id = posting.get('PostingID')
+                    title = posting.get('PostingTitle')
+                    date_posted = posting.get('PostedDate')
+                    url = posting.get('PostingURL')
+                    img_url = posting.get('ImageThumb')
+                    price = posting.get('Ask')
+                    bedrooms = posting.get('Bedrooms')
+                    latitude = posting.get('Latitude')
+                    longitude = posting.get('Longitude')
+
+                    new_post = Posting(post_id=post_id, title=title, date_posted=date_posted, url=url, img_url=img_url, price=price, bedrooms=bedrooms, latitude=latitude, longitude=longitude)
+                    db.session.add(new_post)
 
     db.session.commit()
 
@@ -63,8 +64,7 @@ if __name__ == '__main__':
 
     connect_to_db(app)
     db.create_all()
-    load_posts(bay_area)
-    load_posts(portland)
+    load_posts(city_list)
     # db.session.commit()
     print "Database updated."
     # If creating database from scratch, run db.create_all()
