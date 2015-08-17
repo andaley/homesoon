@@ -1,7 +1,6 @@
 
-// Define map canvas
-var mapCanvas = document.getElementById('main-map');
 
+var mapCanvas = document.getElementById('main-map');
 var mapOptions = {
   center: new google.maps.LatLng(37.7577, -122.4376),
   zoom: 12,
@@ -22,6 +21,7 @@ function initialize() {
   // Retrieve apartment objects from server
   $.get('/apartments.json', function(apts) {
 
+      // TODO: move to separate function
       // Re-center map according to user's origin.
       var center = new google.maps.LatLng(apts['origin_info']['origin_lat'], apts['origin_info']['origin_lon'])
       map.setCenter(center);
@@ -35,17 +35,16 @@ function initialize() {
         title: 'Origin'
       })
 
-
-    // PUTTING POINTS ON THE MAP, USE DB data
+    // Place markers on map using database data
       var apartment, marker, contentString;
 
-      // Make each marker
       var listings = apts['listings']
 
+      // TODO: move to separate function
       for (var key in listings) {
         apartment = listings[key];
 
-            // Define marker for all apts
+            // Create marker per apartment object
             marker = new google.maps.Marker({
               position: new google.maps.LatLng(apartment['latitude'], apartment['longitude']),
               map: map,
@@ -53,8 +52,7 @@ function initialize() {
               title: key
             });
 
-            // CONTENT STRING PER MARKER
-            // Define content of infoWindow
+            // Define content of infoWindow per marker
             contentString = (
               '<div class="window-content">' +
               '<a href="' + apartment['url'] + '">' + apartment['title'] + '</a>' + '<p>Price: ' + apartment['price'] + '</p>' +
@@ -67,19 +65,21 @@ function initialize() {
             );
 
 
-            // ADD EVENT LISTENER, PER MARKER
+            // Add event listeners per marker
             bindinfoWindow(marker, map, infoWindow, contentString);
 
     }  // END for loop
 
   });  // END $.get
 
-} // END INITIALIZE
+} // END initialize
 
 
 function bindinfoWindow(marker, map, infoWindow, html) {
   google.maps.event.addListener(marker, 'click', function() {
     // Set infoWindow content and open it when user clicks.
+    // After distance has been calculated, add event listener to save posting to favorites.
+
     infoWindow.setContent(html);
     infoWindow.open(map, marker);
 
@@ -88,20 +88,22 @@ function bindinfoWindow(marker, map, infoWindow, html) {
 
     // Given latitude and longitude of marker, retrieve distance and duration from Google Distance Matrix.
     console.log('Calculating distance.')
+
     $.get('/calculate-distance/' + lat + '/' + lon, function(total_distance) {
 
       // Updating infoWindow with commute times and distance.
       $('#' + marker.title + '-time').html(total_distance.duration);
       $('#' + marker.title + '-distance').html(total_distance.distance);
       $('#' + marker.title + '-dir').attr('href', total_distance.directions);
-      console.log($('#' + marker.title + '-distance').text())
     })
 
     // Add event listener to each 'favorite' button after distance has been calculated.
     $('#' + marker.title + '-fav').on('click', function() {
         console.log('Adding to favorites.');
 
+        // TODO: move to separate function
         // Add favorite to database & disable button.
+        // Note: this cannot run until marker event listener has been triggered, since content of infoWindow doesn't exist in the DOM *until* after.
         $.get('/add-favorite', {'id': marker.title, 'commute_time': $('#' + marker.title + '-time').text()}, function(message){
           $('#' + marker.title + '-fav').html(message);
           $('#' + marker.title + '-fav').attr('disabled');
