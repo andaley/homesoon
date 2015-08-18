@@ -205,16 +205,16 @@ def add_favorite():
 
     new_favorite = Favorite(user_id = session['id'], post_id = marker_id, commute_time = commute_time, origin = session['raw_location'])
 
-    #  = Posting.query.get(marker_id)
-    # post.s
-
     db.session.add(new_favorite)
+    db.session.commit()
+
+    new_favorite.post.is_favorited = True
     db.session.commit()
 
     message = 'Saved.'
 
     return message
-    
+
 
 ######### Helper Functions #########
 
