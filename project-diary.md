@@ -133,6 +133,8 @@ walked through google maps tutorial and added two points to sample map
 - added avg rent to apartment results
 - added averge rent to infoWindow
 - updated homepage search with placeholder values
+- FIXED IMAGES!!!!!!
+- added % more / less than average rent
 
 TODO
 - change color of marker when user clicks
