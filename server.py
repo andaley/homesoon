@@ -148,7 +148,7 @@ def display_apartments():
 
     search_results = Posting.get_apartments(session['price'], session['bedrooms'], session['origin_latitude'], session['origin_longitude'], session['max_distance'])
 
-    avg_rent = Posting.calculate_avg_rent(search_results)
+    # avg_rent = Posting.calculate_avg_rent(search_results)
 
     # TODO: if search returns nothing, flash a message.
 
@@ -159,7 +159,7 @@ def display_apartments():
     apartments = {'origin_info':
         {"origin_lat": session['origin_latitude'],
         "origin_lon": session['origin_longitude']},
-        'listings': {}, 'avg_rent': avg_rent
+        'listings': {}
         }
 
     for apt in search_results:
