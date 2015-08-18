@@ -125,6 +125,10 @@ walked through google maps tutorial and added two points to sample map
 - fixed seed and get apartments test
 - started calculating average price per search
 
+8/18
+- added support for Seattle
+- added test that verifies data from all cities are in DB
+
 TODO
 - compartmentalize map.js for easier legibility
 - add selenium tests
