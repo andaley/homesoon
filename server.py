@@ -44,7 +44,7 @@ def sign_in():
         flash('Oh no! Your email address or password is incorrect. Please try again.')
         return redirect('/sign-in')
 
-    session['username'] = username
+    session['username'] = user.username
     session['id'] = user.user_id
 
     return redirect ('/')
@@ -62,7 +62,7 @@ def add_user():
     db.session.add(new_user)
     db.session.commit()
 
-    session['username'] = username
+    session['username'] = new_user.username
     session['id'] = new_user.user_id
 
     return redirect ('/')
@@ -96,8 +96,6 @@ def add_favorite():
 
     marker_id = request.args.get('id')
     commute_time = request.args.get('commute_time')
-    print marker_id
-    print commute_time
 
     if not session.get('id'):
         message = 'Sign in to save!'
@@ -190,7 +188,6 @@ def calculate_distance(lat, lon):
 
     distance_results = gmaps.distance_matrix(origin, destination, mode=session['transit_method'], units='imperial') # returns dictionary
 
-    print 'transit: ', session['transit_method']
 
     if session['transit_method'] == 'transit':
         method = 'data=!3m1!4b1!4m2!4m1!3e3'
