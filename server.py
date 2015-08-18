@@ -128,7 +128,8 @@ def display_apartments():
     apartments = {'origin_info':
         {"origin_lat": session['origin_latitude'],
         "origin_lon": session['origin_longitude']},
-        'listings': {}
+        'listings': {},
+        'avg_rent': avg_rent,
         }
 
     for apt in search_results:
