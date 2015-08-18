@@ -78,38 +78,6 @@ def sign_out():
     return redirect('/')
 
 
-#### View / Add Favorites ####
-
-@app.route('/favorites')
-def show_favorites():
-    """Display favorites page."""
-
-    # return list of apartment objects
-    user_favorites = Favorite.query.filter_by(user_id = session['id']).all()
-
-    return render_template('favorites.html', favorites=user_favorites)
-
-
-@app.route('/add-favorite', methods=['GET'])
-def add_favorite():
-    """Add new Favorite to the database."""
-
-    marker_id = request.args.get('id')
-    commute_time = request.args.get('commute_time')
-
-    if not session.get('id'):
-        message = 'Sign in to save!'
-        return message
-
-    new_favorite = Favorite(user_id = session['id'], post_id = marker_id, commute_time = commute_time, origin = session['raw_location'])
-    db.session.add(new_favorite)
-    db.session.commit()
-
-    message = 'Saved.'
-
-    return message
-
-
 #### Search for apartments ####
 
 
@@ -209,6 +177,44 @@ def calculate_distance(lat, lon):
 
     return jsonify(total_distance)
 
+
+#### View / Add Favorites ####
+
+@app.route('/favorites')
+def show_favorites():
+    """Display favorites page."""
+
+    # return list of apartment objects
+    user_favorites = Favorite.query.filter_by(user_id = session['id']).all()
+
+    print 'HELLO THERE', user_favorites[0].post.title
+
+    return render_template('favorites.html', favorites=user_favorites)
+
+
+@app.route('/add-favorite', methods=['GET'])
+def add_favorite():
+    """Add new Favorite to the database."""
+
+    marker_id = request.args.get('id')
+    commute_time = request.args.get('commute_time')
+
+    if not session.get('id'):
+        message = 'Sign in to save!'
+        return message
+
+    new_favorite = Favorite(user_id = session['id'], post_id = marker_id, commute_time = commute_time, origin = session['raw_location'])
+
+    #  = Posting.query.get(marker_id)
+    # post.s
+
+    db.session.add(new_favorite)
+    db.session.commit()
+
+    message = 'Saved.'
+
+    return message
+    
 
 ######### Helper Functions #########
 
