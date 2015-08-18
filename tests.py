@@ -121,9 +121,9 @@ class TestApp(unittest.TestCase):
             for post in small_list:
                 if post.get("GeoCluster"):
                     continue
-                else:
-                    self.assertTrue('PostingTitle' in post)
-                    self.assertTrue('Latitude' in post)
+                    
+                self.assertTrue('PostingTitle' in post)
+                self.assertTrue('Latitude' in post)
 
 
 if __name__ == '__main__':
