@@ -54,8 +54,6 @@ function initialize() {
 
             var percentMoreLess = Math.round(apartment['price'] / apts['avg_rent'] * 100);
 
-            console.log(percentMoreLess)
-
             // Define content of infoWindow per marker
             contentString = (
               '<div class="window-content">' +
