@@ -52,13 +52,15 @@ function initialize() {
               title: key
             });
 
-            // var price_difference = apartment['price'] / apts['avg_rent'] * 100
+            var percentMoreLess = Math.round(apartment['price'] / apts['avg_rent'] * 100);
+
+            console.log(percentMoreLess)
 
             // Define content of infoWindow per marker
             contentString = (
               '<div class="window-content">' +
               '<a href="' + apartment['url'] + '">' + apartment['title'] + '</a>' + '<p>Price: ' + apartment['price'] + '</p>' +
-              // '<p>This is' + price_difference + 'more/less than the average</p>' +
+              '<p>This is ' + percentMoreLess + '% of the average price in your search.</p>' +
               '<p>Bedrooms: ' + apartment['bedrooms'] + '</p>' +
               // '<img src="' + apartment.img_url + '" height="50px">' +
               '<a href="#" target="_blank" id="' + key + '-dir"><p>Commute time: <span id="' + key + '-time"></span></p></a>' +
