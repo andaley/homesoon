@@ -4,7 +4,7 @@ import requests
 import sqlite3
 
 # http://newyork.craigslist.org/jsonsearch/apa/
-city_list = ['http://sfbay.craigslist.org/jsonsearch/apa/', 'http://portland.craigslist.org/jsonsearch/apa/']
+city_list = ['http://sfbay.craigslist.org/jsonsearch/apa/', 'http://portland.craigslist.org/jsonsearch/apa/', 'http://seattle.craigslist.org/jsonsearch/apa/']
 
 def load_posts(city_list):
     """Load Craigslist posts from JSON into database. Keep any posting that a user has favorited."""
