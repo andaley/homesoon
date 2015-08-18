@@ -55,7 +55,6 @@ class TestApp(unittest.TestCase):
             self.assertTrue(type(example_call[0]) is Posting)
 
 
-
     def test_load_posts(self):
         """
         Tests that seed.py is successfully pulling data from Craigslist.
