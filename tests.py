@@ -54,24 +54,7 @@ class TestApp(unittest.TestCase):
         if len(example_call) > 0:
             self.assertTrue(type(example_call[0]) is Posting)
 
-    def test_calculate_distance(self):
-        """
-        Checks that geocoding and distance matrix API are working.
-        """
 
-        # Check that Google Maps API key has been sourced.
-        self.assertTrue('GOOGLE_MAPS_TOKEN' in os.environ)
-
-        origin = '188 Spear Street, San Francisco, CA'
-        destination = '37.7857435,-122.4112531'
-
-        matrix = server.gmaps.distance_matrix(origin, destination)
-
-        duration = matrix['rows'][0]['elements'][0]['duration']['text']
-        distance = matrix['rows'][0]['elements'][0]['distance']['text']
-
-        self.assertTrue(type(duration) is unicode)
-        self.assertTrue(type(distance) is unicode)
 
     def test_load_posts(self):
         """
