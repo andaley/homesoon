@@ -19,15 +19,17 @@
         </thead>
 
         <tbody>
-            {% for favorite in favorites %}
-                <tr>
-                    <td>{{favorite.post.title}}</td>
-                    <td>{{favorite.post.price}}</td>
-                    <td>{{favorite.post.bedrooms}}</td>
-                    <td>{{favorite.post.date_posted}}</td>
-                    <td>{{favorite.commute_time}} from  {{favorite.origin}}</td>
-                </tr>
-            {% endfor %}
+            {% if favorites %}
+              {% for favorite in favorites %}
+                  <tr>
+                      <td>{{favorite.post.title}}</td>
+                      <td>{{favorite.post.price}}</td>
+                      <td>{{favorite.post.bedrooms}}</td>
+                      <td>{{favorite.post.date_posted}}</td>
+                      <td>{{favorite.commute_time}} from  {{favorite.origin}}</td>
+                  </tr>
+              {% endfor %}
+            {% endif %}
         </tbody>
     </table>
 
