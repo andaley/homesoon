@@ -76,8 +76,8 @@ class Posting(db.Model):
     def calculate_avg_rent(cls, apartments):
         """Calculates average rent for a given list of apartment objects."""
 
-        rents = [cls.price for post in apartments]
-        avg_rent = float(sum(rents)/len(rents))
+        rents = [int(post.price) for post in apartments]
+        avg_rent = sum(rents)/len(rents)
 
         return avg_rent
 
