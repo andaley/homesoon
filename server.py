@@ -109,7 +109,9 @@ def add_favorite():
 
     return message
 
+
 #### Search for apartments ####
+
 
 @app.route('/apartments', methods=['POST'])
 def find_apartments():
@@ -146,7 +148,8 @@ def display_apartments():
 
     search_results = Posting.get_apartments(session['price'], session['bedrooms'], session['origin_latitude'], session['origin_longitude'], session['max_distance'])
 
-    # avg_rent = Posting.calculate_avg_rent(search_results)
+    avg_rent = Posting.calculate_avg_rent(search_results)
+    print avg_rent
 
     # TODO: if search returns nothing, flash a message.
 
