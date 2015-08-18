@@ -122,12 +122,11 @@ walked through google maps tutorial and added two points to sample map
 - got majorly stuck trying to refactor Javascript; ended up discovering bug where city data was being overwritten
   - fixed this!
 - switch google maps directions link to users' preferred transportation method
+- fixed seed and get apartments test
+- started calculating average price per search
 
 TODO
 - compartmentalize map.js for easier legibility
-- calculate average price per search
-- update tests.py to check class methods
 - add selenium tests
 - Give markers special colors according to distance
-- Add support for East Bay and Portland
 - Add charts w/ average rent price, number of results
