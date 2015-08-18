@@ -45,37 +45,32 @@ class Posting(db.Model):
         # Retrieve list of apts with desired number of bedrooms, within budget, and that are within desired distance range.
         apartment_list = cls.query.filter(cls.price < max_rent, cls.bedrooms == num_rooms, cls.latitude > x, cls.latitude < x2, cls.longitude > y, cls.longitude < y2).all()
 
-        # Check Euclidean distance
-        matching_apts = cls.check_euclidean_distance(apartment_list, origin_lat, origin_lon, desired_distance)
+        # Check Euclidean distance of each apartment in list.
+        # If apartment is within range, add to matching_apts list.
+        matching_apts = [apt for apt in apartment_list if apt.check_euclidean_distance(origin_lat, origin_lon, desired_distance)]
 
         return matching_apts
 
 
-    @classmethod
-    def check_euclidean_distance(cls, apartments, origin_lat, origin_lon, desired_distance):
+    def check_euclidean_distance(self, origin_lat, origin_lon, desired_distance):
         """
-        Given list of apartment objects, origin latitude/longitude, and desired radius, calculate Euclidean distance.
-        If distance is within desired range, retrieve that apartment object and add to list.
-
-        Returns list of apartment objects.
+        Given an apartment object, origin latitude/longitude, and desired radius, calculate Euclidean distance.
+        If distance is within desired range, return True.
         """
 
         MILES_TO_DEGREES = 69.0
 
-        matching_apts = []
-        for apt in apartments:
+        # Calculate Euclidean distance
+        distance_deg = math.sqrt((self.latitude - origin_lat)**2 + (self.longitude - origin_lon)**2)
 
-            # Calculate Euclidean distance
-            distance_deg = math.sqrt((apt.latitude - origin_lat)**2 + (apt.longitude - origin_lon)**2)
+        # Convert distance to miles
+        distance_mi = distance_deg * MILES_TO_DEGREES
 
-            # Convert distance to miles
-            distance_mi = distance_deg * MILES_TO_DEGREES
+        # If apt is farther than desired distance, return False.
+        if distance_mi > desired_distance:
+            return False
 
-            # If apt is within distance, fetch object and add to list.
-            if distance_mi < desired_distance:
-                matching_apts.append(apt)
-
-        return matching_apts
+        return True
 
     @classmethod
     def calculate_avg_rent(cls, apartments):
