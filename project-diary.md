@@ -128,6 +128,8 @@ walked through google maps tutorial and added two points to sample map
 8/18
 - added support for Seattle
 - added test that verifies data from all cities are in DB
+- added post url to favorites table
+- fixed bug where favorites weren't being committed to database
 
 TODO
 - compartmentalize map.js for easier legibility
