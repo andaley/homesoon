@@ -117,6 +117,8 @@ def add_favorite():
 def find_apartments():
     """
     Add users' search preferences to their session and display apartment results page.
+
+    Uses Google Maps Geocoding to determine origin latitude and longitude.
     """
 
     session['raw_location'] = request.form.get('address')
@@ -146,6 +148,8 @@ def display_apartments():
 
     search_results = Posting.get_apartments(session['price'], session['bedrooms'], session['origin_latitude'], session['origin_longitude'], session['max_distance'])
 
+    avg_rent = Posting.calculate_avg_rent(search_results)
+
     # TODO: if search returns nothing, flash a message.
 
     if not search_results:
@@ -155,7 +159,7 @@ def display_apartments():
     apartments = {'origin_info':
         {"origin_lat": session['origin_latitude'],
         "origin_lon": session['origin_longitude']},
-        'listings': {}
+        'listings': {}, 'avg_rent': avg_rent
         }
 
     for apt in search_results:
