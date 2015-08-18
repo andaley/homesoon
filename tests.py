@@ -3,6 +3,7 @@ import server
 import os
 import requests
 import googlemaps
+import math
 from model import Posting
 from seed import load_posts
 
@@ -34,51 +35,73 @@ class TestApp(unittest.TestCase):
         self.assertTrue('sfbay' in example_call[0].url)
 
 
-    def test_get_apartments(self):
+    def test_check_euclidean_distance(self):
         """
-        Checks that database query returns correct data.
-        """
-
-
-
-
-    def test_calculate_distance(self):
-        """
-        Checks that geocoding and distance matrix API are working.
+        Verifies that check_distance returns list of apartment objects within Euclidean distance range of origin.
         """
 
-        # Check that Google Maps API key has been sourced.
-        self.assertTrue('GOOGLE_MAPS_TOKEN' in os.environ)
+        max_rent=7000
+        num_rooms=1
+        origin_lat=37.7914448
+        origin_lon=-122.3929672
+        desired_distance=5
 
-        origin = '188 Spear Street, San Francisco, CA'
-        destination = '37.7857435,-122.4112531'
+        # Get sample list of 5 apartments.
+        apartments = Posting.get_apartments(max_rent, num_rooms, origin_lat, origin_lon, desired_distance)[:5]
 
-        matrix = server.gmaps.distance_matrix(origin, destination)
+        for apt in apartments:
+            distance_deg = math.sqrt((apt.latitude - origin_lat)**2 + (apt.longitude - origin_lon)**2)
 
-        duration = matrix['rows'][0]['elements'][0]['duration']['text']
-        distance = matrix['rows'][0]['elements'][0]['distance']['text']
+            # Convert distance to miles
+            distance_mi = distance_deg * 69.0
 
-        self.assertTrue(type(duration) is unicode)
-        self.assertTrue(type(distance) is unicode)
+            self.assertTrue(distance_mi < desired_distance)
+
+
+    # def test_calculate_distance(self):
+    #     """
+    #     Check that Google Maps geocoding and distance matrix API are working.
+    #     """
+    #
+    #     # Check that Google Maps API key has been sourced.
+    #     self.assertTrue('GOOGLE_MAPS_TOKEN' in os.environ)
+    #
+    #     origin = '188 Spear Street, San Francisco, CA'
+    #     destination = '37.7857435,-122.4112531'
+    #
+    #     matrix = server.gmaps.distance_matrix(origin, destination)
+    #
+    #     duration = matrix['rows'][0]['elements'][0]['duration']['text']
+    #     distance = matrix['rows'][0]['elements'][0]['distance']['text']
+    #
+    #     self.assertTrue(type(duration) is unicode)
+    #     self.assertTrue(type(distance) is unicode)
+
+
+    def test_database(self):
+        """
+        Verify that database contains postings from all supported cities.
+        """
+
+        # Database should always contain postings from SF, Portland, and Seattle.
+        sf_posts = Posting.query.filter(Posting.url.like("%sfbay%")).limit(10).all()
+        pdx_posts = Posting.query.filter(Posting.url.like("%portland%")).limit(10).all()
+        seattle_posts = Posting.query.filter(Posting.url.like("%seattle%")).limit(10).all()
+
+        city_list = [sf_posts, pdx_posts, seattle_posts]
+
+        for city_posts in city_list:
+            self.assertIsNotNone(city_posts)
+            self.assertIsInstance(city_posts[0], Posting)
 
 
     def test_load_posts(self):
         """
-        Tests that seed.py is successfully pulling data from Craigslist.
+        Test that seed.py is successfully pulling data from Craigslist.
         """
 
-        # Database should always contain postings from SF and Portland.
-        sf_posts = Posting.query.filter(Posting.url.like("%sfbay%")).limit(10).all()
-        pdx_posts = Posting.query.filter(Posting.url.like("%portland%")).limit(10).all()
-
-        self.assertIsNotNone(sf_posts)
-        self.assertIsInstance(sf_posts[0], Posting)
-        self.assertIsNotNone(pdx_posts)
-        self.assertIsInstance(pdx_posts[0], Posting)
-
-
         # Check that Craigslist hasn't changed their data structure.
-        city_list = ['http://sfbay.craigslist.org/jsonsearch/apa/', 'http://portland.craigslist.org/jsonsearch/apa/']
+        city_list = ['http://sfbay.craigslist.org/jsonsearch/apa/', 'http://portland.craigslist.org/jsonsearch/apa/', 'http://seattle.craigslist.org/jsonsearch/apa/']
 
         for city_link in city_list:
             cl_json = requests.get(city_link)
@@ -93,7 +116,7 @@ class TestApp(unittest.TestCase):
             small_list = list_of_posts[:5]
 
             # Check that posts contain data needed for plotting on map.
-            for post in list_of_posts:
+            for post in small_list:
                 if post.get("GeoCluster"):
                     continue
                 else:
