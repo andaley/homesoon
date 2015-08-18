@@ -55,7 +55,9 @@ class TestApp(unittest.TestCase):
             # Convert distance to miles
             distance_mi = distance_deg * 69.0
 
-            self.assertTrue(distance_mi < desired_distance)
+            result = apt.check_euclidean_distance(origin_lat, origin_lon, desired_distance)
+
+            self.assertTrue(distance_mi < desired_distance and result)
 
 
     def test_calculate_distance(self):
