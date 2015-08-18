@@ -46,13 +46,13 @@ class Posting(db.Model):
         apartment_list = cls.query.filter(cls.price < max_rent, cls.bedrooms == num_rooms, cls.latitude > x, cls.latitude < x2, cls.longitude > y, cls.longitude < y2).all()
 
         # Check Euclidean distance
-        matching_apts = cls.check_distance(apartment_list, origin_lat, origin_lon, desired_distance)
+        matching_apts = cls.check_euclidean_distance(apartment_list, origin_lat, origin_lon, desired_distance)
 
         return matching_apts
 
 
     @classmethod
-    def check_distance(cls, apartments, origin_lat, origin_lon, desired_distance):
+    def check_euclidean_distance(cls, apartments, origin_lat, origin_lon, desired_distance):
         """
         Given list of apartment objects, origin latitude/longitude, and desired radius, calculate Euclidean distance.
         If distance is within desired range, retrieve that apartment object and add to list.
