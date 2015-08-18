@@ -13,9 +13,8 @@ class TestApp(unittest.TestCase):
         Checks that function returns list of apartment objects.
         """
 
-        # apartments = Posting.query.filter()
-
         example_call = Posting.get_apartments(max_rent=7000, num_rooms=1, origin_lat=37.7914448, origin_lon=-122.3929672, desired_distance=5)
+        # origin lat/lon point to an address in San Francisco.
 
         # Result should always be a list.
         self.assertTrue(type(example_call) is list)
@@ -27,11 +26,12 @@ class TestApp(unittest.TestCase):
         # Unless 1 bedrooms in SF start going for more than $7000...
         self.assertTrue(len(example_call) > 75)
 
-        # Function should always return list of tuples
-        # (post_id, latitude, longitude) <-- all integers
         self.assertTrue(type(example_call[0].post_id) is int)
         self.assertTrue(type(example_call[0].latitude) is float)
         self.assertTrue(type(example_call[0].longitude) is float)
+
+        # Check that results are actually from San Francisco.
+        self.assertTrue('sfbay' in example_call[0].url)
 
 
     def test_get_apartments(self):
@@ -39,20 +39,27 @@ class TestApp(unittest.TestCase):
         Checks that database query returns correct data.
         """
 
-        example_call = Posting.get_apartments(max_rent=7000, num_rooms=1, origin_lat=37.7914448, origin_lon=-122.3929672, desired_distance=10)
 
-        # Result should always be a list.
-        self.assertTrue(type(example_call) is list)
 
-        # Function hould never return None.
-        self.assertIsNotNone(example_call)
 
-        # Example call should always result in at least 50 results.
-        self.assertTrue(len(example_call) > 100)
+    def test_calculate_distance(self):
+        """
+        Checks that geocoding and distance matrix API are working.
+        """
 
-        # All items in list should be apartment objects.
-        if len(example_call) > 0:
-            self.assertTrue(type(example_call[0]) is Posting)
+        # Check that Google Maps API key has been sourced.
+        self.assertTrue('GOOGLE_MAPS_TOKEN' in os.environ)
+
+        origin = '188 Spear Street, San Francisco, CA'
+        destination = '37.7857435,-122.4112531'
+
+        matrix = server.gmaps.distance_matrix(origin, destination)
+
+        duration = matrix['rows'][0]['elements'][0]['duration']['text']
+        distance = matrix['rows'][0]['elements'][0]['distance']['text']
+
+        self.assertTrue(type(duration) is unicode)
+        self.assertTrue(type(distance) is unicode)
 
 
     def test_load_posts(self):
@@ -92,6 +99,7 @@ class TestApp(unittest.TestCase):
                 else:
                     self.assertTrue('PostingTitle' in post)
                     self.assertTrue('Latitude' in post)
+
 
 if __name__ == '__main__':
     from server import app
