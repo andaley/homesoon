@@ -130,8 +130,12 @@ walked through google maps tutorial and added two points to sample map
 - added test that verifies data from all cities are in DB
 - added post url to favorites table
 - fixed bug where favorites weren't being committed to database
+- added avg rent to apartment results
+- added averge rent to infoWindow
+- updated homepage search with placeholder values
 
 TODO
+- change color of marker when user clicks
 - compartmentalize map.js for easier legibility
 - add selenium tests
 - Give markers special colors according to distance
