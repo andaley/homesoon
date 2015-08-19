@@ -136,7 +136,16 @@ walked through google maps tutorial and added two points to sample map
 - FIXED IMAGES!!!!!!
 - added % more / less than average rent
 
+8/19
+- added stats route and template to display rent / distance metrics
+- wrote sample query and displayed on page as text
+- displayed average rent, # posts farther away, and # more expensive posts for search on page
+
 TODO
+- write new class methods
+ for calculating number of posts more expensive
+- write new class method for calculating number of posts that are 5, 10, 20 miles farther
+- add button to homepage to select SF, PDX, or Seattle (?)
 - dynamically set zoom according to number of markers
 - change color of marker when user clicks
 - compartmentalize map.js for easier legibility
