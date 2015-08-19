@@ -179,6 +179,17 @@ def calculate_distance(lat, lon):
     return jsonify(total_distance)
 
 
+@app.route('/stats')
+def show_stats():
+
+    sample_search = Posting.get_apartments(session['price'], session['bedrooms'], session['origin_latitude'], session['origin_longitude'], session['max_distance'])
+
+    get_more_expensive = Posting.query.filter(Posting.price > session['price'], Posting.bedrooms == session['bedrooms']).all()
+    num_expensive = len(get_more_expensive)
+
+    return render_template('stats.html', raw_location=session['raw_location'], price=session['price'], expensive=num_expensive)
+
+
 #### View / Add Favorites ####
 
 @app.route('/favorites')
