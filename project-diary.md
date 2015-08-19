@@ -137,6 +137,7 @@ walked through google maps tutorial and added two points to sample map
 - added % more / less than average rent
 
 TODO
+- dynamically set zoom according to number of markers
 - change color of marker when user clicks
 - compartmentalize map.js for easier legibility
 - add selenium tests

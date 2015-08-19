@@ -188,8 +188,6 @@ def show_favorites():
     # return list of apartment objects
     user_favorites = Favorite.query.filter_by(user_id = session['id']).all()
 
-    print 'HELLO THERE', user_favorites[0].post.title
-
     return render_template('favorites.html', favorites=user_favorites)
 
 
