@@ -52,6 +52,7 @@ function initialize() {
               title: key
             });
 
+            // Set price message to % more or less than the average.
             var percentMoreLess = Math.round(apartment['price'] / apts['avg_rent'] * 100);
 
             var priceMessage, difference;
@@ -63,13 +64,20 @@ function initialize() {
               priceMessage = 'This is ' + difference + '% more than the average price in your search.';
             }
 
+            var imgURL, imgPlaceholder;
+            if (apartment['img_url'] != "") {
+              imgPlaceholder = '<img src="' + apartment['img_url'] + '" height="150px">';
+            } else {
+              imgPlaceholder = '';
+            }
+
             // Define content of infoWindow per marker
             contentString = (
               '<div class="window-content">' +
               '<a href="' + apartment['url'] + '" target="_blank">' + apartment['title'] + '</a>' + '<p>Rent: $' + apartment['price'] + '</p>' +
               '<p>' + priceMessage + '</p>' +
               '<p>Bedrooms: ' + apartment['bedrooms'] + '</p>' +
-              '<img src="' + apartment['img_url'] + '" width="100px">' +
+              imgPlaceholder +
               '<a href="#" target="_blank" id="' + key + '-dir"><p>Commute time: <span id="' + key + '-time"></span></p></a>' +
               '<p>Commute distance: <span id="' + key + '-distance">' + '</span></p>' +
               '<button class="btn" id="' + key + '-fav">Save to Favorites</button>' +
