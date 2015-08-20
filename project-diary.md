@@ -148,9 +148,12 @@ walked through google maps tutorial and added two points to sample map
  - changed color of marker when user clicks
  - added remove button to favorites table
  - dynamically set zoom according to number and location of markers
+ - add event listener to each remove button
+ - added remote favorite route
 
 TODO
-- add event listener to each remove button
+- write remove favorite ajax call and route
+- fix remote favorite route
 - write new class method for calculating number of posts that are 5, 10, 20 miles farther
 - add submit button for refreshing charts w/ new search
 - compartmentalize map.js for easier legibility
