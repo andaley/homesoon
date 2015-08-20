@@ -102,6 +102,7 @@ function bindinfoWindow(marker, map, infoWindow, html) {
 
     infoWindow.setContent(html);
     infoWindow.open(map, marker);
+    marker.setIcon('https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_grey.png');
 
     lat = marker.position.G;
     lon = marker.position.K;
