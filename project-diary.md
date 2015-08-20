@@ -142,16 +142,16 @@ walked through google maps tutorial and added two points to sample map
 - displayed average rent, # posts farther away, and # more expensive posts for search on page
 - realized x, x2, y, y2 are way off in get_apartments
 
-TODO
-- make more expensive variable names more clear
-- write new class methods
+8/20
+- fixed class methods
  for calculating number of posts more expensive
+
+TODO
+- allow user to remove favorites
 - write new class method for calculating number of posts that are 5, 10, 20 miles farther
 - add submit button for refreshing charts w/ new search
-- add button to homepage to select SF, PDX, or Seattle (?)
 - dynamically set zoom according to number of markers
 - change color of marker when user clicks
 - compartmentalize map.js for easier legibility
 - add selenium tests
-- Give markers special colors according to distance
 - Add charts w/ average rent price, number of results
