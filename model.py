@@ -93,9 +93,8 @@ class Posting(db.Model):
 
     @classmethod
     def get_more_expensive(cls, price, bedrooms, origin_lat, origin_lon, desired_distance):
-        """Given users' search parameters, find number of apartments that are more expensive. Returns a list of dictionaries containing apartment objects.
-
-        For instance, {'one_hundred'} contains apartments that the user could find if they increased their maximum price by $100.
+        """
+        Given users' search parameters, find number of apartments that are more expensive. Returns dictionary where key 'one_hundred' contains apartments that the user could find if they increased their maximum price by $100.
         """
 
         # t = Posting.get_more_expensive(3000, 1, 37.7914448,-122.3929672, 5)
@@ -106,21 +105,21 @@ class Posting(db.Model):
         total_more = cls.query.filter(cls.price > price, cls.bedrooms == bedrooms, cls.latitude > x, cls.latitude < x2, cls.longitude > y, cls.longitude < y2).all()
 
         # These lists will contain apartment objects that are within $100, $200, or $300 of original price.
-        increase_one_hundred = []
-        increase_two_hundred = []
-        increase_three_hundred = []
+        one_hundred = []
+        two_hundred = []
+        three_hundred = []
 
         for apt in total_more:
             if apt.price > price + 200:
-                increase_three_hundred.append(apt)
+                three_hundred.append(apt)
             elif apt.price > price + 100 and apt.price <= price + 200:
-                increase_two_hundred.append(apt)
+                two_hundred.append(apt)
             elif apt.price > price and apt.price <= price + 100:
-                increase_one_hundred.append(apt)
+                one_hundred.append(apt)
 
-        more_expensive = [{'one_hundred': increase_one_hundred},
-                            {'two_hundred': increase_two_hundred},
-                            {'three_hundred': increase_three_hundred}]
+        more_expensive = {'one_hundred': one_hundred,
+                            'two_hundred': two_hundred,
+                            'three_hundred': three_hundred}
 
         return more_expensive
 
