@@ -18,6 +18,8 @@ function initialize() {
     width: 200
   })
 
+  var markerList = [];
+
   // Retrieve apartment objects from server
   $.get('/apartments.json', function(apts) {
 
@@ -51,6 +53,8 @@ function initialize() {
               animation: google.maps.Animation.DROP,
               title: key
             });
+
+            markerList.push(marker);
 
             // Set price message to % more or less than the average.
             var percentMoreLess = Math.round(apartment['price'] / apts['avg_rent'] * 100);
@@ -90,7 +94,16 @@ function initialize() {
 
     }  // END for loop
 
+    // Recenter map according to number of markers.
+    var bounds = new google.maps.LatLngBounds();
+    for(i=0;i<markerList.length;i++) {
+     bounds.extend(markerList[i].getPosition());
+    }
+
+    map.fitBounds(bounds);
+
   });  // END $.get
+
 
 } // END initialize
 
