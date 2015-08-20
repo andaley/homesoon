@@ -95,35 +95,34 @@ class Posting(db.Model):
     def get_more_expensive(cls, price, bedrooms, origin_lat, origin_lon, desired_distance):
         """Given users' search parameters, find number of apartments that are more expensive. Returns a list of dictionaries containing apartment objects.
 
-        For instance, {'one_hundred'} contains apartments that the user would see if they increased their maximum price by $100.
+        For instance, {'one_hundred'} contains apartments that the user could find if they increased their maximum price by $100.
         """
 
         # t = Posting.get_more_expensive(3000, 1, 37.7914448,-122.3929672, 5)
+
         x, y, x2, y2 = cls.calculate_outer_bounds(origin_lat, origin_lon, desired_distance)
 
-        # TODO: Make variable names more clear
-
-        one_hundred = price + 100
-        two_hundred = price + 200
-        three_hundred = price + 300
-
+        # Gather all apartments that are more expensive than original price.
         total_more = cls.query.filter(cls.price > price, cls.bedrooms == bedrooms, cls.latitude > x, cls.latitude < x2, cls.longitude > y, cls.longitude < y2).all()
 
-        # Returns list of apartments that are
-        increase_one_hundred = cls.query.filter(cls.price > price, cls.price <= one_hundred, cls.bedrooms == bedrooms, cls.latitude > x, cls.latitude < x2, cls.longitude > y, cls.longitude < y2).all()
-        num_more = len(increase_one_hundred)
+        # These lists will contain apartment objects that are within $100, $200, or $300 of original price.
+        increase_one_hundred = []
+        increase_two_hundred = []
+        increase_three_hundred = []
 
-        increase_two_hundred = cls.query.filter(cls.price > one_hundred, cls.price <= two_hundred, cls.bedrooms == bedrooms, cls.latitude > x, cls.latitude < x2, cls.longitude > y, cls.longitude < y2).all()
-        num_more2 = len(increase_two_hundred)
+        for apt in total_more:
+            if apt.price > price + 200:
+                increase_three_hundred.append(apt)
+            elif apt.price > price + 100 and apt.price <= price + 200:
+                increase_two_hundred.append(apt)
+            elif apt.price > price and apt.price <= price + 100:
+                increase_one_hundred.append(apt)
 
-        increase_three_hundred = cls.query.filter(cls.price > two_hundred, cls.bedrooms == bedrooms, cls.latitude > x, cls.latitude < x2, cls.longitude > y, cls.longitude < y2).all()
-        num_more3 = len(increase_three_hundred)
+        more_expensive = [{'one_hundred': increase_one_hundred},
+                            {'two_hundred': increase_two_hundred},
+                            {'three_hundred': increase_three_hundred}]
 
-        more_expensive = [{'one_hundred': increase_one_hundred}, {'two_hundred': increase_two_hundred}, {'three_hundred': increase_three_hundred}]
-
-
-        @classmethod
-        
+        return more_expensive
 
 
 class User(db.Model):
