@@ -140,11 +140,14 @@ walked through google maps tutorial and added two points to sample map
 - added stats route and template to display rent / distance metrics
 - wrote sample query and displayed on page as text
 - displayed average rent, # posts farther away, and # more expensive posts for search on page
+- realized x, x2, y, y2 are way off in get_apartments
 
 TODO
+- make more expensive variable names more clear
 - write new class methods
  for calculating number of posts more expensive
 - write new class method for calculating number of posts that are 5, 10, 20 miles farther
+- add submit button for refreshing charts w/ new search
 - add button to homepage to select SF, PDX, or Seattle (?)
 - dynamically set zoom according to number of markers
 - change color of marker when user clicks
