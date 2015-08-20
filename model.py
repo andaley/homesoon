@@ -92,12 +92,34 @@ class Posting(db.Model):
 
 
     @classmethod
-    def get_more_expensive(cls, price, bedrooms, origin_lat, origin_lon, origin, distance):
+    def get_more_expensive(cls, price, bedrooms, origin_lat, origin_lon, desired_distance):
         """Given users' search parameters, find number of apartments that are more expensive."""
 
-        get_apartments(cls, max_rent, num_rooms, origin_lat, origin_lon, desired_distance)
+        x, y, x2, y2 = cls.calculate_outer_bounds(origin_lat, origin_lon, desired_distance)
 
-        Posting.query.filter(Posting.price > price, Posting.bedrooms == bedrooms).all()
+        # TODO: Make variable names more clear
+
+        one_hundred = price + 100
+        two_hundred = price + 200
+        three_hundred = price + 300
+
+        print 'total more', len(cls.query.filter(Posting.price > price, Posting.bedrooms == bedrooms, cls.latitude > x, cls.latitude < x2, cls.longitude > y, cls.longitude < y2).all())
+
+        increase_one_hundred = cls.query.filter(Posting.price < one_hundred, Posting.price > price, Posting.bedrooms == bedrooms, cls.latitude > x, cls.latitude < x2, cls.longitude > y, cls.longitude < y2).all()
+        num_more = len(increase_one_hundred)
+        # print increase_one_hundred[0].price
+        print '100 more: ', num_more
+
+        increase_two_hundred = cls.query.filter(Posting.price < two_hundred, Posting.price > one_hundred, Posting.bedrooms == bedrooms, cls.latitude > x, cls.latitude < x2, cls.longitude > y, cls.longitude < y2).all()
+        num_more2 = len(increase_two_hundred)
+        # print increase_two_hundred[0].price
+        print '200 more: ', num_more2
+
+        increase_three_hundred = cls.query.filter(Posting.price > two_hundred, Posting.bedrooms == bedrooms, cls.latitude > x, cls.latitude < x2, cls.longitude > y, cls.longitude < y2).all()
+        num_more3 = len(increase_three_hundred)
+        # print increase_three_hundred[0].price
+        print '300 more: ', num_more3
+
 
 class User(db.Model):
     """Represents a user."""
