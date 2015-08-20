@@ -237,6 +237,12 @@ def add_favorite():
 
     return message
 
+@app.route('/remove-favorite', methods=['GET'])
+def remove_favorite():
+    """Remove a favorite from the database."""
+
+    pass
+
 
 ######### Helper Functions #########
 
