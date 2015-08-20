@@ -26,7 +26,7 @@
                       <td>${{favorite.post.price}}</td>
                       <td>{{favorite.post.bedrooms}}</td>
                       <td>{{favorite.commute_time}} from  {{favorite.origin}}</td>
-                      <td><button class="btn" class="remove" data-id={{favorite.favorite_id}}>Remove</button>
+                      <td><button class="btn remove-button" data-id={{favorite.favorite_id}}>Remove</button></td>
                   </tr>
               {% endfor %}
             {% endif %}
@@ -38,6 +38,12 @@
 
 <script>
   // TODO: add event listeners to each remove button
+
+  function removeFavorite(evt) {
+    console.log(evt.currentTarget);
+  };
+
+  $('.remove-button').on('click', removeFavorite);
 </script>
 
 {% endblock %}
