@@ -14,6 +14,7 @@
             <th>Price</th>
             <th>Bedrooms</th>
             <th>Commute Time</th>
+            <th></th>
         </tr>
         </thead>
 
@@ -25,6 +26,7 @@
                       <td>${{favorite.post.price}}</td>
                       <td>{{favorite.post.bedrooms}}</td>
                       <td>{{favorite.commute_time}} from  {{favorite.origin}}</td>
+                      <td><button class="btn" class="remove" data-id={{favorite.favorite_id}}>Remove</button>
                   </tr>
               {% endfor %}
             {% endif %}
@@ -33,5 +35,9 @@
 
   </div>
 </div>
+
+<script>
+  // TODO: add event listeners to each remove button
+</script>
 
 {% endblock %}
