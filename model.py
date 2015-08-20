@@ -97,6 +97,8 @@ class Posting(db.Model):
         Given users' search parameters, find number of apartments that are more expensive. Returns dictionary where key 'one_hundred' contains apartments that the user could find if they increased their maximum price by $100.
         """
 
+        price = int(price)
+
         # t = Posting.get_more_expensive(3000, 1, 37.7914448,-122.3929672, 5)
 
         x, y, x2, y2 = cls.calculate_outer_bounds(origin_lat, origin_lon, desired_distance)
@@ -117,7 +119,8 @@ class Posting(db.Model):
             elif apt.price > price and apt.price <= price + 100:
                 one_hundred.append(apt)
 
-        more_expensive = {'one_hundred': one_hundred,
+        more_expensive = {'total': len(total_more),
+                            'one_hundred': one_hundred,
                             'two_hundred': two_hundred,
                             'three_hundred': three_hundred}
 
