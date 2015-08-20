@@ -26,6 +26,22 @@ class Posting(db.Model):
     def __repr__(self):
         return "<Post: %s, price: %s, bedrooms: %s>" % (self.post_id, self.price, self.bedrooms)
 
+    @classmethod
+    def calculate_outer_bounds(cls, origin_lat, origin_lon, desired_distance):
+        """Given origin latitude, longitude, and desired distance, calculate the
+        """
+
+        # X and Y correspond to latitudes and longitudes that form a square boundary from the origin. Use these values inititally to query database, then check Euclidean distance after to ensure they fall within the circular boundary.
+        MILES_TO_DEGREES = 69.0
+        distance_degrees = desired_distance / MILES_TO_DEGREES
+
+        x = origin_lat - distance_degrees
+        x2 = origin_lon + distance_degrees
+        y = origin_lat - distance_degrees
+        y2 = origin_lon + distance_degrees
+
+        return [x, x2, y, y2]
+
 
     @classmethod
     def get_apartments(cls, max_rent, num_rooms, origin_lat, origin_lon, desired_distance):
@@ -35,7 +51,7 @@ class Posting(db.Model):
 
         # X and Y correspond to latitudes and longitudes that form a square boundary from the origin. Use these values inititally to query database, then check Euclidean distance after to ensure they fall within the circular boundary.
         MILES_TO_DEGREES = 69.0
-        distance_degrees = desired_distance * MILES_TO_DEGREES
+        distance_degrees = desired_distance / MILES_TO_DEGREES
 
         x = origin_lat - distance_degrees
         x2 = origin_lon + distance_degrees
@@ -81,6 +97,14 @@ class Posting(db.Model):
 
         return avg_rent
 
+
+    @classmethod
+    def get_more_expensive(cls, price, bedrooms, origin_lat, origin_lon, origin, distance):
+        """Given users' search parameters, find number of apartments that are more expensive."""
+
+        get_apartments(cls, max_rent, num_rooms, origin_lat, origin_lon, desired_distance)
+
+        Posting.query.filter(Posting.price > price, Posting.bedrooms == bedrooms).all()
 
 class User(db.Model):
     """Represents a user."""
