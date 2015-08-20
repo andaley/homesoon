@@ -36,11 +36,11 @@ class Posting(db.Model):
         distance_degrees = desired_distance / MILES_TO_DEGREES
 
         x = origin_lat - distance_degrees
-        x2 = origin_lon + distance_degrees
-        y = origin_lat - distance_degrees
+        y = origin_lon - distance_degrees
+        x2 = origin_lat + distance_degrees
         y2 = origin_lon + distance_degrees
 
-        return [x, x2, y, y2]
+        return [x, y, x2, y2]
 
 
     @classmethod
@@ -49,14 +49,7 @@ class Posting(db.Model):
         Given price, # of bedrooms, max price, and origin, return list of apartment objects within desired distance.
         """
 
-        # X and Y correspond to latitudes and longitudes that form a square boundary from the origin. Use these values inititally to query database, then check Euclidean distance after to ensure they fall within the circular boundary.
-        MILES_TO_DEGREES = 69.0
-        distance_degrees = desired_distance / MILES_TO_DEGREES
-
-        x = origin_lat - distance_degrees
-        x2 = origin_lon + distance_degrees
-        y = origin_lat - distance_degrees
-        y2 = origin_lon + distance_degrees
+        x, y, x2, y2 = Posting.calculate_outer_bounds(origin_lat, origin_lon, desired_distance)
 
         # Retrieve list of apts with desired number of bedrooms, within budget, and that are within desired distance range.
         apartment_list = cls.query.filter(cls.price < max_rent, cls.bedrooms == num_rooms, cls.latitude > x, cls.latitude < x2, cls.longitude > y, cls.longitude < y2).all()
