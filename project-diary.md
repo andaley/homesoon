@@ -145,13 +145,13 @@ walked through google maps tutorial and added two points to sample map
 8/20
 - fixed class methods
  for calculating number of posts more expensive
+ - changed color of marker when user clicks
 
 TODO
 - allow user to remove favorites
 - write new class method for calculating number of posts that are 5, 10, 20 miles farther
 - add submit button for refreshing charts w/ new search
 - dynamically set zoom according to number of markers
-- change color of marker when user clicks
 - compartmentalize map.js for easier legibility
 - add selenium tests
 - Add charts w/ average rent price, number of results
