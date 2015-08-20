@@ -127,6 +127,17 @@ class Posting(db.Model):
         return more_expensive
 
 
+        @classmethod
+        def get_farther_away(cls, price, bedrooms, origin_lat, origin_lon, desired_distance):
+
+            x, y, x2, y2 = cls.calculate_outer_bounds(origin_lat, origin_lon, desired_distance)
+
+            # How can I query for things within a square, but farther out from original square?
+
+            pass
+
+
+
 class User(db.Model):
     """Represents a user."""
 
