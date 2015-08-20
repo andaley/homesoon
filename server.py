@@ -185,15 +185,12 @@ def show_stats():
     sample_search = Posting.get_apartments(session['price'], session['bedrooms'], session['origin_latitude'], session['origin_longitude'], session['max_distance'])
 
     # Show number of posts more expensive than your search.
-    # TODO: these results still need to be within desired distance from origin
-    get_more_expensive = Posting.query.filter(Posting.price > session['price'], Posting.bedrooms == session['bedrooms']).all()
-
-    print '\n\nSample result costs $', get_more_expensive[0].price, '\n\n'
+    more_expensive = Posting.get_more_expensive(session['price'], session['bedrooms'], session['origin_latitude'], session['origin_longitude'], session['max_distance'])
+    num_expensive = more_expensive['total']
+    print num_expensive
 
     # Show average rent for your search results
     avg_rent = Posting.calculate_avg_rent(sample_search)
-
-    num_expensive = len(get_more_expensive)
 
     # Show number of posts farther away than desired distance.
     # TODO: need to query where 50 distance > desired_distance so we don't end up with posts from other cities. This currently finds any post within 50 miles.
