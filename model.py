@@ -97,27 +97,26 @@ class Posting(db.Model):
         Given users' search parameters, find number of apartments that are more expensive. Returns dictionary where key 'one_hundred' contains apartments that the user could find if they increased their maximum price by $100.
         """
 
-        price = int(price)
-
         # t = Posting.get_more_expensive(3000, 1, 37.7914448,-122.3929672, 5)
 
         x, y, x2, y2 = cls.calculate_outer_bounds(origin_lat, origin_lon, desired_distance)
 
-        # Gather all apartments that are more expensive than original price.
-        total_more = cls.query.filter(cls.price > price, cls.bedrooms == bedrooms, cls.latitude > x, cls.latitude < x2, cls.longitude > y, cls.longitude < y2).all()
+        # Gather all post_ids and prices that are more expensive than original price.
+        total_more = db.session.query(cls.price, cls.post_id).filter(cls.price > price, cls.bedrooms == bedrooms, cls.latitude > x, cls.latitude < x2, cls.longitude > y, cls.longitude < y2).all()
 
-        # These lists will contain apartment objects that are within $100, $200, or $300 of original price.
+        # These lists will contain apartment ids and prices that are within $100, $200, or $300 of original price.
         one_hundred = []
         two_hundred = []
         three_hundred = []
 
-        for apt in total_more:
-            if apt.price > price + 200:
-                three_hundred.append(apt)
-            elif apt.price > price + 100 and apt.price <= price + 200:
-                two_hundred.append(apt)
-            elif apt.price > price and apt.price <= price + 100:
-                one_hundred.append(apt)
+        price = int(price)
+        for apt_price, post_id in total_more:
+            if apt_price > (price + 300):
+                three_hundred.append(apt_price)
+            elif apt_price > (price + 100) and apt_price <= (price + 200):
+                two_hundred.append(apt_price)
+            elif apt_price > price and apt_price <= (price + 100):
+                one_hundred.append(apt_price)
 
         more_expensive = {'total': len(total_more),
                             'one_hundred': one_hundred,
@@ -137,9 +136,22 @@ class Posting(db.Model):
             pass
 
         @classmethod
-        def get price_per_bedrooms(city_prefix):
+        def get_price_per_bedrooms(city_prefix):
 
-            one_bedrooms = Posting.query.filter(Posting.url.like("%"city_prefix"%"), Posting.bedrooms == 1).all()
+            pass
+            # one_bedrooms = Posting.query.filter(Posting.url.like("%"city_prefix"%"), Posting.bedrooms == 1).all()
+            # one_bed_avg = Posting.calculate_avg_rent(one_bedrooms)
+            # print 'one beds', len(one_bedrooms)
+            #
+            # two_bedrooms = db.session.query(Posting.price).filter(Posting.url.like("\%\%s\%"), Posting.bedrooms == 2).all() % city_prefix
+            # print 'two beds', len(two_bedrooms)
+            #
+            # three_bedrooms = db.session.query(Posting.price).filter(Posting.url.like("%"city_prefix"%"), Posting.bedrooms == 3).all()
+            # print 'two beds', len(three_bedrooms)
+            #
+            # # rents = [int(post.price) for post in apartments]
+            # # avg_rent = (sum(rents))/len(rents)
+
 
 class User(db.Model):
     """Represents a user."""
