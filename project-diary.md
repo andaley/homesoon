@@ -161,6 +161,9 @@ walked through google maps tutorial and added two points to sample map
 - wrapped build bartchart in function
 - fixed broken math in get_more_expensive
 - added sample pie chart
+- added bay area pie chart
+- added seattle pie chart
+- added portland pie chart
 
 TODO
 - write remove favorite ajax call and route
