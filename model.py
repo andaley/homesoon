@@ -136,7 +136,10 @@ class Posting(db.Model):
 
             pass
 
+        @classmethod
+        def get price_per_bedrooms(city_prefix):
 
+            one_bedrooms = Posting.query.filter(Posting.url.like("%"city_prefix"%"), Posting.bedrooms == 1).all()
 
 class User(db.Model):
     """Represents a user."""
