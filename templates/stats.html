@@ -56,6 +56,7 @@
 {% block content %}
 
 <canvas id="increasedPriceChart" width="400" height="400"></canvas>
+<canvas id="pieChart" width="400" height="400"></canvas>
 <canvas id="BayAreaChart" width="400" height="400"></canvas>
 <canvas id="PortlandChart" width="400" height="400"></canvas>
 <canvas id="SeattleChart" width="400" height="400"></canvas>
@@ -94,28 +95,35 @@ var increasedPriceData = [{{more_expensive['$100 more']}},
 
 buildBarChart('increasedPriceChart', ["$100 more", "$200 more", "$300 more"], increasedPriceData);
 
-// function buildDonutChart (element, data)
 
-// var data = {
-//     labels: ["$100 more", "$200 more", "$300+ more"],
-//     datasets: [
-//         {
-//             label: "My First dataset",
-//             fillColor: "rgba(220,220,220,0.5)",
-//             strokeColor: "rgba(220,220,220,0.8)",
-//             highlightFill: "rgba(220,220,220,0.75)",
-//             highlightStroke: "rgba(220,220,220,1)",
-//             data: [{{more_expensive['$100 more']}},
-//                     {{more_expensive['$200 more']}},
-//                     {{more_expensive['$300 more']}}
-//           ]
-//         },
-//     ]
-// };
+function buildPieChart (my_element) {
+  var ctx2 = document.getElementById(my_element).getContext("2d");
 
-// Chart.defaults.global.responsive = true;
+  var pieData = [
+                {
+                    value: 300,
+                    color:"#F7464A",
+                    highlight: "#FF5A5E",
+                    label: "Red"
+                },
+                {
+                    value: 50,
+                    color: "#46BFBD",
+                    highlight: "#5AD3D1",
+                    label: "Green"
+                },
+                {
+                    value: 100,
+                    color: "#FDB45C",
+                    highlight: "#FFC870",
+                    label: "Yellow"
+                }
+              ];
 
+  var myPieChart = new Chart(ctx2).Pie(pieData);
+};
 
+buildPieChart('pieChart');
 
 </script>
 
