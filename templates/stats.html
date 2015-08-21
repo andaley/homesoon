@@ -55,7 +55,10 @@
 
 {% block content %}
 
-<canvas id="myChart" width="400" height="400"></canvas>
+<canvas id="increasedPriceChart" width="400" height="400"></canvas>
+<canvas id="BayAreaChart" width="400" height="400"></canvas>
+<canvas id="PortlandChart" width="400" height="400"></canvas>
+<canvas id="SeattleChart" width="400" height="400"></canvas>
 
 Breakdown of posts more expensive than your search: {{more_expensive}} <br>
 Average rent of your search results: {{avg_rent}}<br>
@@ -63,28 +66,56 @@ Number of posts farther than your desired distance: {{num_farther}}<br>
 
 <script>
 // Get the context of the canvas element we want to select
-var ctx = document.getElementById("myChart").getContext("2d");
 
-var data = {
-    labels: ["$100 more", "$200 more", "$300+ more"],
-    datasets: [
-        {
-            label: "My First dataset",
-            fillColor: "rgba(220,220,220,0.5)",
-            strokeColor: "rgba(220,220,220,0.8)",
-            highlightFill: "rgba(220,220,220,0.75)",
-            highlightStroke: "rgba(220,220,220,1)",
-            data: [{{more_expensive['$100 more']}},
-                    {{more_expensive['$200 more']}},
-                    {{more_expensive['$300 more']}}
-          ]
-        },
-    ]
-};
+function buildBarChart (element, x_axis, y_axis){
+  var ctx = document.getElementById(element).getContext("2d");
+
+  var data = {
+      labels: x_axis,
+      datasets: [
+          {
+              label: "My First dataset",
+              fillColor: "rgba(220,220,220,0.5)",
+              strokeColor: "rgba(220,220,220,0.8)",
+              highlightFill: "rgba(220,220,220,0.75)",
+              highlightStroke: "rgba(220,220,220,1)",
+              data: y_axis
+          },
+      ]
+  };
+
+  var myNewChart = new Chart(ctx).Bar(data);
+
+}
+
+var increasedPriceData = [{{more_expensive['$100 more']}},
+                          {{more_expensive['$200 more']}},
+                          {{more_expensive['$300 more']}}];
+
+buildBarChart('increasedPriceChart', ["$100 more", "$200 more", "$300+ more"], increasedPriceData);
+
+// function buildDonutChart (element, data)
+
+// var data = {
+//     labels: ["$100 more", "$200 more", "$300+ more"],
+//     datasets: [
+//         {
+//             label: "My First dataset",
+//             fillColor: "rgba(220,220,220,0.5)",
+//             strokeColor: "rgba(220,220,220,0.8)",
+//             highlightFill: "rgba(220,220,220,0.75)",
+//             highlightStroke: "rgba(220,220,220,1)",
+//             data: [{{more_expensive['$100 more']}},
+//                     {{more_expensive['$200 more']}},
+//                     {{more_expensive['$300 more']}}
+//           ]
+//         },
+//     ]
+// };
 
 // Chart.defaults.global.responsive = true;
 
-var myNewChart = new Chart(ctx).Bar(data);
+
 
 </script>
 
