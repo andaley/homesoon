@@ -61,5 +61,33 @@ Breakdown of posts more expensive than your search: {{more_expensive}} <br>
 Average rent of your search results: {{avg_rent}}<br>
 Number of posts farther than your desired distance: {{num_farther}}<br>
 
+<script>
+// Get the context of the canvas element we want to select
+var ctx = document.getElementById("myChart").getContext("2d");
+console.log(ctx);
+
+var data = {
+    labels: ["$100 more", "$200 more", "$300+ more"],
+    datasets: [
+        {
+            label: "My First dataset",
+            fillColor: "rgba(220,220,220,0.5)",
+            strokeColor: "rgba(220,220,220,0.8)",
+            highlightFill: "rgba(220,220,220,0.75)",
+            highlightStroke: "rgba(220,220,220,1)",
+            data: [{{more_expensive['$100 more']}},
+                    {{more_expensive['$200 more']}},
+                    {{more_expensive['$300 more']}}
+          ]
+        },
+    ]
+};
+
+// Chart.defaults.global.responsive = true;
+
+var myNewChart = new Chart(ctx).Bar(data);
+console.log(myNewChart);
+
+</script>
 
 {% endblock %}
