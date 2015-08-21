@@ -86,7 +86,7 @@ class Posting(db.Model):
         """Calculates average rent for a given list of apartment objects."""
 
         rents = [int(post.price) for post in apartments]
-        avg_rent = sum(rents)/len(rents)
+        avg_rent = (sum(rents))/len(rents)
 
         return avg_rent
 
