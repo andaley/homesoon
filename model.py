@@ -119,9 +119,9 @@ class Posting(db.Model):
                 one_hundred.append(apt_price)
 
         more_expensive = {'total': len(total_more),
-                            'one_hundred': one_hundred,
-                            'two_hundred': two_hundred,
-                            'three_hundred': three_hundred}
+                            '$100 more': len(one_hundred),
+                            '$200 more': len(two_hundred),
+                            '$300 more': len(three_hundred)}
 
         return more_expensive
 
