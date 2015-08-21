@@ -56,10 +56,9 @@
 {% block content %}
 
 <canvas id="increasedPriceChart" width="400" height="400"></canvas>
-<canvas id="pieChart" width="400" height="400"></canvas>
-<canvas id="BayAreaChart" width="400" height="400"></canvas>
-<canvas id="PortlandChart" width="400" height="400"></canvas>
-<canvas id="SeattleChart" width="400" height="400"></canvas>
+<canvas id="bayAreaChart" width="400" height="400"></canvas>
+<canvas id="portlandChart" width="400" height="400"></canvas>
+<canvas id="seattleChart" width="400" height="400"></canvas>
 
 Breakdown of posts more expensive than your search: {{more_expensive}} <br>
 Average rent of your search results: {{avg_rent}}<br>
@@ -102,28 +101,51 @@ function buildPieChart (my_element, my_data) {
   var myPieChart = new Chart(ctx2).Pie(my_data);
 };
 
-var pieData = [
+var seattleData = [
               {
-                  value: {{seattle[0]['1 bedrooms'][0]}},
+                  value: {{seattle['1 bedrooms'][0]}},
                   color:"#F7464A",
                   highlight: "#FF5A5E",
                   label: "1 bedrooms"
               },
               {
-                  value: {{seattle[1]['2 bedrooms'][0]}},
+                  value: {{seattle['2 bedrooms'][0]}},
                   color: "#46BFBD",
                   highlight: "#5AD3D1",
                   label: "2 bedrooms"
               },
               {
-                  value: {{seattle[2]['3 bedrooms'][0]}},
+                  value: {{seattle['3 bedrooms'][0]}},
                   color: "#FDB45C",
                   highlight: "#FFC870",
                   label: "3 bedrooms"
               }
             ];
 
-buildPieChart('pieChart', pieData);
+buildPieChart('seattleChart', seattleData);
+
+var portlandData = [
+              {
+                  value: {{portland['1 bedrooms'][0]}},
+                  color:"#F7464A",
+                  highlight: "#FF5A5E",
+                  label: "1 bedrooms"
+              },
+              {
+                  value: {{portland['2 bedrooms'][0]}},
+                  color: "#46BFBD",
+                  highlight: "#5AD3D1",
+                  label: "2 bedrooms"
+              },
+              {
+                  value: {{portland['3 bedrooms'][0]}},
+                  color: "#FDB45C",
+                  highlight: "#FFC870",
+                  label: "3 bedrooms"
+              }
+            ];
+
+buildPieChart('portlandChart', portlandData);
 
 </script>
 
