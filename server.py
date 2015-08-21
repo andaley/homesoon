@@ -201,16 +201,16 @@ def show_stats():
     num_farther = len(get_farther_away)
     print num_farther
 
-    seattle_1_beds = Posting.query.filter(Posting.url.like("%seattle%"), Posting.bedrooms == 1).all()
-    seattle_1_avg = Posting.calculate_avg_rent(seattle_1_beds)
-    seattle_2_beds = Posting.query.filter(Posting.url.like("%seattle%"), Posting.bedrooms == 2).all()
-    seattle_2_avg = Posting.calculate_avg_rent(seattle_2_beds)
-    seattle_3_beds = Posting.query.filter(Posting.url.like("%seattle%"), Posting.bedrooms == 3).all()
-    seattle_3_avg = Posting.calculate_avg_rent(seattle_3_beds)
+    seattle_data = Posting.get_bedrooms_price('seattle')
+    portland_data = Posting.get_bedrooms_price('portland')
+    bay_area_data = Posting.get_bedrooms_price('sfbay')
 
-    print seattle_1_avg, seattle_2_avg, seattle_3_avg
+    print seattle_data
+    print portland_data
+    print bay_area_data
 
-    return render_template('stats.html', raw_location=session['raw_location'], price=session['price'], avg_rent=avg_rent, num_farther=num_farther, more_expensive=more_expensive)
+
+    return render_template('stats.html', raw_location=session['raw_location'], price=session['price'], avg_rent=avg_rent, num_farther=num_farther, more_expensive=more_expensive, seattle=seattle_data)
 
 
 #### View / Add Favorites ####
