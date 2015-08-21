@@ -129,28 +129,37 @@ class Posting(db.Model):
     @classmethod
     def get_farther_away(cls, price, bedrooms, origin_lat, origin_lon, desired_distance):
 
+        """Calculate # posts within 1, 3, 5, 10, 20, 50 miles of origin."""
+
         x, y, x2, y2 = cls.calculate_outer_bounds(origin_lat, origin_lon, desired_distance)
 
         pass
 
     @classmethod
-    def get_price_per_bedrooms(cls, city_prefix):
+    def get_bedrooms_price(cls, city_prefix):
+        """
+        Find the number and average price of 1, 2, and 3 bedroom apartments for a given city. Returns list of dictionaries with # of posts and average price.
+        """
 
-        one_bedrooms = cls.query.filter(cls.url.like("%{}%".format(city_prefix)) , cls.bedrooms == 1).all()
-        print "%{}%".format(city_prefix)
-        print 'one beds', len(one_bedrooms)
-        one_bed_avg = cls.calculate_avg_rent(one_bedrooms)
+        one_bedrooms = db.session.query(cls.price, cls.post_id).filter(cls.url.like("%{}%".format(city_prefix)), cls.bedrooms == 1).all()
+        num_one_beds = len(one_bedrooms)
+        rents_one_beds = [price for price, post_id in one_bedrooms]
+        avg_price_one_beds = (sum(rents_one_beds))/num_one_beds
 
+        two_bedrooms = db.session.query(cls.price, cls.post_id).filter(cls.url.like("%{}%".format(city_prefix)), cls.bedrooms == 2).all()
+        num_two_beds = len(two_bedrooms)
+        rents_two_beds = [price for price, post_id in two_bedrooms]
+        avg_price_two_beds = (sum(rents_two_beds))/num_two_beds
 
-        two_bedrooms = db.session.query(cls.price).filter(cls.url.like("%{}%".format(city_prefix)), cls.bedrooms == 2).all()
-        print 'two beds', len(two_bedrooms)
+        three_bedrooms = db.session.query(cls.price, cls.post_id).filter(cls.url.like("%{}%".format(city_prefix)), cls.bedrooms == 3).all()
+        num_three_beds = len(three_bedrooms)
+        rents_three_beds = [price for price, post_id in three_bedrooms]
+        avg_price_three_beds = (sum(rents_three_beds))/num_three_beds
 
-        three_bedrooms = db.session.query(cls.price).filter(cls.url.like("%{}%".format(city_prefix)), cls.bedrooms == 3).all()
-        print 'two beds', len(three_bedrooms)
-
-        # rents = [int(post.price) for post in apartments]
-        # avg_rent = (sum(rents))/len(rents)
-
+        return [{'1 bedrooms': [num_one_beds, avg_price_one_beds]},
+                {'2 bedrooms': [num_two_beds, avg_price_two_beds]},
+                {'3 bedrooms': [num_three_beds, avg_price_three_beds]}
+                ]
 
 class User(db.Model):
     """Represents a user."""
