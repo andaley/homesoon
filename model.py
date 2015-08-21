@@ -126,31 +126,30 @@ class Posting(db.Model):
         return more_expensive
 
 
-        @classmethod
-        def get_farther_away(cls, price, bedrooms, origin_lat, origin_lon, desired_distance):
+    @classmethod
+    def get_farther_away(cls, price, bedrooms, origin_lat, origin_lon, desired_distance):
 
-            x, y, x2, y2 = cls.calculate_outer_bounds(origin_lat, origin_lon, desired_distance)
+        x, y, x2, y2 = cls.calculate_outer_bounds(origin_lat, origin_lon, desired_distance)
 
-            # How can I query for things within a square, but farther out from original square?
+        pass
 
-            pass
+    @classmethod
+    def get_price_per_bedrooms(cls, city_prefix):
 
-        @classmethod
-        def get_price_per_bedrooms(city_prefix):
+        one_bedrooms = cls.query.filter(cls.url.like("%{}%".format(city_prefix)) , cls.bedrooms == 1).all()
+        print "%{}%".format(city_prefix)
+        print 'one beds', len(one_bedrooms)
+        one_bed_avg = cls.calculate_avg_rent(one_bedrooms)
 
-            pass
-            # one_bedrooms = Posting.query.filter(Posting.url.like("%"city_prefix"%"), Posting.bedrooms == 1).all()
-            # one_bed_avg = Posting.calculate_avg_rent(one_bedrooms)
-            # print 'one beds', len(one_bedrooms)
-            #
-            # two_bedrooms = db.session.query(Posting.price).filter(Posting.url.like("\%\%s\%"), Posting.bedrooms == 2).all() % city_prefix
-            # print 'two beds', len(two_bedrooms)
-            #
-            # three_bedrooms = db.session.query(Posting.price).filter(Posting.url.like("%"city_prefix"%"), Posting.bedrooms == 3).all()
-            # print 'two beds', len(three_bedrooms)
-            #
-            # # rents = [int(post.price) for post in apartments]
-            # # avg_rent = (sum(rents))/len(rents)
+
+        two_bedrooms = db.session.query(cls.price).filter(cls.url.like("%{}%".format(city_prefix)), cls.bedrooms == 2).all()
+        print 'two beds', len(two_bedrooms)
+
+        three_bedrooms = db.session.query(cls.price).filter(cls.url.like("%{}%".format(city_prefix)), cls.bedrooms == 3).all()
+        print 'two beds', len(three_bedrooms)
+
+        # rents = [int(post.price) for post in apartments]
+        # avg_rent = (sum(rents))/len(rents)
 
 
 class User(db.Model):
