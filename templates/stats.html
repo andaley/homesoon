@@ -64,7 +64,6 @@ Number of posts farther than your desired distance: {{num_farther}}<br>
 <script>
 // Get the context of the canvas element we want to select
 var ctx = document.getElementById("myChart").getContext("2d");
-console.log(ctx);
 
 var data = {
     labels: ["$100 more", "$200 more", "$300+ more"],
@@ -86,7 +85,6 @@ var data = {
 // Chart.defaults.global.responsive = true;
 
 var myNewChart = new Chart(ctx).Bar(data);
-console.log(myNewChart);
 
 </script>
 
