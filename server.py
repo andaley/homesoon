@@ -199,6 +199,15 @@ def show_stats():
     num_farther = len(get_farther_away)
     print num_farther
 
+    seattle_1_beds = Posting.query.filter(Posting.url.like("%seattle%"), Posting.bedrooms == 1).all()
+    seattle_1_avg = Posting.calculate_avg_rent(seattle_1_beds)
+    seattle_2_beds = Posting.query.filter(Posting.url.like("%seattle%"), Posting.bedrooms == 2).all()
+    seattle_2_avg = Posting.calculate_avg_rent(seattle_2_beds)
+    seattle_3_beds = Posting.query.filter(Posting.url.like("%seattle%"), Posting.bedrooms == 3).all()
+    seattle_3_avg = Posting.calculate_avg_rent(seattle_3_beds)
+
+    print seattle_1_avg, seattle_2_avg, seattle_3_avg
+
     return render_template('stats.html', raw_location=session['raw_location'], price=session['price'], expensive=num_expensive, avg_rent=avg_rent, num_farther=num_farther)
 
 
