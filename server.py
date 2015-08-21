@@ -205,11 +205,6 @@ def show_stats():
     portland_data = Posting.get_bedrooms_price('portland')
     bay_area_data = Posting.get_bedrooms_price('sfbay')
 
-    print seattle_data
-    print portland_data
-    print bay_area_data
-
-
     return render_template('stats.html', raw_location=session['raw_location'], price=session['price'], avg_rent=avg_rent, num_farther=num_farther, more_expensive=more_expensive, bayarea=bay_area_data, seattle=seattle_data, portland=portland_data)
 
 
