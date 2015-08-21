@@ -210,7 +210,7 @@ def show_stats():
     print bay_area_data
 
 
-    return render_template('stats.html', raw_location=session['raw_location'], price=session['price'], avg_rent=avg_rent, num_farther=num_farther, more_expensive=more_expensive, seattle=seattle_data)
+    return render_template('stats.html', raw_location=session['raw_location'], price=session['price'], avg_rent=avg_rent, num_farther=num_farther, more_expensive=more_expensive, bayarea=bay_area_data, seattle=seattle_data, portland=portland_data)
 
 
 #### View / Add Favorites ####
