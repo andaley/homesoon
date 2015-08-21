@@ -182,6 +182,8 @@ def calculate_distance(lat, lon):
 @app.route('/stats')
 def show_stats():
 
+    # TODO: would be more efficient to just count number of posts by getting list of tuples, instead of querying for list of apartment objects.
+
     sample_search = Posting.get_apartments(session['price'], session['bedrooms'], session['origin_latitude'], session['origin_longitude'], session['max_distance'])
 
     # Show number of posts more expensive than your search.
@@ -208,7 +210,7 @@ def show_stats():
 
     print seattle_1_avg, seattle_2_avg, seattle_3_avg
 
-    return render_template('stats.html', raw_location=session['raw_location'], price=session['price'], expensive=num_expensive, avg_rent=avg_rent, num_farther=num_farther)
+    return render_template('stats.html', raw_location=session['raw_location'], price=session['price'], avg_rent=avg_rent, num_farther=num_farther, more_expensive=more_expensive)
 
 
 #### View / Add Favorites ####
