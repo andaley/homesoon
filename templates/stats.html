@@ -96,34 +96,34 @@ var increasedPriceData = [{{more_expensive['$100 more']}},
 buildBarChart('increasedPriceChart', ["$100 more", "$200 more", "$300 more"], increasedPriceData);
 
 
-function buildPieChart (my_element) {
+function buildPieChart (my_element, my_data) {
   var ctx2 = document.getElementById(my_element).getContext("2d");
 
-  var pieData = [
-                {
-                    value: 300,
-                    color:"#F7464A",
-                    highlight: "#FF5A5E",
-                    label: "Red"
-                },
-                {
-                    value: 50,
-                    color: "#46BFBD",
-                    highlight: "#5AD3D1",
-                    label: "Green"
-                },
-                {
-                    value: 100,
-                    color: "#FDB45C",
-                    highlight: "#FFC870",
-                    label: "Yellow"
-                }
-              ];
-
-  var myPieChart = new Chart(ctx2).Pie(pieData);
+  var myPieChart = new Chart(ctx2).Pie(my_data);
 };
 
-buildPieChart('pieChart');
+var pieData = [
+              {
+                  value: {{seattle[0]['1 bedrooms'][0]}},
+                  color:"#F7464A",
+                  highlight: "#FF5A5E",
+                  label: "1 bedrooms"
+              },
+              {
+                  value: {{seattle[1]['2 bedrooms'][0]}},
+                  color: "#46BFBD",
+                  highlight: "#5AD3D1",
+                  label: "2 bedrooms"
+              },
+              {
+                  value: {{seattle[2]['3 bedrooms'][0]}},
+                  color: "#FDB45C",
+                  highlight: "#FFC870",
+                  label: "3 bedrooms"
+              }
+            ];
+
+buildPieChart('pieChart', pieData);
 
 </script>
 
