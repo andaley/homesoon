@@ -152,6 +152,9 @@ walked through google maps tutorial and added two points to sample map
  - added remote favorite route
  - added avg price of seattle 1, 2, and 3 bedrooms
 
+8/21
+- fixed get more expensive method add to list logic
+
 
 TODO
 - finish moving avg 123 bedroom to class method
