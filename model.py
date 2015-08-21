@@ -101,7 +101,7 @@ class Posting(db.Model):
 
         x, y, x2, y2 = cls.calculate_outer_bounds(origin_lat, origin_lon, desired_distance)
 
-        # Gather all post_ids and prices that are more expensive than original price.
+        # Gather all pofst_ids and prices that are more expensive than original price.
         total_more = db.session.query(cls.price, cls.post_id).filter(cls.price > price, cls.bedrooms == bedrooms, cls.latitude > x, cls.latitude < x2, cls.longitude > y, cls.longitude < y2).all()
 
         # These lists will contain apartment ids and prices that are within $100, $200, or $300 of original price.
