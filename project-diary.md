@@ -150,9 +150,12 @@ walked through google maps tutorial and added two points to sample map
  - dynamically set zoom according to number and location of markers
  - add event listener to each remove button
  - added remote favorite route
+ - added avg price of seattle 1, 2, and 3 bedrooms
+
 
 TODO
-- write remove favorite ajax call and route
+- finish moving avg 123 bedroom to class method
+- write remove favorite ajax call and routegit
 - fix remote favorite route
 - write new class method for calculating number of posts that are 5, 10, 20 miles farther
 - add submit button for refreshing charts w/ new search
