@@ -111,7 +111,7 @@ class Posting(db.Model):
 
         price = int(price)
         for apt_price, post_id in total_more:
-            if apt_price > (price + 300):
+            if apt_price > (price + 200) and apt_price <= (price + 300):
                 three_hundred.append(apt_price)
             elif apt_price > (price + 100) and apt_price <= (price + 200):
                 two_hundred.append(apt_price)
