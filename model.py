@@ -138,7 +138,7 @@ class Posting(db.Model):
     @classmethod
     def get_bedrooms_price(cls, city_prefix):
         """
-        Find the number and average price of 1, 2, and 3 bedroom apartments for a given city. Returns list of dictionaries with # of posts and average price.
+        Find the number and average price of 1, 2, and 3 bedroom apartments for a given city. Returns dictionary with # of posts and average price.
         """
 
         one_bedrooms = db.session.query(cls.price, cls.post_id).filter(cls.url.like("%{}%".format(city_prefix)), cls.bedrooms == 1).all()
@@ -156,10 +156,9 @@ class Posting(db.Model):
         rents_three_beds = [price for price, post_id in three_bedrooms]
         avg_price_three_beds = (sum(rents_three_beds))/num_three_beds
 
-        return [{'1 bedrooms': [num_one_beds, avg_price_one_beds]},
-                {'2 bedrooms': [num_two_beds, avg_price_two_beds]},
-                {'3 bedrooms': [num_three_beds, avg_price_three_beds]}
-                ]
+        return {'1 bedrooms': [num_one_beds, avg_price_one_beds],
+                '2 bedrooms': [num_two_beds, avg_price_two_beds],
+                '3 bedrooms': [num_three_beds, avg_price_three_beds]}
 
 class User(db.Model):
     """Represents a user."""
