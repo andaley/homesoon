@@ -101,6 +101,29 @@ function buildPieChart (my_element, my_data) {
   var myPieChart = new Chart(ctx2).Pie(my_data);
 };
 
+var bayAreaData = [
+              {
+                  value: {{bayarea['1 bedrooms'][0]}},
+                  color:"#F7464A",
+                  highlight: "#FF5A5E",
+                  label: "1 bedrooms"
+              },
+              {
+                  value: {{bayarea['2 bedrooms'][0]}},
+                  color: "#46BFBD",
+                  highlight: "#5AD3D1",
+                  label: "2 bedrooms"
+              },
+              {
+                  value: {{bayarea['3 bedrooms'][0]}},
+                  color: "#FDB45C",
+                  highlight: "#FFC870",
+                  label: "3 bedrooms"
+              }
+            ];
+
+buildPieChart('bayAreaChart', bayAreaData);
+
 var seattleData = [
               {
                   value: {{seattle['1 bedrooms'][0]}},
