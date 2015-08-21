@@ -154,14 +154,14 @@ walked through google maps tutorial and added two points to sample map
 
 8/21
 - fixed get more expensive method add to list logic
-
+- moved avg price per bedroom to class method
+- tested charts.js
+- added chart to stats based on users search results
+- expanded class method to include # and average price of 1, 2, and 3 bedrooms for all cities
 
 TODO
-- finish moving avg 123 bedroom to class method
-- write remove favorite ajax call and routegit
-- fix remote favorite route
+- write remove favorite ajax call and route
 - write new class method for calculating number of posts that are 5, 10, 20 miles farther
 - add submit button for refreshing charts w/ new search
 - compartmentalize map.js for easier legibility
 - add selenium tests
-- Add charts w/ average rent price, number of results
