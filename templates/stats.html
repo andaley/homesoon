@@ -2,7 +2,7 @@
 {% block title %}Apartment Results{% endblock %}
 
 {% block script %}
-<script src="https://maps.googleapis.com/maps/api/js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.js"></script>
 {% endblock %}
 
 <!-- TODO: add submit button for refreshing charts w/ new search-->
@@ -54,6 +54,8 @@
 {% endblock %}
 
 {% block content %}
+
+<canvas id="myChart" width="400" height="400"></canvas>
 
 Breakdown of posts more expensive than your search: {{more_expensive}} <br>
 Average rent of your search results: {{avg_rent}}<br>
