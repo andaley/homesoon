@@ -160,6 +160,7 @@ walked through google maps tutorial and added two points to sample map
 - expanded class method to include # and average price of 1, 2, and 3 bedrooms for all cities
 - wrapped build bartchart in function
 - fixed broken math in get_more_expensive
+- added sample pie chart
 
 TODO
 - write remove favorite ajax call and route
