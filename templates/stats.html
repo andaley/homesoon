@@ -49,17 +49,38 @@
 {% endblock %}
 
 {% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <p>Average rent of your search results: {{avg_rent}}</p>
+      <p>Breakdown of posts more expensive than your search: {{more_expensive}}</p>
+      <canvas id="increasedPriceChart" width="400" height="400"></canvas>
+    </div>
+    <div class="col-md-6">
+      <p>Number of posts farther than your desired distance: {{farther}}</p>
+      <canvas id="increasedDistanceChart" width="400" height="400"></canvas>
+    </div>
+  </div>
 
-<canvas id="increasedPriceChart" width="400" height="400"></canvas>
-<canvas id="increasedDistanceChart" width="400" height="400"></canvas>
-Bay Area<canvas id="bayAreaChart" width="400" height="400"></canvas>
-Portland<canvas id="portlandChart" width="400" height="400"></canvas>
-Seattle<canvas id="seattleChart" width="400" height="400"></canvas>
-Compare prices by city<canvas id="prices" width="600" height="400"></canvas>
+  <div class="row">
+    <div class="col-md-4">
+      <h2>Bay Area</h2><canvas id="bayAreaChart" height="400"></canvas>
+    </div>
+    <div class="col-md-4">
+      <h2>Portland</h2><canvas id="portlandChart" height="400"></canvas>
+    </div>
+    <div class="col-md-4">
+      <h2>Seattle</h2><canvas id="seattleChart" height="400"></canvas>
+    </div>
+  </div>
 
-Breakdown of posts more expensive than your search: {{more_expensive}} <br>
-Average rent of your search results: {{avg_rent}}<br>
-Number of posts farther than your desired distance: 5 miles: {{farther}}<br>
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Compare prices by city</h2>
+      <canvas id="prices" width="800" height="400"></canvas>
+    </div>
+  </div>
+</div>
 
 <script>
 
