@@ -117,7 +117,7 @@ def display_apartments():
     search_results = Posting.get_apartments(session['price'], session['bedrooms'], session['origin_latitude'], session['origin_longitude'], session['max_distance'])
 
     avg_rent = Posting.calculate_avg_rent(search_results)
-    print avg_rent
+    session['avg_rent'] = avg_rent
 
     # TODO: if search returns nothing, flash a message.
 
@@ -182,30 +182,19 @@ def calculate_distance(lat, lon):
 @app.route('/stats')
 def show_stats():
 
-    # TODO: would be more efficient to just count number of posts by getting list of tuples, instead of querying for list of apartment objects.
-
-    sample_search = Posting.get_apartments(session['price'], session['bedrooms'], session['origin_latitude'], session['origin_longitude'], session['max_distance'])
-
     # Show number of posts more expensive than your search.
     more_expensive = Posting.get_more_expensive(session['price'], session['bedrooms'], session['origin_latitude'], session['origin_longitude'], session['max_distance'])
     num_expensive = more_expensive['total']
     print num_expensive
 
-    # Show average rent for your search results
-    avg_rent = Posting.calculate_avg_rent(sample_search)
-
     # Show number of posts farther away than desired distance.
-    five_mi_farther = Posting.get_farther_away(session['price'], session['bedrooms'], session['origin_latitude'], session['origin_longitude'], session['max_distance'], 5)
-    ten_mi_farther = Posting.get_farther_away(session['price'], session['bedrooms'], session['origin_latitude'], session['origin_longitude'], session['max_distance'], 10)
-
-    farther = {'five miles': five_mi_farther,
-                'ten miles': ten_mi_farther}
+    farther = Posting.get_farther_away(session['price'], session['bedrooms'], session['origin_latitude'], session['origin_longitude'], session['max_distance'])
 
     seattle_data = Posting.get_bedrooms_price('seattle')
     portland_data = Posting.get_bedrooms_price('portland')
     bay_area_data = Posting.get_bedrooms_price('sfbay')
 
-    return render_template('stats.html', raw_location=session['raw_location'], price=session['price'], avg_rent=avg_rent, more_expensive=more_expensive, farther=farther, bayarea=bay_area_data, seattle=seattle_data, portland=portland_data)
+    return render_template('stats.html', raw_location=session['raw_location'], price=session['price'], avg_rent=session['avg_rent'], more_expensive=more_expensive, farther=farther, bayarea=bay_area_data, seattle=seattle_data, portland=portland_data)
 
 
 #### View / Add Favorites ####
