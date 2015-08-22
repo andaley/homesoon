@@ -80,18 +80,13 @@ class TestApp(unittest.TestCase):
         self.assertTrue(type(distance) is unicode)
 
 
-    # def test_calculate_outer_bounds(self):
-    #     """Verify that result is within expected area."""
-    #     desired_distance = 5
-    #     distance_degrees = 5 * 69.0
-    #
-    #     x = 100 - distance_degrees
-    #     y = 150 - distance_degrees
-    #     x2 = 200 - distance_degrees
-    #     y2 = 250 - distance_degrees
-    #
-    #     assertTrue
-    #
+    def test_calculate_outer_bounds(self):
+        """Verify that result is within expected area."""
+
+        self.assertTrue(Posting.calculate_outer_bounds(100, 100, 5) == [99.92753623188406, 99.92753623188406, 100.07246376811594, 100.07246376811594])
+
+        self.assertTrue(Posting.calculate_outer_bounds(0, 0, 100) == [-1.4492753623188406, -1.4492753623188406, 1.4492753623188406, 1.4492753623188406])
+        
 
     def test_database(self):
         """
