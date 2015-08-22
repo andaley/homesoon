@@ -169,6 +169,10 @@ walked through google maps tutorial and added two points to sample map
 
 - fixed get_farther_away
 - removed repeat listings from farther away
+- removed blank search options
+- added distance chart data
+- moved favorites and sign in/out to right side of nav bar
+
 
 TODO
 - write remove favorite ajax call and route
