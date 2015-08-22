@@ -80,6 +80,19 @@ class TestApp(unittest.TestCase):
         self.assertTrue(type(distance) is unicode)
 
 
+    # def test_calculate_outer_bounds(self):
+    #     """Verify that result is within expected area."""
+    #     desired_distance = 5
+    #     distance_degrees = 5 * 69.0
+    #
+    #     x = 100 - distance_degrees
+    #     y = 150 - distance_degrees
+    #     x2 = 200 - distance_degrees
+    #     y2 = 250 - distance_degrees
+    #
+    #     assertTrue
+    #
+
     def test_database(self):
         """
         Verify that database contains postings from all supported cities.
@@ -121,7 +134,7 @@ class TestApp(unittest.TestCase):
             for post in small_list:
                 if post.get("GeoCluster"):
                     continue
-                    
+
                 self.assertTrue('PostingTitle' in post)
                 self.assertTrue('Latitude' in post)
 
