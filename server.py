@@ -181,15 +181,18 @@ def calculate_distance(lat, lon):
 
 @app.route('/stats')
 def show_stats():
+    """
+    Displays graphs related to the users' search as well as general prices from Craigslist.
+    """
 
     # Show number of posts more expensive than your search.
     more_expensive = Posting.get_more_expensive(session['price'], session['bedrooms'], session['origin_latitude'], session['origin_longitude'], session['max_distance'])
     num_expensive = more_expensive['total']
-    print num_expensive
 
     # Show number of posts farther away than desired distance.
     farther = Posting.get_farther_away(session['price'], session['bedrooms'], session['origin_latitude'], session['origin_longitude'], session['max_distance'])
 
+    # Show avg price by bedroom for all 3 cities.
     seattle_data = Posting.get_bedrooms_price('seattle')
     portland_data = Posting.get_bedrooms_price('portland')
     bay_area_data = Posting.get_bedrooms_price('sfbay')
