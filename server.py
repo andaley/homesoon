@@ -195,17 +195,17 @@ def show_stats():
     avg_rent = Posting.calculate_avg_rent(sample_search)
 
     # Show number of posts farther away than desired distance.
-    # TODO: need to query where 50 distance > desired_distance so we don't end up with posts from other cities. This currently finds any post within 50 miles.
-    get_farther_away = Posting.get_apartments(session['price'], session['bedrooms'], session['origin_latitude'], session['origin_longitude'], 50)
+    five_mi_farther = Posting.get_farther_away(session['price'], session['bedrooms'], session['origin_latitude'], session['origin_longitude'], session['max_distance'], 5)
+    ten_mi_farther = Posting.get_farther_away(session['price'], session['bedrooms'], session['origin_latitude'], session['origin_longitude'], session['max_distance'], 10)
 
-    num_farther = len(get_farther_away)
-    print num_farther
+    farther = {'five miles': five_mi_farther,
+                'ten miles': ten_mi_farther}
 
     seattle_data = Posting.get_bedrooms_price('seattle')
     portland_data = Posting.get_bedrooms_price('portland')
     bay_area_data = Posting.get_bedrooms_price('sfbay')
 
-    return render_template('stats.html', raw_location=session['raw_location'], price=session['price'], avg_rent=avg_rent, num_farther=num_farther, more_expensive=more_expensive, bayarea=bay_area_data, seattle=seattle_data, portland=portland_data)
+    return render_template('stats.html', raw_location=session['raw_location'], price=session['price'], avg_rent=avg_rent, more_expensive=more_expensive, farther=farther, bayarea=bay_area_data, seattle=seattle_data, portland=portland_data)
 
 
 #### View / Add Favorites ####
