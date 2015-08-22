@@ -176,6 +176,7 @@ walked through google maps tutorial and added two points to sample map
 - updated style of stats page
 - fixed footer
 - wrote test for calculate outer bounds
+- added map to homepage
 
 TODO
 - write remove favorite ajax call and route
