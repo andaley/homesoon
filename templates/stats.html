@@ -56,16 +56,15 @@
 {% block content %}
 
 <canvas id="increasedPriceChart" width="400" height="400"></canvas>
-<canvas id="bayAreaChart" width="400" height="400"></canvas>
-<canvas id="portlandChart" width="400" height="400"></canvas>
-<canvas id="seattleChart" width="400" height="400"></canvas>
+<canvas id="bayAreaChart" width="400" height="400">Bay Area</canvas>
+<canvas id="portlandChart" width="400" height="400">Portland</canvas>
+<canvas id="seattleChart" width="400" height="400">Seattle</canvas>
 
 Breakdown of posts more expensive than your search: {{more_expensive}} <br>
 Average rent of your search results: {{avg_rent}}<br>
 Number of posts farther than your desired distance: {{num_farther}}<br>
 
 <script>
-// Get the context of the canvas element we want to select
 
 function buildBarChart (element, x_axis, y_axis){
   var ctx = document.getElementById(element).getContext("2d");
@@ -106,7 +105,7 @@ var bayAreaData = [
                   value: {{bayarea['1 bedrooms'][0]}},
                   color:"#F7464A",
                   highlight: "#FF5A5E",
-                  label: "1 bedrooms"
+                  label: "1 bedroom"
               },
               {
                   value: {{bayarea['2 bedrooms'][0]}},
