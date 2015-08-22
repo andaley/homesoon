@@ -154,8 +154,8 @@ class Posting(db.Model):
             posts[i] = [len(farther_listings), avg_price]
 
         # Remove repeat listings
-        posts[20][0] -= posts[desired_distance + 10][0]
-        posts[10][0] -= posts[desired_distance + 5][0]
+        posts[20][0] -= posts[10][0]
+        posts[10][0] -= posts[5][0]
 
         return posts
 
