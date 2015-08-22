@@ -173,9 +173,11 @@ walked through google maps tutorial and added two points to sample map
 - added distance chart data
 - moved favorites and sign in/out to right side of nav bar
 - added chart to compare prices by city
-
+- updated style of stats page
+- fixed footer
 
 TODO
+- write test for calculate outer bounds
 - write remove favorite ajax call and route
 - compartmentalize map.js for easier legibility
 - add selenium tests
