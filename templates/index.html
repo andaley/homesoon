@@ -1,4 +1,9 @@
-{% extends 'base.html'%} {% block title %} Apartment Search {% endblock %} {% block content %}
+{% extends 'base.html'%} {% block title %} Apartment Search {% endblock %}
+{% block script %}
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+{% endblock %}
+
+{% block content %}
 <div class="row" id="main-img"></div>
 <div class="row">
   <div class="col-md-6">
@@ -51,4 +56,21 @@
     </form>
   </div>
 </div>
+<script>
+  function initialize() {
+
+      var mapCanvas = document.getElementById('main-img');
+
+
+      var mapOptions = {center: new google.maps.LatLng(37.78,-122.41),
+                          zoom: 12,
+                          mapTypeId: google.maps.MapTypeId.ROADMAP
+                          }
+
+      var map = new google.maps.Map(mapCanvas, mapOptions);
+
+  }
+
+  google.maps.event.addDomListener(window, 'load', initialize);
+</script>
 {% endblock %}
