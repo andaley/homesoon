@@ -151,11 +151,11 @@ class Posting(db.Model):
             rents = [post_price for post_price, post_id in farther_listings]
             avg_price = (sum(rents))/len(farther_listings)
 
-            posts[new_sum] = [len(farther_listings), avg_price]
+            posts[i] = [len(farther_listings), avg_price]
 
         # Remove repeat listings
-        posts[desired_distance + 20][0] -= posts[desired_distance + 10][0]
-        posts[desired_distance + 10][0] -= posts[desired_distance + 5][0]
+        posts[20][0] -= posts[desired_distance + 10][0]
+        posts[10][0] -= posts[desired_distance + 5][0]
 
         return posts
 
