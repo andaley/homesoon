@@ -127,13 +127,19 @@ class Posting(db.Model):
 
 
     @classmethod
-    def get_farther_away(cls, price, bedrooms, origin_lat, origin_lon, desired_distance):
+    def get_farther_away(cls, price, bedrooms, origin_lat, origin_lon, desired_distance, increment):
 
         """Calculate # posts within 1, 3, 5, 10, 20, 50 miles of origin."""
 
+        desired_distance = desired_distance + increment
+
         x, y, x2, y2 = cls.calculate_outer_bounds(origin_lat, origin_lon, desired_distance)
 
-        pass
+        farther_listings = db.session.query(cls.price, cls.post_id).filter(cls.bedrooms == bedrooms, cls.price == price, cls.latitude > x, cls.latitude < x2, cls.longitude > y, cls.longitude < y2).all()
+
+        print len(farther_listings)
+
+        return len(farther_listings)
 
     @classmethod
     def get_bedrooms_price(cls, city_prefix):
