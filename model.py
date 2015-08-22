@@ -134,7 +134,7 @@ class Posting(db.Model):
         Returns a dictionary where the key is the distance in miles from origin, and the value is a list with the # of posts within that distance and the average price.
 
         e.g.
-        {10: [153, 1927], 20: [240, 1844], 5: [105, 1919]}
+        {15: [153, 1927], 20: [240, 1844], 10: [105, 1919]}
         """
 
         # t = Posting.get_farther_away(2500, 1, 37.7914448, -122.3929672, 5)
@@ -151,9 +151,11 @@ class Posting(db.Model):
             rents = [post_price for post_price, post_id in farther_listings]
             avg_price = (sum(rents))/len(farther_listings)
 
-            posts[i] = [len(farther_listings), avg_price]
+            posts[new_sum] = [len(farther_listings), avg_price]
 
-        print posts
+        # Remove repeat listings
+        posts[desired_distance + 20][0] -= posts[desired_distance + 10][0]
+        posts[desired_distance + 10][0] -= posts[desired_distance + 5][0]
 
         return posts
 
