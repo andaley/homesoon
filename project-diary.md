@@ -158,7 +158,7 @@ walked through google maps tutorial and added two points to sample map
 - tested charts.js
 - added chart to stats based on users search results
 - expanded class method to include # and average price of 1, 2, and 3 bedrooms for all cities
-- wrapped build bartchart in function
+- wrapped build bar chart in function
 - fixed broken math in get_more_expensive
 - added sample pie chart
 - added bay area pie chart
@@ -172,6 +172,7 @@ walked through google maps tutorial and added two points to sample map
 - removed blank search options
 - added distance chart data
 - moved favorites and sign in/out to right side of nav bar
+- added chart to compare prices by city
 
 
 TODO
