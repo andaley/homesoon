@@ -56,13 +56,14 @@
 {% block content %}
 
 <canvas id="increasedPriceChart" width="400" height="400"></canvas>
-<canvas id="bayAreaChart" width="400" height="400">Bay Area</canvas>
-<canvas id="portlandChart" width="400" height="400">Portland</canvas>
-<canvas id="seattleChart" width="400" height="400">Seattle</canvas>
+<canvas id="bayAreaChart" width="400" height="400"></canvas>
+<canvas id="portlandChart" width="400" height="400"></canvas>
+<canvas id="seattleChart" width="400" height="400"></canvas>
 
 Breakdown of posts more expensive than your search: {{more_expensive}} <br>
 Average rent of your search results: {{avg_rent}}<br>
-Number of posts farther than your desired distance: {{num_farther}}<br>
+Number of posts farther than your desired distance: 5 miles: {{farther['five miles']}}<br>
+10 miles {{farther['ten miles']}}
 
 <script>
 
