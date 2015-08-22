@@ -165,9 +165,12 @@ walked through google maps tutorial and added two points to sample map
 - added seattle pie chart
 - added portland pie chart
 
+8/22
+
+- fixed get_farther_away
+- removed repeat listings from farther away
+
 TODO
 - write remove favorite ajax call and route
-- write new class method for calculating number of posts that are 5, 10, 20 miles farther
-- add submit button for refreshing charts w/ new search
 - compartmentalize map.js for easier legibility
 - add selenium tests
