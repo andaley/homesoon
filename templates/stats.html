@@ -55,6 +55,7 @@
 Bay Area<canvas id="bayAreaChart" width="400" height="400"></canvas>
 Portland<canvas id="portlandChart" width="400" height="400"></canvas>
 Seattle<canvas id="seattleChart" width="400" height="400"></canvas>
+Compare prices by city<canvas id="prices" width="600" height="400"></canvas>
 
 Breakdown of posts more expensive than your search: {{more_expensive}} <br>
 Average rent of your search results: {{avg_rent}}<br>
@@ -169,6 +170,46 @@ var portlandData = [
             ];
 
 buildPieChart('portlandChart', portlandData);
+
+var priceCtx = document.getElementById('prices').getContext("2d");
+
+var compareData = {
+    labels: ["One bedroom", "Two bedroom", "Three bedroom"],
+    datasets: [
+        {
+            label: "Bay Area",
+            fillColor: "rgba(220,220,220,0.5)",
+            strokeColor: "rgba(220,220,220,0.8)",
+            highlightFill: "rgba(220,220,220,0.75)",
+            highlightStroke: "rgba(220,220,220,1)",
+            data: [{{bayarea['1 bedrooms'][1]}},
+                    {{bayarea['2 bedrooms'][1]}},
+                    {{bayarea['3 bedrooms'][1]}}]
+        },
+        {
+            label: "Portland",
+            fillColor: "rgba(151,187,205,0.5)",
+            strokeColor: "rgba(151,187,205,0.8)",
+            highlightFill: "rgba(151,187,205,0.75)",
+            highlightStroke: "rgba(151,187,205,1)",
+            data: [{{portland['1 bedrooms'][1]}},
+                    {{portland['2 bedrooms'][1]}},
+                    {{portland['3 bedrooms'][1]}}]
+        },
+        {
+            label: "Seattle",
+            fillColor: "rgba(151,187,205,0.5)",
+            strokeColor: "rgba(151,187,205,0.8)",
+            highlightFill: "rgba(151,187,205,0.75)",
+            highlightStroke: "rgba(151,187,205,1)",
+            data: [{{seattle['1 bedrooms'][1]}},
+                    {{seattle['2 bedrooms'][1]}},
+                    {{seattle['3 bedrooms'][1]}},]
+        }
+    ]
+};
+
+var compareChart = new Chart(priceCtx).Bar(compareData);
 
 </script>
 
