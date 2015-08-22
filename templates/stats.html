@@ -5,9 +5,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.js"></script>
 {% endblock %}
 
-<!-- TODO: add submit button for refreshing charts w/ new search-->
-
-
 {% block search %}
 <form class="navbar-form" action="/apartments" method="POST">
   <label>Modify your search: </label>
@@ -17,7 +14,6 @@
 
   <label>Miles away:
     <select name="distance">
-      <option></option>
       <option value="1">1</option>
       <option value="3">3</option>
       <option value="5">5</option>
@@ -29,7 +25,6 @@
 
   <label>Bedrooms:
     <select name="bedrooms">
-      <option></option>
       <option value="1">1</option>
       <option value="2">2</option>
       <option value="3">3</option>
@@ -93,9 +88,9 @@ var increasedPriceData = [{{more_expensive['$100 more']}},
 
 buildBarChart('increasedPriceChart', ["$100 more", "$200 more", "$300 more"], increasedPriceData);
 
-var increasedDistance = [{{farther[5]}},
-                          {{farther[10]}},
-                          {{farther[20]}}];
+var increasedDistance = [{{farther[5][0]}},
+                          {{farther[10][0]}},
+                          {{farther[20][0]}}];
 
 buildBarChart('increasedDistanceChart', ['5 miles', '10 miles', '20 miles'], increasedDistance);
 
