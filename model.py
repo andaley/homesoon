@@ -129,31 +129,33 @@ class Posting(db.Model):
     @classmethod
     def get_farther_away(cls, price, bedrooms, origin_lat, origin_lon, desired_distance):
 
-        """Calculate # posts within 5, 10, 20 miles of origin."""
+        """Calculate # posts within 5, 10, 20 miles of origin.
 
-        # TODO: fix this.....
-        
+        Returns a dictionary where the key is the distance in miles from origin, and the value is a list with the # of posts within that distance and the average price.
+
+        e.g.
+        {10: [153, 1927], 20: [240, 1844], 5: [105, 1919]}
+        """
+
+        # t = Posting.get_farther_away(2500, 1, 37.7914448, -122.3929672, 5)
         increment = [5, 10, 20]
         posts = {}
 
         for i in increment:
             new_sum = desired_distance + i
-            print new_sum
 
-            x, y, x2, y2 = cls.calculate_outer_bounds(origin_lat, origin_lon, desired_distance)
+            x, y, x2, y2 = cls.calculate_outer_bounds(origin_lat, origin_lon, new_sum)
 
             farther_listings = db.session.query(cls.price, cls.post_id).filter(cls.bedrooms == bedrooms, cls.price < price, cls.latitude > x, cls.latitude < x2, cls.longitude > y, cls.longitude < y2).all()
 
             rents = [post_price for post_price, post_id in farther_listings]
             avg_price = (sum(rents))/len(farther_listings)
-            print 'rents:', rents, '\n\n'
-            print 'avg price:', avg_price, '\n\n'
 
             posts[i] = [len(farther_listings), avg_price]
 
         print posts
 
-        return len(farther_listings)
+        return posts
 
     @classmethod
     def get_bedrooms_price(cls, city_prefix):
