@@ -235,9 +235,12 @@ def add_favorite():
 
     return message
 
-@app.route('/remove-favorite', methods=['GET'])
+@app.route('/remove-favorite', methods=['POST'])
 def remove_favorite():
     """Remove a favorite from the database."""
+
+    favorite = request.form('id')
+    
 
     pass
 
