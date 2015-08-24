@@ -178,6 +178,12 @@ walked through google maps tutorial and added two points to sample map
 - wrote test for calculate outer bounds
 - added map to homepage
 
+8/23
+- added remove favorite ajax call
+- added remove favorite route
+- removed sample favorite from db
+-
+
 TODO
 - write remove favorite ajax call and route
 - compartmentalize map.js for easier legibility
