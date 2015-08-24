@@ -7,52 +7,48 @@
 {% block content %}
 <div class="row" id="main-img"></div>
 <div class="row">
-  <div class="col-md-6">
-    <h1>Find me an apartment near...</h1>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-6">
-    <form action="/apartments" method="POST" autocomplete="on">
+  <div class="container">
+    <div class="col-md-6">
+      <h1>Find me an apartment near...</h1>
+      <form action="/apartments" method="POST" autocomplete="on">
 
-      <input type="text" name="address" class="address-box" id ="address" placeholder="Address, city or zip">
-      <p></p>
+        <input type="text" name="address" class="address-box" id ="address" placeholder="Address, city or zip">
+        <p></p>
 
-      <label>within
-        <select name="distance">
-          <option value="1">1</option>
-          <option value="3">3</option>
-          <option value="5">5</option>
-          <option value="10">10</option>
-          <option value="25">25</option>
-          <option value="50">50</option>
-        </select>
-        miles.</label>
+        <label>within
+          <select name="distance">
+            <option value="1">1</option>
+            <option value="3">3</option>
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+          </select>
+          miles.</label>
 
-      <label>That has
-        <select name="bedrooms">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-        </select>
-        bedrooms,</label>
-      <p></p>
+        <label>That has
+          <select name="bedrooms">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+          bedrooms,</label>
 
-      <label>and costs less than
-        $<input type="number" name="cost" placeholder="3,000"> per month.</label>
-      <p></p>
+        <label>and costs less than
+          $<input type="number" name="cost" placeholder="3,000"> per month.</label>
 
-      <label>I like to commute by:
-        <select name="transportation">
-          <option value="driving">driving</option>
-          <option value="transit">public transportation</option>
-          <option value="bicycling">bicycling</option>
-          <option value="walking">walking</option>
-      </label>
+        <label>I like to commute by:
+          <select name="transportation">
+            <option value="driving">driving</option>
+            <option value="transit">public transportation</option>
+            <option value="bicycling">bicycling</option>
+            <option value="walking">walking</option>
+        </label>
 
-      <input type="submit" class="btn" id="search-btn">
-    </form>
+        <input type="submit" class="btn" id="search-btn">
+      </form>
+    </div>
   </div>
 </div>
 <script>
