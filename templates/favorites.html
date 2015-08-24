@@ -10,6 +10,7 @@
     <table class="table table-striped">
         <thead>
         <tr>
+            <th></th>
             <th>Post Title</th>
             <th>Price</th>
             <th>Bedrooms</th>
@@ -22,6 +23,7 @@
             {% if favorites %}
               {% for favorite in favorites %}
                   <tr id="{{favorite.favorite_id}}">
+                      <td><img src="{{favorite.post.img_url}}" width="150"></td>
                       <td><a href={{favorite.post.url}} target="_blank">{{favorite.post.title}}</a></td>
                       <td>${{favorite.post.price}}</td>
                       <td>{{favorite.post.bedrooms}}</td>
