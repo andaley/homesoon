@@ -21,7 +21,7 @@
         <tbody>
             {% if favorites %}
               {% for favorite in favorites %}
-                  <tr>
+                  <tr id="{{favorite.favorite_id}}">
                       <td><a href={{favorite.post.url}} target="_blank">{{favorite.post.title}}</a></td>
                       <td>${{favorite.post.price}}</td>
                       <td>{{favorite.post.bedrooms}}</td>
@@ -42,11 +42,11 @@
   function removeFavorite(evt) {
     console.log($(evt.currentTarget).data("id"));
     evt.preventDefault();
+
     $.post('/remove-favorite',
         {'id': $(evt.currentTarget).data("id")},
-        function (msg) {
-            window.location.reload();
-            console.log(msg);
+        function (id) {
+            $('#' + id).remove();
           })
   };
 
