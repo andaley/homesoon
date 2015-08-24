@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/style.css">
   <script src="../static/jquery-1.11.3.min.js"></script>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
   {% block script %} {% endblock %}
 </head>
 
@@ -31,7 +32,7 @@
           <form class="navbar-form" action="/apartments" method="POST">
             <label>Modify your search: </label>
             <label>Starting address:
-              <input type="text" name="address" class="address-box" value="{{raw_location}}">
+              <input type="text" name="address" class="address-box" id="address" value="{{raw_location}}">
             </label>
 
             <label>Miles away:
@@ -68,9 +69,9 @@
 
             <input type="submit" class="btn" id="search-btn">
           </form>
-
-
-           {% endblock %}</div>
+          <script src="/static/autocomplete.js"></script>
+           {% endblock %}
+         </div>
       </div>
     </div>
   </nav>
