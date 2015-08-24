@@ -186,6 +186,8 @@ walked through google maps tutorial and added two points to sample map
 
 8/24
 - added google places autocomplete for search form
+- updated index form style
+- moved search form to base.html
 
 questions:
 - how to show search in nav bar on all pages except for index
