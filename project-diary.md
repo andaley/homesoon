@@ -182,9 +182,8 @@ walked through google maps tutorial and added two points to sample map
 - added remove favorite ajax call
 - added remove favorite route
 - removed sample favorite from db
--
+- removed corresponding element from DOM
 
 TODO
-- write remove favorite ajax call and route
 - compartmentalize map.js for easier legibility
 - add selenium tests
