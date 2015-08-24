@@ -239,8 +239,13 @@ def add_favorite():
 def remove_favorite():
     """Remove a favorite from the database."""
 
-    favorite = request.form('id')
-    
+    favorite_id = request.form.get('id')
+    favorite = Favorite.query.get(favorite_id)
+    print favorite, favorite.post
+    favorite.post.is_favorited = False
+    db.session.commit()
+    db.session.delete(favorite)
+    db.session.commit()
 
     pass
 
