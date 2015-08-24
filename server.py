@@ -231,7 +231,7 @@ def add_favorite():
     new_favorite.post.is_favorited = True
     db.session.commit()
 
-    message = 'Saved.'
+    message = '<span class="glyphicon glyphicon-star"></span>'
 
     return message
 

@@ -139,7 +139,7 @@ function bindinfoWindow(marker, map, infoWindow, html) {
         // Add favorite to database & disable button.
         // Note: this cannot run until marker event listener has been triggered, since content of infoWindow doesn't exist in the DOM *until* after.
         $.get('/add-favorite', {'id': marker.title, 'commute_time': $('#' + marker.title + '-time').text()}, function(message){
-          $('#' + marker.title + '-fav').html('<span class="glyphicon glyphicon-star"></span>');
+          $('#' + marker.title + '-fav').html(message);
           $('#' + marker.title + '-fav').attr('disabled');
           // disable button
         });
