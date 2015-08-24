@@ -40,7 +40,11 @@
   // TODO: add event listeners to each remove button
 
   function removeFavorite(evt) {
-    console.log(evt.currentTarget);
+    console.log($(evt.currentTarget).data("id"));
+    evt.preventDefault();
+    $.post('/remove-favorite', {'id': $(evt.currentTarget).data("id")}, function () {
+      console.log('yay');
+    })
   };
 
   $('.remove-button').on('click', removeFavorite);
