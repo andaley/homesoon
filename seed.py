@@ -23,8 +23,6 @@ def load_posts(city_list):
 
         list_of_posts = parsed_json[0] # returns list of 4000 dicts
 
-        # Testing the Craigslist data by iterating through list of dictionaries up to the 10th index.
-
         for posting in list_of_posts:
 
             # If this object has a GeoCluster key, skip it, since it's not an actual post.
@@ -44,7 +42,6 @@ def load_posts(city_list):
                 # 8 CategoryID: '1'
                 # 9 PostingID: '5156767694'
 
-                # Need to re-format img_url to embed in HTML.
                 raw_img_url = posting.get('ImageThumb')
                 if raw_img_url:
                     new_url = raw_img_url.split(',')
