@@ -84,7 +84,7 @@ function initialize() {
               imgPlaceholder +
               '<a href="#" target="_blank" id="' + key + '-dir"><p>Commute time: <span id="' + key + '-time"></span></p></a>' +
               '<p>Commute distance: <span id="' + key + '-distance">' + '</span></p>' +
-              '<button class="btn" id="' + key + '-fav">Save to Favorites</button>' +
+              '<button class="btn" id="' + key + '-fav"><span class="glyphicon glyphicon-star-empty"></span></button>' +
               '</div>'
             );
 
@@ -139,7 +139,7 @@ function bindinfoWindow(marker, map, infoWindow, html) {
         // Add favorite to database & disable button.
         // Note: this cannot run until marker event listener has been triggered, since content of infoWindow doesn't exist in the DOM *until* after.
         $.get('/add-favorite', {'id': marker.title, 'commute_time': $('#' + marker.title + '-time').text()}, function(message){
-          $('#' + marker.title + '-fav').html(message);
+          $('#' + marker.title + '-fav').html('<span class="glyphicon glyphicon-star"></span>');
           $('#' + marker.title + '-fav').attr('disabled');
           // disable button
         });

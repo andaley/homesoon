@@ -30,7 +30,9 @@
                       <td>${{favorite.post.price}}</td>
                       <td>{{favorite.post.bedrooms}}</td>
                       <td>{{favorite.commute_time}} from  {{favorite.origin}}</td>
-                      <td><button class="btn remove-button" data-id={{favorite.favorite_id}}>Remove</button></td>
+                      <td><button class="btn remove-button" data-id={{favorite.favorite_id}}>
+                        <span class="glyphicon glyphicon-remove"></span>
+                      </button></td>
                   </tr>
               {% endfor %}
             {% endif %}
