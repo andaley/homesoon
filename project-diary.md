@@ -184,6 +184,9 @@ walked through google maps tutorial and added two points to sample map
 - removed sample favorite from db
 - removed corresponding element from DOM
 
+8/24
+- added google places autocomplete for search form
+
 TODO
 - compartmentalize map.js for easier legibility
 - add selenium tests

@@ -1,6 +1,7 @@
 {% extends 'base.html'%} {% block title %} Apartment Search {% endblock %}
 {% block script %}
-<script src="https://maps.googleapis.com/maps/api/js"></script>
+<!-- <script src="https://maps.googleapis.com/maps/api/js"></script> -->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
 {% endblock %}
 
 {% block content %}
@@ -12,9 +13,9 @@
 </div>
 <div class="row">
   <div class="col-md-6">
-    <form action="/apartments" method="POST">
+    <form action="/apartments" method="POST" autocomplete="on">
 
-      <input type="text" name="address" class="address-box" placeholder="Address, city or zip">
+      <input type="text" name="address" class="address-box" id ="address" placeholder="Address, city or zip">
       <p></p>
 
       <label>within
@@ -59,9 +60,8 @@
 <script>
   function initialize() {
 
+      // Create map
       var mapCanvas = document.getElementById('main-img');
-
-
       var mapOptions = {center: new google.maps.LatLng(37.78,-122.41),
                           zoom: 12,
                           mapTypeId: google.maps.MapTypeId.ROADMAP
@@ -69,8 +69,15 @@
 
       var map = new google.maps.Map(mapCanvas, mapOptions);
 
+      // Autocomplete address
+      var input = document.getElementById('address');
+      console.log(input);
+      var options = {types: ['geocode']};
+      var autocomplete = new google.maps.places.Autocomplete(input, options);
+
   }
 
   google.maps.event.addDomListener(window, 'load', initialize);
+
 </script>
 {% endblock %}
