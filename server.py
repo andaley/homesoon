@@ -247,7 +247,8 @@ def remove_favorite():
     db.session.delete(favorite)
     db.session.commit()
 
-    pass
+    message = 'yay'
+    return message
 
 
 ######### Helper Functions #########
