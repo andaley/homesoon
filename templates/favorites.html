@@ -42,9 +42,12 @@
   function removeFavorite(evt) {
     console.log($(evt.currentTarget).data("id"));
     evt.preventDefault();
-    $.post('/remove-favorite', {'id': $(evt.currentTarget).data("id")}, function () {
-      console.log('yay');
-    })
+    $.post('/remove-favorite',
+        {'id': $(evt.currentTarget).data("id")},
+        function (msg) {
+            window.location.reload();
+            console.log(msg);
+          })
   };
 
   $('.remove-button').on('click', removeFavorite);
