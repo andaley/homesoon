@@ -9,6 +9,7 @@ var mapOptions = {
 // Create the map!
 var map = new google.maps.Map(mapCanvas, mapOptions);
 
+var markerList = [];
 
 function initialize() {
   // Upon page load, recenters map and adds all apartments markers.
@@ -18,7 +19,6 @@ function initialize() {
     width: 200
   })
 
-  var markerList = [];
 
   // Retrieve apartment objects from server
   $.get('/apartments.json', function(apts) {
