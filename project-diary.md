@@ -183,6 +183,7 @@ walked through google maps tutorial and added two points to sample map
 - added remove favorite route
 - removed sample favorite from db
 - removed corresponding element from DOM
+- added selenium integration test
 
 8/24
 - added google places autocomplete for search form
