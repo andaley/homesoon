@@ -134,6 +134,7 @@ class TestApp(unittest.TestCase):
                 self.assertTrue('PostingTitle' in post)
                 self.assertTrue('Latitude' in post)
 
+
 class TestIntegration(unittest.TestCase):
 
     def setUp(self):
