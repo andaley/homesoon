@@ -6,6 +6,7 @@ import googlemaps
 import math
 from model import Posting
 from seed import load_posts
+from selenium import webdriver
 
 class TestApp(unittest.TestCase):
 
@@ -86,7 +87,7 @@ class TestApp(unittest.TestCase):
         self.assertTrue(Posting.calculate_outer_bounds(100, 100, 5) == [99.92753623188406, 99.92753623188406, 100.07246376811594, 100.07246376811594])
 
         self.assertTrue(Posting.calculate_outer_bounds(0, 0, 100) == [-1.4492753623188406, -1.4492753623188406, 1.4492753623188406, 1.4492753623188406])
-        
+
 
     def test_database(self):
         """
@@ -133,6 +134,17 @@ class TestApp(unittest.TestCase):
                 self.assertTrue('PostingTitle' in post)
                 self.assertTrue('Latitude' in post)
 
+class TestIntegration(unittest.TestCase):
+
+    def setUp(self):
+        self.browser = webdriver.Firefox()
+
+    def tearDown(self):
+        self.browser.quit()
+
+    def test_title(self):
+        self.browser.get('http://localhost:5000/')
+        self.assertEqual(self.browser.title, 'Apartment Search')
 
 if __name__ == '__main__':
     from server import app
