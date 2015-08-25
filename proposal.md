@@ -5,15 +5,17 @@
 ___ allows users to search for housing based on proximity to a given location and commute time.
 
 ### Feature List
-- Allow user to enter a key point of interest & select how far they're willing to commute
-- Scrape Craigslist for housing posts
-- Calculate distance between Craigslist posts & key point of interest
+- ~~Allow user to enter a key point of interest & select how far they're willing to commute~~
+- ~~Scrape Craigslist for housing posts~~
+- ~~Calculate distance between Craigslist posts & key point of interest~~
 - Display results:
-  - As text with calculated distance
-  - As points on a map
-- When user clicks on a result, compute commute time:
-  - By driving
-  - By public transportation
+  - ~~As text with calculated distance~~
+  - ~~As points on a map~~
+- ~~When user clicks on a result, compute commute time:~~
+  - ~~By driving~~
+  - ~~By public transportation~~
+  - ~~By bicycling~~
+  - ~~By walking~~
 
 
 ### User Stories
