@@ -9,7 +9,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
-      <h3>Your search resulted in {{num_results}} posts with an average rent of ${{avg_rent}}.</h3>
+      <h2>Your search resulted in {{num_results}} posts with an average rent of ${{avg_rent}}.</h2>
     </div>
   </div>
   <div class="row" id="search-analysis">
@@ -23,21 +23,31 @@
     </div>
   </div>
 
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h2><center>Compare by city</center></h2>
+    </div>
+  </div>
+
   <div class="row" id="pieCharts">
-    <div class="col-md-4">
-      <h2>Bay Area</h2><canvas id="bayAreaChart" height="400"></canvas>
+    <div class="col-md-12">
+      <h3>Number of 1, 2, and 3 bedroom apartments</h3>
     </div>
     <div class="col-md-4">
-      <h2>Portland</h2><canvas id="portlandChart" height="400"></canvas>
+      <h4>Bay Area</h4><canvas id="bayAreaChart" height="400"></canvas>
     </div>
     <div class="col-md-4">
-      <h2>Seattle</h2><canvas id="seattleChart" height="400"></canvas>
+      <h4>Portland</h4><canvas id="portlandChart" height="400"></canvas>
+    </div>
+    <div class="col-md-4">
+      <h4>Seattle</h4><canvas id="seattleChart" height="400"></canvas>
     </div>
   </div>
 
   <div class="row" id="compare">
     <div class="col-md-8 col-md-offset-2">
-      <h2>Compare prices by city</h2>
+      <h2>Average rent by number of bedrooms</h2>
+      <div id="compare-legend" class="chart-legend"></div>
       <canvas id="prices" width="800" height="400"></canvas>
     </div>
   </div>
@@ -192,6 +202,8 @@ var compareData = {
 };
 
 var compareChart = new Chart(priceCtx).Bar(compareData);
+
+document.getElementById('compare-legend').innerHTML = compareChart.generateLegend();
 
 </script>
 
