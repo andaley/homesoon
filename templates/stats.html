@@ -8,8 +8,12 @@
 {% block content %}
 <div class="container">
   <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h4>Your search resulted in {{num_results}} posts with an average rent of ${{avg_rent}}.</h4>
+    </div>
+  </div>
+  <div class="row">
     <div class="col-md-6">
-      <p>Average rent of your search results: {{avg_rent}}</p>
       <p>Breakdown of posts more expensive than your search: {{more_expensive}}</p>
       <canvas id="increasedPriceChart" width="400" height="400"></canvas>
     </div>
@@ -32,7 +36,7 @@
   </div>
 
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-8 col-md-offset-2">
       <h2>Compare prices by city</h2>
       <canvas id="prices" width="800" height="400"></canvas>
     </div>
