@@ -191,12 +191,19 @@ walked through google maps tutorial and added two points to sample map
 - moved search form to base.html
 - added glyph icons
 
+8/25
+- added readme
+- updated basic styling
+
 questions:
 - how to remember form input on other pages (drop down)
+
+8/26
+- updated selenium test
+- added ids for selenium test
 
 TODO
 - center search div
 - fix alignment of search inputs (add to newline)
--
 - compartmentalize map.js for easier legibility
 - add selenium tests
