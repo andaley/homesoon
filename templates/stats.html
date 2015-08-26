@@ -9,21 +9,21 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
-      <h4>Your search resulted in {{num_results}} posts with an average rent of ${{avg_rent}}.</h4>
+      <h3>Your search resulted in {{num_results}} posts with an average rent of ${{avg_rent}}.</h3>
     </div>
   </div>
-  <div class="row">
+  <div class="row" id="search-analysis">
     <div class="col-md-6">
-      <p>Breakdown of posts more expensive than your search: {{more_expensive}}</p>
+      <h4>If you extended your budget, you could choose from {{more_expensive['$100 more'] + more_expensive['$200 more'] + more_expensive['$300 more']}} additional posts.</h4>
       <canvas id="increasedPriceChart" width="400" height="400"></canvas>
     </div>
     <div class="col-md-6">
-      <p>Number of posts farther than your desired distance: {{farther}}</p>
+      <h4>If you extended your commute, you could choose from {{farther[5][0] + farther[10][0] + farther[20][0]}} additional posts.</h4>
       <canvas id="increasedDistanceChart" width="400" height="400"></canvas>
     </div>
   </div>
 
-  <div class="row">
+  <div class="row" id="pieCharts">
     <div class="col-md-4">
       <h2>Bay Area</h2><canvas id="bayAreaChart" height="400"></canvas>
     </div>
@@ -35,7 +35,7 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row" id="compare">
     <div class="col-md-8 col-md-offset-2">
       <h2>Compare prices by city</h2>
       <canvas id="prices" width="800" height="400"></canvas>
