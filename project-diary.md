@@ -192,9 +192,11 @@ walked through google maps tutorial and added two points to sample map
 - added glyph icons
 
 questions:
-- how to show search in nav bar on all pages except for index
 - how to remember form input on other pages (drop down)
 
 TODO
+- center search div
+- fix alignment of search inputs (add to newline)
+-
 - compartmentalize map.js for easier legibility
 - add selenium tests
