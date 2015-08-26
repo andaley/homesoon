@@ -8,12 +8,19 @@
 /* MAIN */
 #main-img {
     background-color: #ccc;
-    height: 400px;
+    height: 600px;
 }
 
 #main-map{
   background-color: #ccc;
   height: 650px;
+}
+
+#search-menu {
+  position:absolute;
+  top:350px;  /* adjust value accordingly */
+  left: 0px;  /* adjust value accordingly */
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 
