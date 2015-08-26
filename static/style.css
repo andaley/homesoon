@@ -31,3 +31,17 @@
   height: 40px;
   background-color: #fff;
 }
+
+/* STATS */
+
+#search-analysis {
+  border: 1px solid;
+}
+
+#pieCharts {
+  border: 1px solid;
+}
+
+#compare {
+  border: 1px solid;
+}
