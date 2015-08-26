@@ -32,6 +32,7 @@
   <div class="row" id="pieCharts">
     <div class="col-md-12">
       <h3>Number of 1, 2, and 3 bedroom apartments</h3>
+      <div id="pie-legend" class="chart-legend col-md-3"></div>
     </div>
     <div class="col-md-4">
       <h4>Bay Area</h4><canvas id="bayAreaChart" height="400"></canvas>
@@ -92,6 +93,8 @@ function buildPieChart (my_element, my_data) {
   var ctx2 = document.getElementById(my_element).getContext("2d");
 
   var myPieChart = new Chart(ctx2).Pie(my_data);
+
+  document.getElementById('pie-legend').innerHTML = myPieChart.generateLegend();
 };
 
 var bayAreaData = [
@@ -122,7 +125,7 @@ var seattleData = [
                   value: {{seattle['1 bedrooms'][0]}},
                   color:"#F7464A",
                   highlight: "#FF5A5E",
-                  label: "1 bedrooms"
+                  label: "1 bedroom"
               },
               {
                   value: {{seattle['2 bedrooms'][0]}},
@@ -145,7 +148,7 @@ var portlandData = [
                   value: {{portland['1 bedrooms'][0]}},
                   color:"#F7464A",
                   highlight: "#FF5A5E",
-                  label: "1 bedrooms"
+                  label: "1 bedroom"
               },
               {
                   value: {{portland['2 bedrooms'][0]}},
