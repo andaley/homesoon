@@ -6,7 +6,7 @@ HomeSoon helps renters find housing within a reasonable commute distance. By see
 - Python
 - Flask
 - Javascript / jQuery
-- SQLite
+- SQLite / SQLAlchemy
 - Google Maps API
 - Google Distance Matrix
 - HTML / CSS
