@@ -4,9 +4,11 @@
 <head>
   <title>{% block title %} Title goes here {% endblock %}</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="../static/style.css">
   <script src="../static/jquery-1.11.3.min.js"></script>
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   {% block script %} {% endblock %}
 </head>
 
@@ -16,7 +18,7 @@
       <div class="navbar-header">
         <a class="navbar-brand" href="/">Home</a>
       </div>
-      <div id="navbar" class="collapse navbar-collapse">
+      <div id="navbar" class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
 
           {% if 'id' not in session %}
@@ -27,56 +29,57 @@
           {% endif %}
 
         </ul>
-        <div id="redo-search">{% block search %}
 
-          <form class="navbar-form" action="/apartments" method="POST">
-            <label>Modify your search: </label>
-            <label>Starting address:
-              <input type="text" name="address" class="address-box" id="address" value="{{raw_location}}">
-            </label>
-
-            <label>Miles away:
-              <select name="distance">
-                <option value="1">1</option>
-                <option value="3">3</option>
-                <option value="5">5</option>
-                <option value="10">10</option>
-                <option value="25">25</option>
-                <option value="50">50</option>
-              </select>
-            </label>
-
-            <label>Bedrooms:
-              <select name="bedrooms">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-              </select>
-            </label>
-
-            <label>Max price:
-              $<input type="number" name="cost" value={{price}}>
-            </label>
-
-            <label>Commute method:
-              <select name="transportation">
-                <option value="driving">driving</option>
-                <option value="transit">public transportation</option>
-                <option value="bicycling">bicycling</option>
-                <option value="walking">walking</option>
-            </label>
-
-            <input type="submit" class="btn" id="search-btn">
-          </form>
-          <script src="/static/autocomplete.js"></script>
-           {% endblock %}
-         </div>
       </div>
     </div>
   </nav>
 
   <div class="container-fluid">
+    <div id="redo-search">{% block search %}
+
+      <form class="navbar-form" action="/apartments" method="POST">
+        <label>Modify your search: </label>
+        <label>Starting address:
+          <input type="text" name="address" class="address-box" id="address" value="{{raw_location}}">
+        </label>
+
+        <label>Miles away:
+          <select name="distance">
+            <option value="1">1</option>
+            <option value="3">3</option>
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+          </select>
+        </label>
+
+        <label>Bedrooms:
+          <select name="bedrooms">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+        </label>
+
+        <label>Max price:
+          $<input type="number" name="cost" value={{price}}>
+        </label>
+
+        <label>Commute method:
+          <select name="transportation">
+            <option value="driving">driving</option>
+            <option value="transit">public transportation</option>
+            <option value="bicycling">bicycling</option>
+            <option value="walking">walking</option>
+        </label>
+
+        <input type="submit" class="btn" id="search-btn">
+      </form>
+      <script src="/static/autocomplete.js"></script>
+       {% endblock %}
+     </div>
     {% block content %} Body content goes here! {% endblock %}
   </div>
 </body>
