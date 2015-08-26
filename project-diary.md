@@ -201,6 +201,8 @@ questions:
 8/26
 - updated selenium test
 - added ids for selenium test
+- updated charts headers and labels
+- added chart legend
 
 TODO
 - center search div
