@@ -140,12 +140,22 @@ class TestIntegration(unittest.TestCase):
     def setUp(self):
         self.browser = webdriver.Firefox()
 
+
     def tearDown(self):
         self.browser.quit()
 
-    def test_title(self):
+
+    def test_form(self):
         self.browser.get('http://localhost:5000/')
         self.assertEqual(self.browser.title, 'Apartment Search')
+        a = self.browser.find_element_by_id('address')
+        a.send_keys('683 Sutter Street, San Francisco, CA')
+        c = self.browser.find_element_by_id('cost')
+        c.send_keys('3000')
+        btn = self.browser.find_element_by_id('search-btn')
+        btn.click()
+        self.assertEqual(self.browser.title, 'Apartment Results')
+
 
 if __name__ == '__main__':
     from server import app
