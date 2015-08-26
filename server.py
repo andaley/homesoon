@@ -116,6 +116,7 @@ def display_apartments():
 
     search_results = Posting.get_apartments(session['price'], session['bedrooms'], session['origin_latitude'], session['origin_longitude'], session['max_distance'])
 
+    session['num_results'] = len(search_results)
     avg_rent = Posting.calculate_avg_rent(search_results)
     session['avg_rent'] = avg_rent
 
@@ -197,7 +198,7 @@ def show_stats():
     portland_data = Posting.get_bedrooms_price('portland')
     bay_area_data = Posting.get_bedrooms_price('sfbay')
 
-    return render_template('stats.html', raw_location=session['raw_location'], price=session['price'], avg_rent=session['avg_rent'], more_expensive=more_expensive, farther=farther, bayarea=bay_area_data, seattle=seattle_data, portland=portland_data)
+    return render_template('stats.html', raw_location=session['raw_location'], price=session['price'], avg_rent=session['avg_rent'], num_results=session['num_results'], more_expensive=more_expensive, farther=farther, bayarea=bay_area_data, seattle=seattle_data, portland=portland_data)
 
 
 #### View / Add Favorites ####
