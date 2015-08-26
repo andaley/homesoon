@@ -34,7 +34,8 @@ function initialize() {
         map: map,
         animation: google.maps.Animation.DROP,
         icon: 'https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_purple.png',
-        title: 'Origin'
+        title: 'Origin',
+        optimized: false,
       })
 
     // Place markers on map using database data
