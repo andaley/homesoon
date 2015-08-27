@@ -4,11 +4,16 @@
   display: block;
 }
 
+/* NAVBAR */
+.navbar{
+  margin-bottom: 0;
+}
+
 
 /* MAIN */
 #main-img {
     background-color: #ccc;
-    height: 600px;
+    height: 650px;
 }
 
 #main-map{
