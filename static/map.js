@@ -23,7 +23,6 @@ function initialize() {
   // Retrieve apartment objects from server
   $.get('/apartments.json', function(apts) {
 
-      // TODO: move to separate function
       // Re-center map according to user's origin.
       var center = new google.maps.LatLng(apts['origin_info']['origin_lat'], apts['origin_info']['origin_lon'])
       map.setCenter(center);
@@ -136,7 +135,6 @@ function bindinfoWindow(marker, map, infoWindow, html) {
     $('#' + marker.title + '-fav').on('click', function() {
         console.log('Adding to favorites.');
 
-        // TODO: move to separate function
         // Add favorite to database & disable button.
         // Note: this cannot run until marker event listener has been triggered, since content of infoWindow doesn't exist in the DOM *until* after.
         $.get('/add-favorite', {'id': marker.title, 'commute_time': $('#' + marker.title + '-time').text()}, function(message){
