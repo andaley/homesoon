@@ -1,41 +1,42 @@
-
 /* SEARCH FORM */
+
 #address-box {
   display: block;
 }
 
 /* NAVBAR */
-.navbar{
+
+.navbar {
   margin-bottom: 0;
 }
 
-
 /* MAIN */
-#main-img {
-    background-color: #ccc;
-    height: 650px;
-}
 
-#main-map{
+#main-img {
   background-color: #ccc;
   height: 650px;
 }
-
+#main-map {
+  background-color: #ccc;
+  height: 650px;
+}
 #search-menu {
-  position:absolute;
-  top:350px;  /* adjust value accordingly */
-  left: 0px;  /* adjust value accordingly */
+  position: absolute;
+  top: 350px;
+  /* adjust value accordingly */
+  left: 0px;
+  /* adjust value accordingly */
   background-color: rgba(255, 255, 255, 0.75);
 }
 
-
 /* SIGN IN */
 
-.form-signin{
+.form-signin {
   margin-top: 100px;
 }
 
 /* FOOTER */
+
 .footer {
   margin-top: 20px;
   text-align: center;
@@ -49,25 +50,32 @@
 #search-analysis {
   border: 1px solid;
 }
-
 #pieCharts {
   border: 1px solid;
 }
-
 #compare {
   border: 1px solid;
 }
-
-.chart-legend li span{
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    margin-right: 5px;
+.chart-legend li span {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 5px;
 }
 
 /*COLORS*/
+
+
 /*#5B90BF mid blue */
+
+
 /*#96b5b4 light blue grey */
+
+
 /*#d08770 salmon */
+
+
 /*#a3be8c light green*/
+
+
 /*#b48ead purple*/
