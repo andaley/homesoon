@@ -42,7 +42,6 @@ function initialize() {
 
       var listings = apts['listings']
 
-      // TODO: move to separate function
       for (var key in listings) {
         apartment = listings[key];
 
@@ -121,7 +120,7 @@ function bindinfoWindow(marker, map, infoWindow, html) {
     lon = marker.position.K;
 
     // Given latitude and longitude of marker, retrieve distance and duration from Google Distance Matrix.
-    console.log('Calculating distance.')
+    console.log('Calculating distance.');
 
     $.get('/calculate-distance/' + lat + '/' + lon, function(total_distance) {
 
