@@ -6,8 +6,7 @@
 {% block content %}
 <div class="row" id="main-img"></div>
 <div class="row">
-  <div class="container">
-    <div class="col-md-6">
+    <div class="col-md-6 col-md-offset-3" id="search-menu">
       <h1>Find me an apartment near...</h1>
       <form action="/apartments" method="POST" autocomplete="on">
 
@@ -48,7 +47,6 @@
         <input type="submit" class="btn" id="search-btn">
       </form>
     </div>
-  </div>
 </div>
 <script>
   function initialize() {
