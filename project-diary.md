@@ -203,9 +203,9 @@ questions:
 - added ids for selenium test
 - updated charts headers and labels
 - added chart legend
+- moved search div on top of map
 
 TODO
 - center search div
 - fix alignment of search inputs (add to newline)
 - compartmentalize map.js for easier legibility
-- add selenium tests
