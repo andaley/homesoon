@@ -104,7 +104,7 @@ def find_apartments():
     session['price'] = request.form.get('cost')
     session['transit_method'] = request.form.get('transportation')
 
-    return render_template("apts.html", raw_location=session['raw_location'], price=session['price'], )
+    return render_template("apts.html", raw_location=session['raw_location'], price=session['price'])
 
 
 @app.route('/apartments.json')
