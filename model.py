@@ -23,8 +23,10 @@ class Posting(db.Model):
     longitude = db.Column(db.Float, nullable=False)
     is_favorited = db.Column(db.Boolean, default=False)
 
+
     def __repr__(self):
         return "<Post: %s, price: %s, bedrooms: %s>" % (self.post_id, self.price, self.bedrooms)
+
 
     @staticmethod
     def calculate_outer_bounds(origin_lat, origin_lon, desired_distance):
@@ -81,6 +83,7 @@ class Posting(db.Model):
 
         return True
 
+
     @classmethod
     def calculate_avg_rent(cls, apartments):
         """Calculates average rent for a given list of apartment objects."""
@@ -129,7 +132,8 @@ class Posting(db.Model):
     @classmethod
     def get_farther_away(cls, price, bedrooms, origin_lat, origin_lon, desired_distance):
 
-        """Calculate # posts within 5, 10, 20 miles of origin.
+        """
+        Calculate # posts within 5, 10, 20 miles of origin.
 
         Returns a dictionary where the key is the distance in miles from origin, and the value is a list with the # of posts within that distance and the average price.
 
@@ -137,7 +141,7 @@ class Posting(db.Model):
         {15: [153, 1927], 20: [240, 1844], 10: [105, 1919]}
         """
 
-        # t = Posting.get_farther_away(2500, 1, 37.7914448, -122.3929672, 5)
+        # test = Posting.get_farther_away(2500, 1, 37.7914448, -122.3929672, 5)
         increment = [5, 10, 20]
         posts = {}
 
@@ -158,6 +162,7 @@ class Posting(db.Model):
         posts[10][0] -= posts[5][0]
 
         return posts
+
 
     @classmethod
     def get_bedrooms_price(cls, city_prefix):
@@ -183,6 +188,7 @@ class Posting(db.Model):
         return {'1 bedrooms': [num_one_beds, avg_price_one_beds],
                 '2 bedrooms': [num_two_beds, avg_price_two_beds],
                 '3 bedrooms': [num_three_beds, avg_price_three_beds]}
+
 
 class User(db.Model):
     """Represents a user."""
@@ -212,8 +218,24 @@ class Favorite(db.Model):
     post = db.relationship("Posting", backref=db.backref("favorites", order_by=post_id))
     user = db.relationship("User", backref=db.backref("users", order_by=user_id))
 
+
     def __repr__(self):
         return "<favorite_id: %s, post_id: %s, user_id: %s>" % (self.favorite_id, self.post_id, self.user_id)
+
+
+    @classmethod
+    def add_favorite(cls, user_id, marker_id, commute_time, raw_location):
+        """Add new Favorite to database."""
+
+        new_favorite = cls(user_id = user_id, post_id = marker_id, commute_time = commute_time, origin = raw_location)
+
+        db.session.add(new_favorite)
+        db.session.commit()
+
+        new_favorite.post.is_favorited = True
+        db.session.commit()
+
+
 
 ######### Helper Functions #########
 

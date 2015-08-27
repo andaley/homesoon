@@ -224,13 +224,7 @@ def add_favorite():
         message = 'Sign in to save!'
         return message
 
-    new_favorite = Favorite(user_id = session['id'], post_id = marker_id, commute_time = commute_time, origin = session['raw_location'])
-
-    db.session.add(new_favorite)
-    db.session.commit()
-
-    new_favorite.post.is_favorited = True
-    db.session.commit()
+    Favorite.add_favorite(user_id = session['id'], marker_id = marker_id, commute_time = commute_time, raw_location = session['raw_location'])
 
     message = '<span class="glyphicon glyphicon-star"></span>'
 
