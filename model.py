@@ -26,8 +26,8 @@ class Posting(db.Model):
     def __repr__(self):
         return "<Post: %s, price: %s, bedrooms: %s>" % (self.post_id, self.price, self.bedrooms)
 
-    @classmethod
-    def calculate_outer_bounds(cls, origin_lat, origin_lon, desired_distance):
+    @staticmethod
+    def calculate_outer_bounds(origin_lat, origin_lon, desired_distance):
         """Given origin latitude, longitude, and desired distance, calculate the
         """
 
