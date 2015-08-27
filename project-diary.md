@@ -205,6 +205,11 @@ questions:
 - added chart legend
 - moved search div on top of map
 
+8/27
+- worked on map styles
+- added more glyphs
+- prepped project pitch
+
 TODO
 - center search div
 - fix alignment of search inputs (add to newline)
