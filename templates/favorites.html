@@ -9,35 +9,37 @@
 <div class="row">
   <div class="container">
     <h1>My Favorites</h1>
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th></th>
-            <th>Post Title</th>
-            <th>Price</th>
-            <th>Bedrooms</th>
-            <th>Commute Time</th>
-            <th></th>
-        </tr>
-        </thead>
+    <div class="table-responsive">
+      <table class="table table-striped table-hover">
+          <thead>
+          <tr>
+              <th></th>
+              <th>Post Title</th>
+              <th>Price</th>
+              <th>Bedrooms</th>
+              <th>Commute Time</th>
+              <th></th>
+          </tr>
+          </thead>
 
-        <tbody>
-            {% if favorites %}
-              {% for favorite in favorites %}
-                  <tr id="{{favorite.favorite_id}}">
-                      <td><img src="{{favorite.post.img_url}}" width="150"></td>
-                      <td><a href={{favorite.post.url}} target="_blank">{{favorite.post.title}}</a></td>
-                      <td>${{favorite.post.price}}</td>
-                      <td>{{favorite.post.bedrooms}}</td>
-                      <td>{{favorite.commute_time}} from  {{favorite.origin}}</td>
-                      <td><button class="btn remove-button" data-id={{favorite.favorite_id}}>
-                        <span class="glyphicon glyphicon-remove"></span>
-                      </button></td>
-                  </tr>
-              {% endfor %}
-            {% endif %}
-        </tbody>
-    </table>
+          <tbody>
+              {% if favorites %}
+                {% for favorite in favorites %}
+                    <tr id="{{favorite.favorite_id}}">
+                        <td><img src="{{favorite.post.img_url}}" width="150"></td>
+                        <td><a href={{favorite.post.url}} target="_blank">{{favorite.post.title}}</a></td>
+                        <td>${{favorite.post.price}}</td>
+                        <td>{{favorite.post.bedrooms}}</td>
+                        <td>{{favorite.commute_time}} from  {{favorite.origin}}</td>
+                        <td><button class="btn remove-button" data-id={{favorite.favorite_id}}>
+                          <span class="glyphicon glyphicon-remove"></span>
+                        </button></td>
+                    </tr>
+                {% endfor %}
+              {% endif %}
+          </tbody>
+      </table>
+    </div>
 
   </div>
 </div>
