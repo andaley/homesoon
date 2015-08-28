@@ -32,7 +32,8 @@ var styles = [
       { "lightness": 8 },
       { "hue": "#00ff99" },
       { "gamma": 2.81 },
-      { "color": "#41afa5" }
+      { "color": "#41afa5" },
+      { "saturation": -73 }
     ]
   },{
     "featureType": "landscape.man_made",
