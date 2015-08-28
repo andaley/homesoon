@@ -90,7 +90,8 @@
         // Set drop-down values to users' selection.
         $('#distance').val({{distance}});
         $('#bedrooms').val({{bedrooms}});
-        $('#transportation').val({{transit}});
+        console.log('{{transit}}');
+        $('#transportation').val('{{transit}}');
       </script>
       <script src="/static/autocomplete.js"></script>
        {% endblock %}
