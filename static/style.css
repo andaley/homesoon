@@ -35,7 +35,7 @@ body {
 input {
   border: none;
   border-bottom: 1px dotted;
-  background: transparent;
+  background: transparent;g
 }
 
 /* SIGN IN */
@@ -86,8 +86,12 @@ input {
 /*#d08770 salmon */
 /* rgb(208,135,112) */
 
+/*#ab7967 darker salmon*/
+
 /*#a3be8c light green*/
 /* rgb(163,190,140) */
 
 
 /*#b48ead purple*/
+
+/*#232830 dark blue*/
