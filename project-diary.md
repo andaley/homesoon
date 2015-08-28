@@ -195,9 +195,6 @@ walked through google maps tutorial and added two points to sample map
 - added readme
 - updated basic styling
 
-questions:
-- how to remember form input on other pages (drop down)
-
 8/26
 - updated selenium test
 - added ids for selenium test
@@ -211,7 +208,7 @@ questions:
 - prepped project pitch
 - added jquery to remember drop down selection
 
+8/28
+-
+
 TODO
-- center search div
-- fix alignment of search inputs (add to newline)
-- compartmentalize map.js for easier legibility
