@@ -10,7 +10,7 @@
       <h1>Find me an apartment near...</h1>
       <form action="/apartments" method="POST" autocomplete="on">
 
-        <input type="text" name="address" class="address-box" id="address" placeholder="Address, city or zip">
+        <input type="text" name="address" class="address-box" id="address" placeholder="Address, city or zip" required autofocus>
         <p></p>
 
         <label>within
@@ -34,7 +34,7 @@
           bedrooms,</label>
 
         <label>and costs less than $
-          <input type="number" id="cost" name="cost" placeholder="3,000"> per month.</label>
+          <input type="number" id="cost" name="cost" placeholder="3,000" required> per month.</label>
 
         <label>I like to commute by:
           <select name="transportation">
