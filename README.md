@@ -39,7 +39,7 @@ Then, go back to your terminal and source it.
 source secrets.sh
 ```
 
-Gather data from Craigslist with the command `python seed.py`.
+Back in your terminal, gather data from Craigslist with the command `python seed.py`.
 
 Run `python tests.py` to verify the data structure from Craigslist hasn't changed.
 
