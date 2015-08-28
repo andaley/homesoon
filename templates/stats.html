@@ -9,6 +9,12 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
+      <button onclick=goBack()>Go Back</button>
+          <script>
+    function goBack() {
+        window.history.back();
+    }
+    </script>
       <h2>Your search resulted in {{num_results}} posts with an average rent of ${{avg_rent}}.</h2>
     </div>
   </div>
