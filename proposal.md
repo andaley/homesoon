@@ -2,7 +2,7 @@
 
 
 ## Overview
-___ allows users to search for housing based on proximity to a given location and commute time.
+HomeSoon allows users to search for housing based on proximity to a given location and commute time.
 
 ### Feature List
 - ~~Allow user to enter a key point of interest & select how far they're willing to commute~~
