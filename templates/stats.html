@@ -69,10 +69,10 @@ function buildBarChart (element, x_axis, y_axis){
       labels: x_axis,
       datasets: [
           {
-              fillColor: "rgba(220,220,220,0.5)",
-              strokeColor: "rgba(220,220,220,0.8)",
-              highlightFill: "rgba(220,220,220,0.75)",
-              highlightStroke: "rgba(220,220,220,1)",
+              fillColor: "rgba(180,142,173,0.5)",
+              strokeColor: "rgba(180,142,173,0.8)",
+              highlightFill: "rgba(180,142,173,0.75)",
+              highlightStroke: "rgba(180,142,173,1)",
               data: y_axis
           },
       ]
@@ -106,20 +106,20 @@ function buildPieChart (my_element, my_data) {
 var bayAreaData = [
               {
                   value: {{bayarea['1 bedrooms'][0]}},
-                  color:"#F7464A",
-                  highlight: "#FF5A5E",
+                  color:"rgba(91,144,191,0.5)",
+                  highlight: "rgba(91,144,191,0.75)",
                   label: "1 bedroom"
               },
               {
                   value: {{bayarea['2 bedrooms'][0]}},
-                  color: "#46BFBD",
-                  highlight: "#5AD3D1",
+                  color: "rgba(163,190,140,0.5)",
+                  highlight: "rgba(163,190,140,0.75)",
                   label: "2 bedrooms"
               },
               {
                   value: {{bayarea['3 bedrooms'][0]}},
-                  color: "#FDB45C",
-                  highlight: "#FFC870",
+                  color: "rgba(208,135,112,0.5)",
+                  highlight: "rgba(208,135,112,0.75)",
                   label: "3 bedrooms"
               }
             ];
@@ -129,20 +129,20 @@ buildPieChart('bayAreaChart', bayAreaData);
 var seattleData = [
               {
                   value: {{seattle['1 bedrooms'][0]}},
-                  color:"#F7464A",
-                  highlight: "#FF5A5E",
+                  color:"rgba(91,144,191,0.5)",
+                  highlight: "rgba(91,144,191,0.75)",
                   label: "1 bedroom"
               },
               {
                   value: {{seattle['2 bedrooms'][0]}},
-                  color: "#46BFBD",
-                  highlight: "#5AD3D1",
+                  color: "rgba(163,190,140,0.5)",
+                  highlight: "rgba(163,190,140,0.75)",
                   label: "2 bedrooms"
               },
               {
                   value: {{seattle['3 bedrooms'][0]}},
-                  color: "#FDB45C",
-                  highlight: "#FFC870",
+                  color: "rgba(208,135,112,0.5)",
+                  highlight: "rgba(208,135,112,0.75)",
                   label: "3 bedrooms"
               }
             ];
@@ -152,20 +152,20 @@ buildPieChart('seattleChart', seattleData);
 var portlandData = [
               {
                   value: {{portland['1 bedrooms'][0]}},
-                  color:"#F7464A",
-                  highlight: "#FF5A5E",
+                  color:"rgba(91,144,191,0.5)",
+                  highlight: "rgba(91,144,191,0.75)",
                   label: "1 bedroom"
               },
               {
                   value: {{portland['2 bedrooms'][0]}},
-                  color: "#46BFBD",
-                  highlight: "#5AD3D1",
+                  color: "rgba(163,190,140,0.5)",
+                  highlight: "rgba(163,190,140,0.75)",
                   label: "2 bedrooms"
               },
               {
                   value: {{portland['3 bedrooms'][0]}},
-                  color: "#FDB45C",
-                  highlight: "#FFC870",
+                  color: "rgba(208,135,112,0.5)",
+                  highlight: "rgba(208,135,112,0.75)",
                   label: "3 bedrooms"
               }
             ];
