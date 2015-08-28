@@ -209,6 +209,7 @@ walked through google maps tutorial and added two points to sample map
 - added jquery to remember drop down selection
 
 8/28
--
+- fixed jquery dropown bug
+- moved flash message
 
 TODO
