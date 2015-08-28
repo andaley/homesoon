@@ -32,6 +32,12 @@ body {
   background-color: rgba(255, 255, 255, 0.75);
 }
 
+input {
+  border: none;
+  border-bottom: 1px dotted;
+  background: transparent;
+}
+
 /* SIGN IN */
 
 .form-signin {
@@ -70,15 +76,18 @@ body {
 
 
 /*#5B90BF mid blue */
+/* rgb(91,144,191) */
 
 
 /*#96b5b4 light blue grey */
+/*rgb(150,181,180) */
 
 
 /*#d08770 salmon */
-
+/* rgb(208,135,112) */
 
 /*#a3be8c light green*/
+/* rgb(163,190,140) */
 
 
 /*#b48ead purple*/
