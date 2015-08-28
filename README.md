@@ -9,6 +9,9 @@ HomeSoon helps renters find housing within a reasonable commute distance. By see
 - SQLite / SQLAlchemy
 - Google Maps API
 - Google Distance Matrix
+- Google Geocoding Service
+- Google Places
+- Craigslist
 - HTML / CSS
 - Bootstrap
 
