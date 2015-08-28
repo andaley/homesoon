@@ -86,13 +86,12 @@
 
         <input type="submit" class="btn" id="search-btn">
       </form>
-      <script src="/static/autocomplete.js"></script>
       <script>
         // Set drop-down values to users' selection.
         $('#distance').val({{distance}});
         $('#bedrooms').val({{bedrooms}});
-
       </script>
+      <script src="/static/autocomplete.js"></script>
        {% endblock %}
      </div>
     {% block content %} Body content goes here! {% endblock %}
