@@ -215,5 +215,6 @@ walked through google maps tutorial and added two points to sample map
 - imported google fonts
 - updating chart colors
 - update requirements
+- added sticky navbar
 
 TODO
