@@ -211,5 +211,9 @@ walked through google maps tutorial and added two points to sample map
 8/28
 - fixed jquery dropown bug
 - moved flash message
+- added map style
+- imported google fonts
+- updating chart colors
+- update requirements
 
 TODO
