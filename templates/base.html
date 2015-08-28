@@ -53,7 +53,7 @@
         </label>
 
         <label>Miles away:
-          <select name="distance">
+          <select name="distance" id="distance">
             <option value="1">1</option>
             <option value="3">3</option>
             <option value="5">5</option>
@@ -64,7 +64,7 @@
         </label>
 
         <label>Bedrooms:
-          <select name="bedrooms">
+          <select name="bedrooms" id="bedrooms">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -87,10 +87,17 @@
         <input type="submit" class="btn" id="search-btn">
       </form>
       <script src="/static/autocomplete.js"></script>
+      <script>
+        // Set drop-down values to users' selection.
+        $('#distance').val({{distance}});
+        $('#bedrooms').val({{bedrooms}});
+
+      </script>
        {% endblock %}
      </div>
     {% block content %} Body content goes here! {% endblock %}
   </div>
+
 </body>
 
 <footer class="footer">

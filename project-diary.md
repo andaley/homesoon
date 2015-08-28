@@ -209,6 +209,7 @@ questions:
 - worked on map styles
 - added more glyphs
 - prepped project pitch
+- added jquery to remember drop down selection
 
 TODO
 - center search div
