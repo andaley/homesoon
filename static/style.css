@@ -11,6 +11,9 @@
 }
 
 /* MAIN */
+body {
+  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
 
 #main-img {
   background-color: #ccc;
