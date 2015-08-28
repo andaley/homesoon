@@ -77,7 +77,7 @@
         </label>
 
         <label>Commute method:
-          <select name="transportation">
+          <select name="transportation" id="transporation">
             <option value="driving">driving</option>
             <option value="transit">public transportation</option>
             <option value="bicycling">bicycling</option>
@@ -90,6 +90,7 @@
         // Set drop-down values to users' selection.
         $('#distance').val({{distance}});
         $('#bedrooms').val({{bedrooms}});
+        $('#transportation').val({{transit}});
       </script>
       <script src="/static/autocomplete.js"></script>
        {% endblock %}
