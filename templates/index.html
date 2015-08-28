@@ -10,7 +10,7 @@
       <h1>Find me an apartment near...</h1>
       <form action="/apartments" method="POST" autocomplete="on">
 
-        <input type="text" name="address" class="address-box" id="address" placeholder="Address, city or zip" required autofocus>
+        <input type="text" name="address" class="address-box" id="address" placeholder="Address, city or zip" required>
         <p></p>
 
         <label>within
@@ -56,10 +56,14 @@
     var mapOptions = {
       center: new google.maps.LatLng(37.78, -122.41),
       zoom: 12,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
+      mapTypeControlOptions: {
+        mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
+      }
     }
 
     var map = new google.maps.Map(mapCanvas, mapOptions);
+    map.mapTypes.set('map_style', styledMap);
+    map.setMapTypeId('map_style');
 
   }
 
