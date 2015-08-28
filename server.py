@@ -104,7 +104,7 @@ def find_apartments():
     session['price'] = request.form.get('cost')
     session['transit_method'] = request.form.get('transportation')
 
-    return render_template("apts.html", raw_location=session['raw_location'], price=session['price'], distance=session['max_distance'], bedrooms=session['bedrooms'], transit=session['transit_method'])
+    return render_template("apts.html", raw_location=session['raw_location'], price=session['price'], distance=session['max_distance'], bedrooms=session['bedrooms'], transport=session['transit_method'])
 
 
 @app.route('/apartments.json')
@@ -198,7 +198,7 @@ def show_stats():
     portland_data = Posting.get_bedrooms_price('portland')
     bay_area_data = Posting.get_bedrooms_price('sfbay')
 
-    return render_template('stats.html', raw_location=session['raw_location'], price=session['price'], avg_rent=session['avg_rent'], num_results=session['num_results'], more_expensive=more_expensive, farther=farther, bayarea=bay_area_data, seattle=seattle_data, portland=portland_data, distance=session['max_distance'], bedrooms=session['bedrooms'], transit=session['transit_method'])
+    return render_template('stats.html', raw_location=session['raw_location'], price=session['price'], avg_rent=session['avg_rent'], num_results=session['num_results'], more_expensive=more_expensive, farther=farther, bayarea=bay_area_data, seattle=seattle_data, portland=portland_data, distance=session['max_distance'], bedrooms=session['bedrooms'], transport=session['transit_method'])
 
 
 #### View / Add Favorites ####
