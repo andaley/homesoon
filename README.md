@@ -23,11 +23,11 @@ pip install virtualenv
 virtualenv env/
 source env/bin/activate
 ```
-Install the requirements
+Install the requirements:
 ```
 pip install -r requirements.txt
 ```
-NOTE: You will need a Google Maps API key to access the Google Distance Matrix. If you don't already have one, there are instructions from Google here. https://developers.google.com/maps/documentation/javascript/tutorial
+NOTE: You will need a Google Maps API key to access the Google Distance Matrix. If you don't already have one, follow [these](https://developers.google.com/maps/documentation/javascript/tutorial) instructions from Google.
 
 Once you have your API key, store it in a shell file called `secrets.sh` as follows:
 ```
@@ -38,3 +38,9 @@ Then, go back to your terminal and source it.
 ```
 source secrets.sh
 ```
+
+Gather data from Craigslist with the command `python seed.py`.
+
+Run `python tests.py` to verify the data structure from Craigslist hasn't changed.
+
+Lastly, run `python server.py` and visit `localhost:5000/` in your web browser of choice to use the app.
