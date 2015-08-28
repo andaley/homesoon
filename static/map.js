@@ -4,10 +4,15 @@ var mapCanvas = document.getElementById('main-map');
 var mapOptions = {
   center: new google.maps.LatLng(37.7577, -122.4376),
   zoom: 12,
+  mapTypeControlOptions: {
+    mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
+  }
 };
 
 // Create the map!
 var map = new google.maps.Map(mapCanvas, mapOptions);
+map.mapTypes.set('map_style', styledMap);
+map.setMapTypeId('map_style');
 
 var markerList = [];
 
