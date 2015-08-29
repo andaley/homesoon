@@ -158,6 +158,29 @@ class TestIntegration(unittest.TestCase):
         self.browser.find_element_by_css_selector("div[title='Origin']")
 
 
+    def test_sign_in(self):
+        # Sign in
+        self.browser.get('http://localhost:5000/')
+        s = self.browser.find_element_by_id('signIn')
+        s.click()
+        self.assertEqual(self.browser.title, 'Sign In')
+        u = self.browser.find_element_by_name('username')
+        u.send_keys('admin')
+        p = self.browser.find_element_by_name('password')
+        p.send_keys('wrongpassword')
+        btn = self.browser.find_element_by_class_name('btn')
+        btn.click()
+
+        # Make sure error message displays if username or password is incorrect.
+        e = self.browser.find_element_by_id('error')
+        w = self.browser.find_element_by_xpath("//*[contains(text(), 'Oh no! Your email address or password is incorrect. Please try again')]")
+
+        # If username & password is correct, user should be redirected.
+        u.send_keys('admin')
+        p.send_keys('admin')
+        self.assertEqual(self.browser.title, 'Apartment Results')
+
+
 if __name__ == '__main__':
     from server import app
     from model import connect_to_db
