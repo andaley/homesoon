@@ -176,9 +176,14 @@ class TestIntegration(unittest.TestCase):
         w = self.browser.find_element_by_xpath("//*[contains(text(), 'Oh no! Your email address or password is incorrect. Please try again')]")
 
         # If username & password is correct, user should be redirected.
-        u.send_keys('admin')
-        p.send_keys('admin')
-        self.assertEqual(self.browser.title, 'Apartment Results')
+        self.browser.get('http://localhost:5000/sign-in')
+        u2 = self.browser.find_element_by_name('username')
+        u2.send_keys('admin')
+        p2 = self.browser.find_element_by_name('password')
+        p2.send_keys('admin')
+        btn = self.browser.find_element_by_class_name('btn')
+        btn.click()
+        self.assertEqual(self.browser.title, 'Apartment Search')
 
 
 if __name__ == '__main__':
