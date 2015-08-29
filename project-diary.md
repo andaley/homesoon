@@ -216,5 +216,7 @@ walked through google maps tutorial and added two points to sample map
 - updating chart colors
 - update requirements
 - added sticky navbar
+- fixed bug where favorites no longer exists
+- added sign in selenium test
 
 TODO
