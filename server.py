@@ -244,7 +244,6 @@ def remove_favorite():
 
     favorite_id = request.form.get('id')
     favorite = Favorite.query.get(favorite_id)
-    print favorite, favorite.post
     favorite.post.is_favorited = False
     db.session.commit()
     db.session.delete(favorite)
