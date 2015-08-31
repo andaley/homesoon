@@ -3,7 +3,15 @@
 HomeSoon helps renters find housing within a reasonable commute distance. By seeding data from Craigslist, HomeSoon lets users search for a new apartment according to their budget, method of transportation, and desired distance from work. HomeSoon uses the Google Maps API to display a user's search results, where they can view further details such as an image, how the price compares to the average rent of their search, and most importantly, how long it would take to get to work from that location. Additionally, HomeSoon uses Chart.js to provide interactive charts helping users analyze their search.
 
 
-### Built With:
+### Contents
+Technology Stack
+Feature List
+Accessing Craigslist data
+Calculating Distance
+Installation
+
+
+### Technology Stack:
 - Python
 - Flask
 - Javascript / jQuery
@@ -17,10 +25,10 @@ HomeSoon helps renters find housing within a reasonable commute distance. By see
 - HTML / CSS
 - Bootstrap
 
+### Feature List
 
-### Structure
-
-
+- [x] Pull data from Craigslist and store in database (Python, SQLite)
+- [x] Query
 
 ### Installation
 
