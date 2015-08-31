@@ -228,8 +228,10 @@ walked through google maps tutorial and added two points to sample map
 - adding google fonts
 - styling navbar links
 - styling search form
+- fixed position of search box when resized
 
 TODO
-- fix position of search box when resized
+
 - stick footer to bottom of page
 - make footer text white
+- remote map options from map
