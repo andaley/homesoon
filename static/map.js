@@ -66,14 +66,14 @@ function initialize() {
             var priceMessage, difference;
             if (percentMoreLess < 100) {
               difference = 100 - percentMoreLess;
-              priceMessage = 'This is ' + difference + '% less than the average price in your search.';
+              priceMessage = 'style="color:green">This is ' + difference + '% less than the average price in your search.</p>';
             } else if (percentMoreLess > 100) {
               difference = percentMoreLess - 100;
-              priceMessage = 'This is ' + difference + '% more than the average price in your search.';
+              priceMessage = 'style="color:red">This is ' + difference + '% more than the average price in your search.</p>';
             }
 
             var imgURL, imgPlaceholder;
-            if (apartment['img_url'] != "") {
+            if (apartment['img_url'] !== "") {
               imgPlaceholder = '<img src="' + apartment['img_url'] + '" height="150px">';
             } else {
               imgPlaceholder = '';
@@ -82,8 +82,8 @@ function initialize() {
             // Define content of infoWindow per marker
             contentString = (
               '<div class="window-content">' +
-              '<a href="' + apartment['url'] + '" target="_blank">' + apartment['title'] + '</a>' + '<p>Rent: $' + apartment['price'] + '</p>' +
-              '<p>' + priceMessage + '</p>' +
+              '<a href="' + apartment['url'] + '" target="_blank" class="title">' + apartment['title'] + '</a>' + '<p>Rent: $' + apartment['price'] + '</p>' +
+              '<p ' + priceMessage + '</p>' +
               '<p>Bedrooms: ' + apartment['bedrooms'] + '</p>' +
               imgPlaceholder +
               '<a href="#" target="_blank" id="' + key + '-dir"><p>Commute time: <span id="' + key + '-time"></span></p></a>' +
