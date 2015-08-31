@@ -230,3 +230,6 @@ walked through google maps tutorial and added two points to sample map
 - styling search form
 
 TODO
+- fix position of search box when resized
+- stick footer to bottom of page
+- make footer text white
