@@ -230,7 +230,7 @@ def add_favorite():
         return message
 
     # Only add favorite if user hasn't already saved it.
-    if not Favorite.query.filter(Favorite.post_id == marker_id, Favorite.user_id == session['id']).one():
+    if not Favorite.query.filter(Favorite.post_id == marker_id, Favorite.user_id == session['id']).all():
 
         Favorite.add_favorite(user_id = session['id'], marker_id = marker_id, commute_time = commute_time, raw_location = session['raw_location'])
 
