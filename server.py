@@ -180,8 +180,11 @@ def calculate_distance(lat, lon):
     return jsonify(total_distance)
 
 
-@app.route('/stats')
-def show_stats():
+#### Charts and Stats ####
+
+
+@app.route('/charts')
+def show_charts():
     """
     Displays graphs related to the users' search as well as general prices from Craigslist.
     """
@@ -198,7 +201,7 @@ def show_stats():
     portland_data = Posting.get_bedrooms_price('portland')
     bay_area_data = Posting.get_bedrooms_price('sfbay')
 
-    return render_template('stats.html', raw_location=session['raw_location'], price=session['price'], avg_rent=session['avg_rent'], num_results=session['num_results'], more_expensive=more_expensive, farther=farther, bayarea=bay_area_data, seattle=seattle_data, portland=portland_data, distance=session['max_distance'], bedrooms=session['bedrooms'], transport=session['transit_method'])
+    return render_template('charts.html', raw_location=session['raw_location'], price=session['price'], avg_rent=session['avg_rent'], num_results=session['num_results'], more_expensive=more_expensive, farther=farther, bayarea=bay_area_data, seattle=seattle_data, portland=portland_data, distance=session['max_distance'], bedrooms=session['bedrooms'], transport=session['transit_method'])
 
 
 #### View / Add Favorites ####
