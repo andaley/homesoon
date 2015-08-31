@@ -8,13 +8,13 @@
 <div class="row">
     <div class="col-md-6 col-md-offset-3" id="search-menu">
       <h1>Find me an apartment near...</h1>
-      <form action="/apartments" method="POST" autocomplete="on">
+      <form class="" action="/apartments" method="POST" autocomplete="on">
 
-        <input type="text" name="address" class="address-box" id="address" placeholder="Address, city or zip" required>
+        <input type="text" name="address" class="input-lg col-lg-12" id="address" placeholder="Address, city or zip" required>
         <p></p>
 
         <label>within
-          <select name="distance">
+          <select name="distance" class="form-control">
             <option value="1">1</option>
             <option value="3">3</option>
             <option value="5">5</option>
@@ -25,7 +25,7 @@
           miles.</label>
 
         <label>That has
-          <select name="bedrooms">
+          <select name="bedrooms" class="form-control">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -37,7 +37,7 @@
           <input type="number" id="cost" name="cost" placeholder="3,000" required> per month.</label>
 
         <label>I like to commute by:
-          <select name="transportation">
+          <select name="transportation" class="form-control">
             <option value="driving">driving</option>
             <option value="transit">public transportation</option>
             <option value="bicycling">bicycling</option>
