@@ -180,7 +180,7 @@ def calculate_distance(lat, lon):
     return jsonify(total_distance)
 
 
-#### Charts and Stats ####
+#### Charts ####
 
 
 @app.route('/charts')
