@@ -23,7 +23,7 @@ body {
 input {
   border: none;
   border-bottom: 1px dotted;
-  background: transparent;g
+  background: transparent;
 }
 
 a {
@@ -41,6 +41,14 @@ a:hover {
   width: 100%;
   height: 40px;
   background-color: #fff;
+}
+
+.btn {
+  background-color: transparent;
+}
+
+#search-btn {
+  border: 1px solid;
 }
 
 
