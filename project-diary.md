@@ -219,4 +219,8 @@ walked through google maps tutorial and added two points to sample map
 - fixed bug where favorites no longer exists
 - added sign in selenium test
 
+8/30
+- cleaned up css by page
+- added color to price message
+
 TODO
