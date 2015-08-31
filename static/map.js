@@ -37,7 +37,7 @@ function initialize() {
         position: new google.maps.LatLng(apts['origin_info']['origin_lat'], apts['origin_info']['origin_lon']),
         map: map,
         animation: google.maps.Animation.DROP,
-        icon: 'https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_blue.png',
+        icon: 'https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_purple.png',
         title: 'Origin',
         optimized: false, // used for selenium test. Can set to true once test passes.
       })
