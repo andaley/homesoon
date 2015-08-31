@@ -66,10 +66,10 @@ function initialize() {
             var priceMessage, difference;
             if (percentMoreLess < 100) {
               difference = 100 - percentMoreLess;
-              priceMessage = 'style="color:green">This is ' + difference + '% less than the average price in your search.</p>';
+              priceMessage = 'style="color:#94AE80">This is ' + difference + '% less than the average price in your search.</p>';
             } else if (percentMoreLess > 100) {
               difference = percentMoreLess - 100;
-              priceMessage = 'style="color:red">This is ' + difference + '% more than the average price in your search.</p>';
+              priceMessage = 'style="color:#ff3c00">This is ' + difference + '% more than the average price in your search.</p>';
             }
 
             var imgURL, imgPlaceholder;
@@ -82,7 +82,7 @@ function initialize() {
             // Define content of infoWindow per marker
             contentString = (
               '<div class="window-content">' +
-              '<a href="' + apartment['url'] + '" target="_blank" class="title">' + apartment['title'] + '</a>' + '<p>Rent: $' + apartment['price'] + '</p>' +
+              '<a href="' + apartment['url'] + '" target="_blank" class="apt-title">' + apartment['title'] + '</a>' + '<p>Rent: $' + apartment['price'] + '</p>' +
               '<p ' + priceMessage + '</p>' +
               '<p>Bedrooms: ' + apartment['bedrooms'] + '</p>' +
               imgPlaceholder +
