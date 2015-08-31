@@ -15,7 +15,7 @@
         </script>
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
-      <h2>Your search resulted in {{num_results}} posts with an average rent of ${{avg_rent}}.</h2>
+      <h2>Your search resulted in <span class="results-num">{{num_results}}</span> posts with an average rent of <span class="results-num">${{avg_rent}}</span>.</h2>
     </div>
   </div>
   <div class="row" id="search-analysis">
@@ -28,10 +28,11 @@
       <canvas id="increasedDistanceChart" width="400" height="400"></canvas>
     </div>
   </div>
+  <div class="blue-row"></div>
 
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
-      <h2><center>Compare by city</center></h2>
+      <h2>Compare by city</h2>
     </div>
   </div>
 
@@ -69,10 +70,10 @@ function buildBarChart (element, x_axis, y_axis){
       labels: x_axis,
       datasets: [
           {
-              fillColor: "rgba(180,142,173,0.5)",
-              strokeColor: "rgba(180,142,173,0.8)",
-              highlightFill: "rgba(180,142,173,0.75)",
-              highlightStroke: "rgba(180,142,173,1)",
+              fillColor: "rgba(163,190,140,0.5)",
+              strokeColor: "rgba(163,190,140,0.8)",
+              highlightFill: "rgba(163,190,140,0.75)",
+              highlightStroke: "rgba(163,190,140,1)",
               data: y_axis
           },
       ]
