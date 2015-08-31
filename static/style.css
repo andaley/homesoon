@@ -27,7 +27,12 @@ input {
 }
 
 a {
+  color: rgb(91,144,191);
+}
+
+a:hover {
   text-decoration: none;
+  color: rgb(91,144,191, 0.5);
 }
 
 .footer {
@@ -67,6 +72,11 @@ a {
 
 .form-signin {
   margin-top: 100px;
+}
+
+.apt-title {
+  font-weight: bold;
+  color: #698784;
 }
 
 
