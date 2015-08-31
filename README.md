@@ -6,10 +6,10 @@ HomeSoon was built by Noelle Daley over the course of 3 and half weeks as part o
 
 ### Contents
 - [Technology Stack](#technology-stack)
-- Feature List
-- Accessing Craigslist data
-- Calculating Distance
-- Installation
+- [Feature List](#feature-list)
+- [Accessing Craigslist data](#accessing-craigslist-data)
+- [Calculating Distance](#calculating-distance)
+- [Installation](#installation)
 
 
 ### Technology Stack:
@@ -51,29 +51,39 @@ HomeSoon was built by Noelle Daley over the course of 3 and half weeks as part o
     - [x] Number of 1, 2, or 3 bedroom places
     - [x] Average price of 1, 2, or 3 bedrooms places per city
 
+
+### Accessing Craigslist Data
+
+One of the most interesting challenges I encountered while working on this project was accessing Craigslist data, parsing it, and storing it in my database. Craigslist does not have an official API, so I built my own lightweight version for viewing housing posts.
+
+
+### Calculating Distance
+
+
+
 ### Installation
 
 1. After cloning this repo, set up your virtual environment & activate it.
-```
-pip install virtualenv
-virtualenv env/
-source env/bin/activate
-```
+  ```
+  pip install virtualenv
+  virtualenv env/
+  source env/bin/activate
+  ```
 2. Install the requirements:
-```
-pip install -r requirements.txt
-```
-NOTE: You will need a Google Maps API key to access the Google Distance Matrix. If you don't already have one, follow [these](https://developers.google.com/maps/documentation/javascript/tutorial) instructions from Google.
+  ```
+  pip install -r requirements.txt
+  ```
+  NOTE: You will need a Google Maps API key to access the Google Distance Matrix. If you don't already have one, follow [these](https://developers.google.com/maps/documentation/javascript/tutorial) instructions from Google.
 
 3. Once you have your API key, store it in a shell file called `secrets.sh` as follows:
-```
-export GOOGLE_MAPS_TOKEN="YOUR_KEY_HERE"
-```
+  ```
+  export GOOGLE_MAPS_TOKEN="YOUR_KEY_HERE"
+  ```
 
 4. Then, go back to your terminal and source it.
-```
-source secrets.sh
-```
+  ```
+  source secrets.sh
+  ```
 
 5. Back in your terminal, gather data from Craigslist with the command `python seed.py`.
 
