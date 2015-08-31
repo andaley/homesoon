@@ -9,7 +9,7 @@
 <div class="row">
   <div class="col-md-10 col-md-offset-1">
     <h1>My Favorites</h1>
-    
+
     <button class="btn" onclick=goBack()><span class="glyphicon glyphicon-circle-arrow-left"></span> Back</button>
     <script>
       function goBack() {
@@ -53,10 +53,8 @@
 </div>
 
 <script>
-  // TODO: add event listeners to each remove button
 
   function removeFavorite(evt) {
-    console.log($(evt.currentTarget).data("id"));
     evt.preventDefault();
 
     $.post('/remove-favorite',

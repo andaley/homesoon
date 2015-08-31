@@ -64,6 +64,7 @@ One of the most interesting challenges I encountered while working on this proje
 ### Installation
 
 1. After cloning this repo, set up your virtual environment & activate it.
+
   ```
   pip install virtualenv
   virtualenv env/
