@@ -6,13 +6,6 @@
 {% endblock %}
 
 {% block content %}
-<div class="container">
-  <button class="btn" onclick=goBack()><span class="glyphicon glyphicon-circle-arrow-left"></span> Back</button>
-      <script>
-        function goBack() {
-            window.history.back();
-        }
-        </script>
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
       <h2>Your search resulted in <span class="results-num">{{num_results}}</span> posts with an average rent of <span class="results-num">${{avg_rent}}</span>.</h2>
@@ -59,7 +52,7 @@
       <canvas id="prices" width="800" height="400"></canvas>
     </div>
   </div>
-</div>
+
 
 <script>
 
