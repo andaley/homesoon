@@ -1,7 +1,5 @@
 /* BASE.html */
 
-/* search form */
-
 /* navbar */
 
 .navbar {
@@ -21,19 +19,12 @@
 }
 
 /* main */
+
 body {
   font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #232830;
   padding-top: 50px;
   }
-
-input {
-  border: none;
-  border-bottom: 1px dotted;
-  background: transparent;
-  color: #ab7967;
-  text-align: center;
-}
 
 a {
   color: rgb(91,144,191);
@@ -44,14 +35,6 @@ a:hover {
   color: rgb(91,144,191, 0.5);
 }
 
-.btn {
-  background-color: transparent;
-}
-
-#search-btn {
-  border: 1px solid;
-}
-
 .footer {
   margin-top: 40px;
   padding-top: 10px;
@@ -60,6 +43,24 @@ a:hover {
   height: 40px;
   color: #fff;
   background-color: #2c3e50;
+}
+
+/* search form */
+
+input {
+  border: none;
+  border-bottom: 1px dotted;
+  background: transparent;
+  color: #ab7967;
+  text-align: center;
+}
+
+.btn {
+  background-color: transparent;
+}
+
+#search-btn {
+  border: 1px solid;
 }
 
 
