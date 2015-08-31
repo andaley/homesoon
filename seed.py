@@ -31,17 +31,20 @@ def load_posts(city_list):
 
 
             if not Posting.query.get(posting.get('PostingID')):
-                # 0 Ask: 2400
-                # 1 ImageThumb: 'http:\/\/images.craigslist.org...jpg'
-                # 2 Latitude: 38.927686
-                # 3 PostingTitle: 'title'
-                # 4 PostedDate: '1438725510'
-                # 5 Longitude: -122.3888
-                # 6 PostingURL: '\/\/sfbay.craigslist.org...html'
-                # 7 Bedrooms: '2'
-                # 8 CategoryID: '1'
-                # 9 PostingID: '5156767694'
 
+                # Example key value pairs:
+                    # 0 Ask: 2400
+                    # 1 ImageThumb: 'http:\/\/images.craigslist.org...jpg'
+                    # 2 Latitude: 38.927686
+                    # 3 PostingTitle: 'title'
+                    # 4 PostedDate: '1438725510'
+                    # 5 Longitude: -122.3888
+                    # 6 PostingURL: '\/\/sfbay.craigslist.org...html'
+                    # 7 Bedrooms: '2'
+                    # 8 CategoryID: '1'
+                    # 9 PostingID: '5156767694'
+
+                # Reformat img url to display as HTML in infoWindow
                 raw_img_url = posting.get('ImageThumb')
                 if raw_img_url:
                     new_url = raw_img_url.split(',')
@@ -66,6 +69,4 @@ if __name__ == '__main__':
     connect_to_db(app)
     db.create_all()
     load_posts(city_list)
-    # db.session.commit()
     print "Database updated."
-    # If creating database from scratch, run db.create_all()
