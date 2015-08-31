@@ -32,7 +32,7 @@ a {
 
 a:hover {
   text-decoration: none;
-  color: rgb(91,144,191, 0.5);
+  color: rgb(91,144,191, 0.75);
 }
 
 .footer {
@@ -55,7 +55,7 @@ input {
   border: none;
   border-bottom: 1px dotted;
   background: transparent;
-  color: #ab7967;
+  color: #d08770;
   text-align: center;
 }
 
@@ -114,7 +114,15 @@ input {
 }
 
 
-/* STATS.html */
+/* CHARTS.html */
+
+h2 {
+  font-weight: 700;
+}
+
+.results-num {
+  color: rgb(91,144,191);
+}
 
 #search-analysis {
   /*border: 1px solid;*/
@@ -130,6 +138,10 @@ input {
   width: 12px;
   height: 12px;
   margin-right: 5px;
+}
+
+ul .pie-legend {
+  list-style: none;
 }
 
 /*COLORS*/
