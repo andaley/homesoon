@@ -2,6 +2,7 @@
 ### Hackbright Academy Final Project, Summer 2015
 HomeSoon helps renters find housing within a reasonable commute distance. By seeding data from Craigslist, HomeSoon lets users search for a new apartment according to their budget, method of transportation, and desired distance from work. HomeSoon uses the Google Maps API to display a user's search results, where they can view further details such as an image, how the price compares to the average rent of their search, and most importantly, how long it would take to get to work from that location. Additionally, HomeSoon uses Chart.js to provide interactive charts helping users analyze their search.
 
+HomeSoon was built by Noelle Daley over the course of 3 and half weeks as part of the [Hackbright Academy](http://www.hackbrightacademy.com/) Summer 2015 fellowship.
 
 ### Contents
 Technology Stack
@@ -27,12 +28,28 @@ Installation
 
 ### Feature List
 
-- [x] Scrape data from Craigslist and store in database (Python, SQLite)
+- [x] Scrape data from Craigslist, parse, and store in database (Python, SQLite)
+    - [x] Store data from SF Bay Area
+    - [x] Add support for Portland
+    - [x] Add support for Seattle
+    - [x] Automate `seed.py` to add any city, given the Craigslist prefix
 - [x] Set up HTML form for querying database by price, number of bedrooms, and proximity to work/point of interest (Google Geocoding Service, Google Places API)
+- [x] Query database for posts within users' desired distance (Euclidean distance formula, Python)
 - [x] Display search results as markers on a map (Google Maps API, Javascript / jQuery)
+- [x] Allow user to modify search (HTML, jQuery, AJAX)
 - [x] When user clicks on a result, calculate the commute time and distance from that location to their work/point of interest (Google Distance Matrix, AJAX)
-- [x] Calculate commute time according to their preferred method of transportation (driving, public transportation, bicycling, or walking), and link to directions in separate tab (Google Distance Matrix, AJAX)
-- [x] 
+    - [x] Calculate commute time according to preferred method of transportation (driving, public transportation, bicycling, or walking), and link to directions in separate tab
+- [x] Calculate average price of search results (Python, AJAX)
+    - [x] Compare each post with average price
+- [x] Allow users to sign in or sign up for an account (Python)
+- [x] Allow users to save a post and commute time for later viewing (SQLite, AJAX, Javascript)
+   - [x] Allow users to remove a post from their list of favorites
+- [x] Display charts with information about users' search (Chart.js, Javascript)
+    - [x] Show number of posts and average rent
+    - [x] Show number of posts if user were willing to pay more or commute farther
+- [x] Display charts about Craigslist data in general (Chart.js, SQLite)
+    - [x] Number of 1, 2, or 3 bedroom places
+    - [x] Average price of 1, 2, or 3 bedrooms places per city
 
 ### Installation
 
