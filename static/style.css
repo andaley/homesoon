@@ -35,6 +35,8 @@ input {
   border: none;
   border-bottom: 1px dotted;
   background: transparent;
+  color: #ab7967;
+  font-size: 1.4em;
 }
 
 a {
