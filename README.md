@@ -27,8 +27,12 @@ Installation
 
 ### Feature List
 
-- [x] Pull data from Craigslist and store in database (Python, SQLite)
-- [x] Query
+- [x] Scrape data from Craigslist and store in database (Python, SQLite)
+- [x] Set up HTML form for querying database by price, number of bedrooms, and proximity to work/point of interest (Google Geocoding Service, Google Places API)
+- [x] Display search results as markers on a map (Google Maps API, Javascript / jQuery)
+- [x] When user clicks on a result, calculate the commute time and distance from that location to their work/point of interest (Google Distance Matrix, AJAX)
+- [x] Calculate commute time according to their preferred method of transportation (driving, public transportation, bicycling, or walking), and link to directions in separate tab (Google Distance Matrix, AJAX)
+- [x] 
 
 ### Installation
 
