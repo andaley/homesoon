@@ -1,39 +1,24 @@
-/* SEARCH FORM */
+/* BASE.html */
+
+/* search form */
 
 #address-box {
   display: block;
 }
 
-/* NAVBAR */
+/* navbar */
 
 .navbar {
   margin-bottom: 0;
   background-color: #2c3e50;
 }
 
-/* MAIN */
+/* main */
 body {
   font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #232830;
   padding-top: 50px;
   }
-
-#main-img {
-  background-color: #ccc;
-  height: 650px;
-}
-#main-map {
-  background-color: #ccc;
-  height: 650px;
-}
-#search-menu {
-  position: absolute;
-  top: 350px;
-  /* adjust value accordingly */
-  left: 0px;
-  /* adjust value accordingly */
-  background-color: rgba(255, 255, 255, 0.75);
-}
 
 input {
   border: none;
@@ -41,13 +26,9 @@ input {
   background: transparent;g
 }
 
-/* SIGN IN */
-
-.form-signin {
-  margin-top: 100px;
+a {
+  text-decoration: none;
 }
-
-/* FOOTER */
 
 .footer {
   margin-top: 40px;
@@ -57,7 +38,39 @@ input {
   background-color: #fff;
 }
 
-/* STATS */
+
+/* INDEX.html */
+
+#main-img {
+  background-color: #ccc;
+  height: 650px;
+}
+
+#search-menu {
+  position: absolute;
+  top: 350px;
+  /* adjust value accordingly */
+  left: 0px;
+  /* adjust value accordingly */
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+
+/* APTS.html */
+
+#main-map {
+  background-color: #ccc;
+  height: 650px;
+}
+
+/* SIGN-IN.html */
+
+.form-signin {
+  margin-top: 100px;
+}
+
+
+/* STATS.html */
 
 #search-analysis {
   /*border: 1px solid;*/
