@@ -65,14 +65,14 @@ a:hover {
 
 #main-img {
   background-color: #ccc;
-  height: 650px;
+  height: 550px;
 }
 
 #search-menu {
   position: absolute;
-  top: 350px;
+  top: 250px;
   left: 0px;
-  padding: 20px;
+  padding: 5px 20px;
   background-color: rgba(255, 255, 255, 0.75);
 }
 
