@@ -37,7 +37,7 @@ function initialize() {
         position: new google.maps.LatLng(apts['origin_info']['origin_lat'], apts['origin_info']['origin_lon']),
         map: map,
         animation: google.maps.Animation.DROP,
-        icon: 'https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_purple.png',
+        icon: 'https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_blue.png',
         title: 'Origin',
         optimized: false, // used for selenium test. Can set to true once test passes.
       })
@@ -86,7 +86,7 @@ function initialize() {
               '<p ' + priceMessage + '</p>' +
               '<p>Bedrooms: ' + apartment['bedrooms'] + '</p>' +
               imgPlaceholder +
-              '<a href="#" target="_blank" id="' + key + '-dir"><p>Commute time: <span id="' + key + '-time"></span></p></a>' +
+              '<a href="#" target="_blank" id="' + key + '-dir"><p>Commute time: <span id="' + key + '-time"></span> <span class="glyphicon glyphicon-new-window"></span></p></a>' +
               '<p>Commute distance: <span id="' + key + '-distance">' + '</span></p>' +
               '<button class="btn" id="' + key + '-fav"><span class="glyphicon glyphicon-star-empty"></span></button>' +
               '</div>'
