@@ -56,8 +56,19 @@
 
       {% block search %}
       <div class="col-lg-10 col-lg-offset-1">
+
           <form class="navbar-form" action="/apartments" method="POST">
-            <label>Modify your search:
+
+            <button class="btn" onclick=goBack()>
+              <span class="glyphicon glyphicon-circle-arrow-left"></span> Back
+            </button>
+                <script>
+                  function goBack() {
+                      window.history.back();
+                  }
+                </script>
+                
+            <label>Modify search:
               <input type="text" name="address" class="address-box" id="address" value="{{raw_location}}">
             </label>
 
@@ -85,7 +96,7 @@
               $<input type="number" name="cost" value={{price}}>
             </label>
 
-            <label>Commute method:
+            <label>Commute by:
               <select name="transportation" id="transportation">
                 <option></option>
                 <option value="driving">driving</option>
