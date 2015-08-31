@@ -224,4 +224,9 @@ walked through google maps tutorial and added two points to sample map
 - added color to price message
 - added back button to favorites page
 
+8/31
+- adding google fonts
+- styling navbar links
+- styling search form
+
 TODO
