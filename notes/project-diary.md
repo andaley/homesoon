@@ -229,6 +229,7 @@ walked through google maps tutorial and added two points to sample map
 - styling navbar links
 - styling search form
 - fixed position of search box when resized
+- moved back button to modify search
 
 TODO
 
