@@ -52,57 +52,59 @@
   </nav>
 
   <div class="container-fluid">
-    <div id="redo-search">{% block search %}
+    <div class="row">
 
-      <form class="navbar-form" action="/apartments" method="POST">
-        <label>Modify your search: </label>
-        <label>Starting address:
-          <input type="text" name="address" class="address-box" id="address" value="{{raw_location}}">
-        </label>
+      {% block search %}
+      <div class="col-lg-10 col-lg-offset-1">
+          <form class="navbar-form" action="/apartments" method="POST">
+            <label>Modify your search:
+              <input type="text" name="address" class="address-box" id="address" value="{{raw_location}}">
+            </label>
 
-        <label>Miles away:
-          <select name="distance" id="distance">
-            <option value="1">1</option>
-            <option value="3">3</option>
-            <option value="5">5</option>
-            <option value="10">10</option>
-            <option value="25">25</option>
-            <option value="50">50</option>
-          </select>
-        </label>
+            <label>Miles away:
+              <select name="distance" id="distance">
+                <option value="1">1</option>
+                <option value="3">3</option>
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+              </select>
+            </label>
 
-        <label>Bedrooms:
-          <select name="bedrooms" id="bedrooms">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-          </select>
-        </label>
+            <label>Bedrooms:
+              <select name="bedrooms" id="bedrooms">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+            </label>
 
-        <label>Max price:
-          $<input type="number" name="cost" value={{price}}>
-        </label>
+            <label>Max price:
+              $<input type="number" name="cost" value={{price}}>
+            </label>
 
-        <label>Commute method:
-          <select name="transportation" id="transportation">
-            <option></option>
-            <option value="driving">driving</option>
-            <option value="transit">public transportation</option>
-            <option value="bicycling">bicycling</option>
-            <option value="walking">walking</option>
-        </label>
+            <label>Commute method:
+              <select name="transportation" id="transportation">
+                <option></option>
+                <option value="driving">driving</option>
+                <option value="transit">public transportation</option>
+                <option value="bicycling">bicycling</option>
+                <option value="walking">walking</option>
+            </label>
 
-        <input type="submit" class="btn" id="search-btn">
-      </form>
-      <script>
-        // Set drop-down values to users' selection.
-        $('#distance').val({{distance}});
-        $('#bedrooms').val({{bedrooms}});
-        $('#transportation').val('{{transport}}');
-      </script>
-      <script src="/static/autocomplete.js"></script>
-       {% endblock %}
+            <input type="submit" class="btn" id="search-btn">
+          </form>
+          <script>
+            // Set drop-down values to users' selection.
+            $('#distance').val({{distance}});
+            $('#bedrooms').val({{bedrooms}});
+            $('#transportation').val('{{transport}}');
+          </script>
+          <script src="/static/autocomplete.js"></script>
+      </div>
+      {% endblock %}
      </div>
     {% block content %} Body content goes here! {% endblock %}
   </div>
