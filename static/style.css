@@ -142,6 +142,7 @@ h2 {
 #compare {
   /*border: 1px solid;*/
 }
+
 .chart-legend ul li span {
   display: inline-block;
   width: 12px;
@@ -159,17 +160,18 @@ h2 {
   padding-right: 20px;
 }
 
+.header-row {
+  margin-top: 40px;
+  margin-bottom: 10px;
+}
 
 /*COLORS*/
-
 
 /*#5B90BF mid blue */
 /* rgb(91,144,191) */
 
-
 /*#96b5b4 light blue grey */
 /*rgb(150,181,180) */
-
 
 /*#d08770 salmon */
 /* rgb(208,135,112) */
@@ -178,7 +180,6 @@ h2 {
 
 /*#a3be8c light green*/
 /* rgb(163,190,140) */
-
 
 /*#b48ead purple*/
 /* rgb(180,142,173) */
