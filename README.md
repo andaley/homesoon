@@ -4,6 +4,8 @@ HomeSoon helps renters find housing within a reasonable commute distance. By see
 
 HomeSoon was built by Noelle Daley over the course of 3 and half weeks as part of the [Hackbright Academy](http://www.hackbrightacademy.com/) Summer 2015 fellowship.
 
+![Homepage](/screenshots/home.png)
+
 ### Contents
 - [Technology Stack](#technology-stack)
 - [Feature List](#feature-list)
