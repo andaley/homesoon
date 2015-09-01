@@ -123,6 +123,10 @@ input {
   color: #FFE62F;
 }
 
+img {
+  margin-bottom: 10px;
+}
+
 /* SIGN-IN.html */
 
 .form-signin {
