@@ -234,7 +234,7 @@ def add_favorite():
 
         Favorite.add_favorite(user_id = session['id'], marker_id = marker_id, commute_time = commute_time, raw_location = session['raw_location'])
 
-    message = '<span class="glyphicon glyphicon-star"></span>'
+    message = '<span class="glyphicon glyphicon-star star"></span>'
 
     return message
 
