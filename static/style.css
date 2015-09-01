@@ -84,7 +84,7 @@ input {
   position: absolute;
   top: 250px;
   left: 0px;
-  padding: 5px 0px 5px 40px;
+  padding: 5px 15px 10px;
   background-color: rgba(255, 255, 255, 0.85);
   font-size: 1.2em;
 }
