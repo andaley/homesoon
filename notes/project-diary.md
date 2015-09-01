@@ -230,6 +230,8 @@ walked through google maps tutorial and added two points to sample map
 - styling search form
 - fixed position of search box when resized
 - moved back button to modify search
+- fixed legend list style
+- fixed sign in buttons fill
 
 TODO
 
