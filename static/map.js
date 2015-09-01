@@ -21,7 +21,7 @@ function initialize() {
 
   // Define global info window
   var infoWindow = new google.maps.InfoWindow({
-    width: 200
+    width: 150,
   })
 
 
@@ -83,7 +83,7 @@ function initialize() {
             contentString = (
               '<div class="window-content">' +
               '<a href="' + apartment['url'] + '" target="_blank" class="apt-title">' + apartment['title'] + '</a>' +
-              '<button class="btn" id="' + key + '-fav"><span class="glyphicon glyphicon-star-empty"></span></button>' +
+              '<button class="btn" id="' + key + '-fav"><span class="glyphicon glyphicon-star-empty star"></span></button>' +
               '<p>Rent: $' + apartment['price'] + '</p>' +
               '<p ' + priceMessage + '</p>' +
               '<p>Bedrooms: ' + apartment['bedrooms'] + '</p>' +
