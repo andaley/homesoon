@@ -119,6 +119,10 @@ input {
   height: 650px;
 }
 
+.star {
+  color: #FFE62F;
+}
+
 /* SIGN-IN.html */
 
 .form-signin {
