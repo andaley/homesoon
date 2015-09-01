@@ -97,6 +97,11 @@ One of the most interesting challenges I encountered while working on this proje
 
 ### Additional Screenshots
 
+#### Example search results
 ![Search results](/screenshots/search-results.png)
+
+#### Analyze your search
 ![Charts 1](/screenshots/charts-1.png)
+
+#### Compare prices per city
 ![Charts 2](/screenshots/charts-2.png)
