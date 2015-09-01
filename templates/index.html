@@ -1,23 +1,25 @@
 {% extends 'base.html'%}
 {% block title %} Apartment Search {% endblock %}
-{% block script%}<script src="../static/autocomplete.js"></script>{% endblock %}
+{% block script%}
+<script src="../static/autocomplete.js"></script>
+{% endblock %}
 {% block search %} {% endblock %}
 
 {% block content %}
 <div class="row" id="main-img"></div>
 <div class="row blue-row"></div>
 <div class="row">
-    <div class="col-lg-4 col-md-8 col-md-offset-2" id="search-menu">
-      <h1>Find me an apartment near...</h1>
-      <form class="" action="/apartments" method="POST" autocomplete="on">
-        <div class="row">
-          <div class="col-md-12">
-            <input type="text" name="address" class="input-lg col-lg-10" id="address" placeholder="Address, city or zip" required>
-          </div>
+  <div class="col-lg-4 col-md-8 col-md-offset-2" id="search-menu">
+    <h1>Find me an apartment near...</h1>
+    <form class="" action="/apartments" method="POST" autocomplete="on">
+      <div class="row">
+        <div class="col-md-12">
+          <input type="text" name="address" class="input-lg col-lg-10" id="address" placeholder="Address, city or zip" required>
         </div>
+      </div>
 
-        <div class="row">
-          <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-12">
           <label>within
             <select name="distance" class="form-control form-inline">
               <option value="1">1</option>
@@ -37,37 +39,40 @@
               <option value="4">4</option>
             </select>
             bedrooms,</label>
-          </div>
         </div>
+      </div>
 
-        <div class="row">
-          <div class="col-md-12">
-            <label>and costs less than $
-              <input type="number" id="cost" name="cost" placeholder="3,000" required> per month.</label>
-          </div>
+      <div class="row">
+        <div class="col-md-12">
+          <label>and costs less than $
+            <input type="number" id="cost" name="cost" placeholder="3,000" required> per month.</label>
         </div>
+      </div>
 
-        <div class="row">
-          <div class="col-md-12">
-            <label>I like to commute by:
-              <select name="transportation" class="form-control form-inline">
-                <option value="driving">driving</option>
-                <option value="transit">public transportation</option>
-                <option value="bicycling">bicycling</option>
-                <option value="walking">walking</option>
+      <div class="row">
+        <div class="col-md-12">
+          <label>I like to commute by:
+            <select name="transportation" class="form-control form-inline">
+              <option value="driving">driving</option>
+              <option value="transit">public transportation</option>
+              <option value="bicycling">bicycling</option>
+              <option value="walking">walking</option>
 
-                <input type="submit" class="btn" id="search-btn">
-            </label>
-          </div>
+              <input type="submit" class="btn" id="search-btn">
+          </label>
         </div>
-      </form>
-    </div>
+      </div>
+
+    </form>
+  </div>
 </div>
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
     <h1>HomeSoon</h1>
     <h4>Find an apartment, shorten your commute.</h4>
-    <p>HomeSoon helps renters in the Bay Area, Seattle, and Portland find housing within a reasonable commute distance. By seeding data from Craigslist, HomeSoon lets users search for a new apartment according to their budget, method of transportation, and desired distance from work. HomeSoon uses the Google Maps API to display a user's search results, where they can view further details such as an image, how the price compares to the average rent of their search, and most importantly, how long it would take to get to work from that location. Additionally, HomeSoon provides interactive charts helping users analyze their search.</p>
+    <p>HomeSoon helps renters in the Bay Area, Seattle, and Portland find housing within a reasonable commute distance. By seeding data from Craigslist, HomeSoon lets users search for a new apartment according to their budget, method of transportation, and
+      desired distance from work. HomeSoon uses the Google Maps API to display a user's search results, where they can view further details such as an image, how the price compares to the average rent of their search, and most importantly, how long it
+      would take to get to work from that location. Additionally, HomeSoon provides interactive charts helping users analyze their search.</p>
 
     <p>HomeSoon was built by <a href="http://noelledaley.github.io">Noelle Daley</a> over the course of 3 and half weeks as part of the <a href="http://www.hackbrightacademy.com">Hackbright Academy</a> Summer 2015 fellowship.</p>
   </div>
