@@ -11,42 +11,55 @@
       <h1>Find me an apartment near...</h1>
       <form class="" action="/apartments" method="POST" autocomplete="on">
         <div class="row">
-          <input type="text" name="address" class="input-lg col-lg-10" id="address" placeholder="Address, city or zip" required>
+          <div class="col-md-12">
+            <input type="text" name="address" class="input-lg col-lg-10" id="address" placeholder="Address, city or zip" required>
+          </div>
         </div>
 
+        <div class="row">
+          <div class="col-md-12">
+          <label>within
+            <select name="distance" class="form-control form-inline">
+              <option value="1">1</option>
+              <option value="3">3</option>
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="25">25</option>
+              <option value="50">50</option>
+            </select>
+            miles.</label>
 
-        <label>within
-          <select name="distance" class="form-control form-inline">
-            <option value="1">1</option>
-            <option value="3">3</option>
-            <option value="5">5</option>
-            <option value="10">10</option>
-            <option value="25">25</option>
-            <option value="50">50</option>
-          </select>
-          miles.</label>
+          <label>That has
+            <select name="bedrooms" class="form-control form-inline">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+            bedrooms,</label>
+          </div>
+        </div>
 
-        <label>That has
-          <select name="bedrooms" class="form-control form-inline">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-          </select>
-          bedrooms,</label>
+        <div class="row">
+          <div class="col-md-12">
+            <label>and costs less than $
+              <input type="number" id="cost" name="cost" placeholder="3,000" required> per month.</label>
+          </div>
+        </div>
 
-        <label>and costs less than $
-          <input type="number" id="cost" name="cost" placeholder="3,000" required> per month.</label>
+        <div class="row">
+          <div class="col-md-12">
+            <label>I like to commute by:
+              <select name="transportation" class="form-control form-inline">
+                <option value="driving">driving</option>
+                <option value="transit">public transportation</option>
+                <option value="bicycling">bicycling</option>
+                <option value="walking">walking</option>
 
-        <label>I like to commute by:
-          <select name="transportation" class="form-control form-inline">
-            <option value="driving">driving</option>
-            <option value="transit">public transportation</option>
-            <option value="bicycling">bicycling</option>
-            <option value="walking">walking</option>
-        </label>
-
-        <input type="submit" class="btn" id="search-btn">
+                <input type="submit" class="btn" id="search-btn">
+            </label>
+          </div>
+        </div>
       </form>
     </div>
 </div>
