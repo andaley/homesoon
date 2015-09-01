@@ -5,7 +5,6 @@ HomeSoon helps renters find housing within a reasonable commute distance. By see
 HomeSoon was built by Noelle Daley over the course of 3 and half weeks as part of the [Hackbright Academy](http://www.hackbrightacademy.com/) Summer 2015 fellowship.
 
 ![Homepage](/screenshots/home.png)
-<img src="/screenshots/charts.png">
 
 ### Contents
 - [Technology Stack](#technology-stack)
@@ -13,6 +12,7 @@ HomeSoon was built by Noelle Daley over the course of 3 and half weeks as part o
 - [Accessing Craigslist data](#accessing-craigslist-data)
 - [Calculating Distance](#calculating-distance)
 - [Installation](#installation)
+- [Additional Screenshots](#additional-screenshots)
 
 
 ### Technology Stack:
@@ -94,3 +94,9 @@ One of the most interesting challenges I encountered while working on this proje
 6. Run `python tests.py` to verify the data structure from Craigslist hasn't changed.
 
 7. Lastly, run `python server.py` and visit `localhost:5000/` in your web browser of choice to use the app.
+
+### Additional Screenshots
+
+![Search results](/screenshots/search-results.png)
+![Charts 1](/screenshots/charts-1.png)
+![Charts 2](/screenshots/charts-2.png)
