@@ -233,8 +233,11 @@ walked through google maps tutorial and added two points to sample map
 - fixed legend list style
 - fixed sign in buttons fill
 
+9/1
+- made footer text white
+- fixed search form padding and margins
+
 TODO
 
 - stick footer to bottom of page
-- make footer text white
 - remote map options from map
