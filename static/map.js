@@ -82,13 +82,14 @@ function initialize() {
             // Define content of infoWindow per marker
             contentString = (
               '<div class="window-content">' +
-              '<a href="' + apartment['url'] + '" target="_blank" class="apt-title">' + apartment['title'] + '</a>' + '<p>Rent: $' + apartment['price'] + '</p>' +
+              '<a href="' + apartment['url'] + '" target="_blank" class="apt-title">' + apartment['title'] + '</a>' +
+              '<button class="btn" id="' + key + '-fav"><span class="glyphicon glyphicon-star-empty"></span></button>' +
+              '<p>Rent: $' + apartment['price'] + '</p>' +
               '<p ' + priceMessage + '</p>' +
               '<p>Bedrooms: ' + apartment['bedrooms'] + '</p>' +
               imgPlaceholder +
               '<a href="#" target="_blank" id="' + key + '-dir"><p>Commute time: <span id="' + key + '-time"></span> <span class="glyphicon glyphicon-new-window"></span></p></a>' +
               '<p>Commute distance: <span id="' + key + '-distance">' + '</span></p>' +
-              '<button class="btn" id="' + key + '-fav"><span class="glyphicon glyphicon-star-empty"></span></button>' +
               '</div>'
             );
 
