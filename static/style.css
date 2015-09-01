@@ -108,6 +108,10 @@ input {
   color: #d08770;
 }
 
+#address {
+  margin-bottom: 10px;
+}
+
 /* APTS.html */
 
 #main-map {
