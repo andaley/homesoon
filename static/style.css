@@ -12,7 +12,7 @@
 }
 
 .navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-brand:hover {
-  color: green;
+  color: rgb(91,144,191);
 }
 
 .navbar-default .navbar-brand {
@@ -88,9 +88,13 @@ input {
   font-size: 1.2em;
 }
 
+
 .form-control {
     display: inline;
-    width: auto;
+}
+
+.form-inline {
+  width: auto;
 }
 
 .blue-row {
