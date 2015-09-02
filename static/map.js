@@ -1,5 +1,5 @@
 
-
+// Create the map!
 var mapCanvas = document.getElementById('main-map');
 var mapOptions = {
   center: new google.maps.LatLng(37.7577, -122.4376),
@@ -9,7 +9,6 @@ var mapOptions = {
   }
 };
 
-// Create the map!
 var map = new google.maps.Map(mapCanvas, mapOptions);
 map.mapTypes.set('map_style', styledMap);
 map.setMapTypeId('map_style');
