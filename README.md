@@ -57,7 +57,7 @@ HomeSoon was built by Noelle Daley over the course of 3 and half weeks as part o
 
 ### Accessing Craigslist Data
 
-One of the most interesting challenges I encountered while working on this project was accessing Craigslist data, parsing it, and storing it in my database. Craigslist does not have an official API nor do they offer (or allow) a formal way of interacting with this data. However, through a combination of inspecting network calls and testing, I was able to get the data I needed and format it accordingly. To see exactly how I accomplished this, you can check out `seed.py`.
+One of the most interesting challenges I encountered while working on this project was accessing Craigslist data, parsing it, and storing it in my database. Craigslist does not have an official API nor do they offer (or allow) a formal way of interacting with their data. However, through a combination of inspecting network calls and testing, I was able to get the data I needed and format it accordingly. To see exactly how I accomplished this, you can check out `seed.py`.
 
 
 ### Calculating Distance
