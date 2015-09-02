@@ -23,7 +23,7 @@ def home():
     return render_template('index.html')
 
 
-### Log in / out ###
+#### Log in / out ####
 
 @app.route('/sign-in')
 def show_sign_in():
@@ -120,12 +120,6 @@ def display_apartments():
     avg_rent = Posting.calculate_avg_rent(search_results)
     session['avg_rent'] = avg_rent
 
-    # TODO: if search returns nothing, flash a message.
-
-    if not search_results:
-        # return nothing
-        pass
-
     apartments = {'origin_info':
         {"origin_lat": session['origin_latitude'],
         "origin_lon": session['origin_longitude']},
@@ -155,12 +149,9 @@ def calculate_distance(lat, lon):
 
     # Convert origin and destination to format recognized by Google Maps Python wrapper.
     origin = str(session['origin_latitude']) + ',' + str(session['origin_longitude'])
-    # '37.7914448,-122.3929672'
     destination = str(lat) + ',' + str(lon)
-    # '37.7857435,-122.4112531'
 
     distance_results = gmaps.distance_matrix(origin, destination, mode=session['transit_method'], units='imperial') # returns dictionary
-
 
     if session['transit_method'] == 'transit':
         method = 'data=!3m1!4b1!4m2!4m1!3e3'
@@ -189,7 +180,7 @@ def show_charts():
     Displays graphs related to the users' search as well as general prices from Craigslist.
     """
 
-    # Show number of posts more expensive than your search.
+    # Show number of posts more expensive than search.
     more_expensive = Posting.get_more_expensive(session['price'], session['bedrooms'], session['origin_latitude'], session['origin_longitude'], session['max_distance'])
     num_expensive = more_expensive['total']
 
