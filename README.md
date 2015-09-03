@@ -10,7 +10,6 @@ HomeSoon was built by Noelle Daley over the course of 3 and half weeks as part o
 - [Technology Stack](#technology-stack)
 - [Feature List](#feature-list)
 - [Accessing Craigslist data](#accessing-craigslist-data)
-- [Calculating Distance](#calculating-distance)
 - [Installation](#installation)
 - [Additional Screenshots](#additional-screenshots)
 
@@ -60,10 +59,6 @@ HomeSoon was built by Noelle Daley over the course of 3 and half weeks as part o
 One of the most interesting challenges I encountered while working on this project was accessing Craigslist data, parsing it, and storing it in my database. Craigslist does not have an official API nor do they offer (or allow) a formal way of interacting with their data. However, through a combination of inspecting network calls and testing, I was able to get the data I needed and format it accordingly. To see exactly how I accomplished this, you can check out `seed.py`.
 
 
-### Calculating Distance
-
-
-
 ### Installation
 
 1. After cloning this repo, set up your virtual environment & activate it.
@@ -91,9 +86,7 @@ One of the most interesting challenges I encountered while working on this proje
 
 5. Back in your terminal, gather data from Craigslist with the command `python seed.py`.
 
-6. Run `python tests.py` to verify the data structure from Craigslist hasn't changed.
-
-7. Lastly, run `python server.py` and visit `localhost:5000/` in your web browser of choice to use the app.
+6. Lastly, run `python server.py` and visit `localhost:5000/` in your web browser of choice to use the app.
 
 ### Additional Screenshots
 
