@@ -30,7 +30,8 @@ class Posting(db.Model):
 
     @staticmethod
     def calculate_outer_bounds(origin_lat, origin_lon, desired_distance):
-        """Given origin latitude, longitude, and desired distance, calculate the
+        """Given origin latitude and longitude, calculate outer bounds
+        within desired distance.
         """
 
         # X and Y correspond to latitudes and longitudes that form a square boundary from the origin. Use these values inititally to query database, then check Euclidean distance after to ensure they fall within the circular boundary.
@@ -48,7 +49,8 @@ class Posting(db.Model):
     @classmethod
     def get_apartments(cls, max_rent, num_rooms, origin_lat, origin_lon, desired_distance):
         """
-        Given price, # of bedrooms, max price, and origin, return list of apartment objects within desired distance.
+        Given price, # of bedrooms, max price, and origin, return list of
+        apartment objects within desired distance.
         """
 
         x, y, x2, y2 = Posting.calculate_outer_bounds(origin_lat, origin_lon, desired_distance)
@@ -65,8 +67,8 @@ class Posting(db.Model):
 
     def check_euclidean_distance(self, origin_lat, origin_lon, desired_distance):
         """
-        Given an apartment object, origin latitude/longitude, and desired radius, calculate Euclidean distance.
-        If distance is within desired range, return True.
+        Given an apartment object, origin latitude/longitude, and desired radius,
+        calculate Euclidean distance. If distance is within desired range, return True.
         """
 
         MILES_TO_DEGREES = 69.0
@@ -97,7 +99,9 @@ class Posting(db.Model):
     @classmethod
     def get_more_expensive(cls, price, bedrooms, origin_lat, origin_lon, desired_distance):
         """
-        Given users' search parameters, find number of apartments that are more expensive. Returns dictionary where key 'one_hundred' contains apartments that the user could find if they increased their maximum price by $100.
+        Given users' search parameters, find number of apartments that are more expensive.
+        Returns dictionary where key 'one_hundred' contains apartments that the user could
+        find if they increased their maximum price by $100.
         """
 
         # t = Posting.get_more_expensive(3000, 1, 37.7914448,-122.3929672, 5)
