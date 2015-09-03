@@ -3,11 +3,18 @@ import json
 import requests
 import sqlite3
 
-# http://newyork.craigslist.org/jsonsearch/apa/
+# List of craigslist URLs. Can add any city to this list as long as we have the city prefix.
 city_list = ['http://sfbay.craigslist.org/jsonsearch/apa/', 'http://portland.craigslist.org/jsonsearch/apa/', 'http://seattle.craigslist.org/jsonsearch/apa/']
 
 def load_posts(city_list):
-    """Load Craigslist posts from JSON into database. Keep any posting that a user has favorited."""
+    """Load Craigslist posts from JSON into database.
+
+    Upon first seed, this will create all tables and gather Craigslist data.
+    When re-seeding, will remove all posts that have not been favorited by a user, then
+    update database with fresh Craigslist data.
+
+    Recommended: re-seed database once per day or every other day to maintain up-to-date data.
+    """
 
     # Delete any post that hasn't been favorited.
     query = "DELETE FROM postings WHERE is_favorited = 0"
