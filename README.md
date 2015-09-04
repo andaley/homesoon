@@ -98,3 +98,6 @@ One of the most interesting challenges I encountered while working on this proje
 
 #### Compare prices per city
 ![Charts 2](/screenshots/charts-2.png)
+
+#### View or remove favorite posts
+![Favorites](/screenshots/favorites.png)
