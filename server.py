@@ -7,7 +7,7 @@ import json
 import os
 
 app = Flask(__name__)
-app.secret_key = "oakzebraland"
+app.secret_key = os.environ['FLASK_TOKEN']
 app.jinja_env.undefined = StrictUndefined
 
 google_key = os.environ['GOOGLE_MAPS_TOKEN']
