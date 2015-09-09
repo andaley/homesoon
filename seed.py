@@ -65,7 +65,7 @@ def load_posts(city_list):
                 bedrooms = posting.get('Bedrooms')
                 latitude = posting.get('Latitude')
                 longitude = posting.get('Longitude')
-                new_post = Posting(post_id=post_id, title=title, date_posted=date_posted, url=url, img_url=img_url, price=price, bedrooms=bedrooms, latitude=latitude, longitude=longitude, is_favorited=0)
+                new_post = Posting(post_id=post_id, title=title, date_posted=date_posted, url=url, img_url=img_url, price=price, bedrooms=bedrooms, latitude=latitude, longitude=longitude)
                 db.session.add(new_post)
 
     db.session.commit()

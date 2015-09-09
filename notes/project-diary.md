@@ -239,5 +239,6 @@ walked through google maps tutorial and added two points to sample map
 
 TODO
 
-- stick footer to bottom of page
-- remote map options from map
+- Update seed.py and remove is_favorited attribute
+  - DELETE FROM postings WHERE posting_id not in [SELECT distinct post_id FROM favorites]
+- Update favorites remove_favorite; don't set posting.is_favorited = False
