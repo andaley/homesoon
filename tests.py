@@ -28,7 +28,6 @@ class TestApp(unittest.TestCase):
         # Unless 1 bedrooms in SF start going for more than $7000...
         self.assertTrue(len(example_call) > 75)
 
-        self.assertTrue(type(example_call[0].post_id) is int)
         self.assertTrue(type(example_call[0].latitude) is float)
         self.assertTrue(type(example_call[0].longitude) is float)
 
