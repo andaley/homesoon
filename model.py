@@ -12,8 +12,8 @@ class Posting(db.Model):
 
     __tablename__ = "postings"
 
-    post_id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(50), nullable=False)
+    post_id = db.Column(db.String(12), primary_key=True)
+    title = db.Column(db.String(100), nullable=False)
     date_posted = db.Column(db.Integer)
     url = db.Column(db.String(100), nullable=False)
     img_url = db.Column(db.String(200), nullable=True)
@@ -251,7 +251,7 @@ class Favorite(db.Model):
 def connect_to_db(app):
     """Connect database to Flask app."""
 
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///cl.db'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/homesoon'
     db.app = app
     db.init_app(app)
 
