@@ -21,7 +21,6 @@ class Posting(db.Model):
     bedrooms = db.Column(db.Integer)
     latitude = db.Column(db.Float, nullable=False)
     longitude = db.Column(db.Float, nullable=False)
-    is_favorited = db.Column(db.Boolean, default=False)
 
 
     def __repr__(self):
@@ -234,9 +233,6 @@ class Favorite(db.Model):
         new_favorite = cls(user_id = user_id, post_id = marker_id, commute_time = commute_time, origin = raw_location)
 
         db.session.add(new_favorite)
-        db.session.commit()
-
-        new_favorite.post.is_favorited = True
         db.session.commit()
 
 
