@@ -241,7 +241,11 @@ def remove_favorite():
 
 ######### Helper Functions #########
 
+# Get port from Heroku
+PORT = int(os.environ.get("PORT", 5000))
+DEBUG = "NO_DEBUG" not in os.environ
+
 if __name__ == '__main__':
-    app.debug = True
+    app.debug = DEBUG
     connect_to_db(app)
-    app.run()
+    app.run(host="0.0.0.0", port=PORT)
