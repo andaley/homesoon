@@ -17,7 +17,8 @@ def load_posts(city_list):
     """
 
     # Delete any post that hasn't been favorited.
-    query = "DELETE FROM postings WHERE is_favorited = 0"
+    query = """DELETE FROM postings WHERE post_id NOT IN
+                (SELECT post_id FROM favorites);"""
     db.session.execute(query)
     db.session.commit()
 
