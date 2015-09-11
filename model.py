@@ -2,6 +2,7 @@
 
 from flask_sqlalchemy import SQLAlchemy
 import math
+import os
 
 db = SQLAlchemy()
 
@@ -251,7 +252,9 @@ class Favorite(db.Model):
 def connect_to_db(app):
     """Connect database to Flask app."""
 
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/homesoon'
+    DATABASE_URL = os.environ.get("DATABASE_URL", "postgresql://localhost/homesoon")
+
+    app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
     db.app = app
     db.init_app(app)
 
