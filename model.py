@@ -236,6 +236,15 @@ class Favorite(db.Model):
         db.session.commit()
 
 
+    @classmethod
+    def remove_favorite(cls, favorite_id):
+        """Removes a Favorite from the database."""
+
+        favorite = cls.query.get(favorite_id)
+        db.session.delete(favorite)
+        db.session.commit()
+
+
 
 ######### Helper Functions #########
 
