@@ -21,7 +21,7 @@ https://homesoon.herokuapp.com/
 - Python
 - Flask
 - Javascript / jQuery
-- SQLite / SQLAlchemy
+- PostgreSQL / SQLAlchemy
 - Craigslist
 - Google Maps API
 - Google Distance Matrix
@@ -55,12 +55,18 @@ https://homesoon.herokuapp.com/
 - [x] Display charts about Craigslist data in general (Chart.js, SQLite)
     - [x] Number of 1, 2, or 3 bedroom places
     - [x] Average price of 1, 2, or 3 bedrooms places per city
-
+- [x] Migrate to PostgreSQL
+- [x] Deploy to Heroku
 
 ### Accessing Craigslist Data
 
 One of the most interesting challenges I encountered while working on this project was accessing Craigslist data, parsing it, and storing it in my database. Craigslist does not have an official API nor do they offer (or allow) a formal way of interacting with their data. However, through a combination of inspecting network calls and testing, I was able to get the data I needed and format it accordingly. To see exactly how I accomplished this, you can check out `seed.py`.
 
+### Calculating Distance
+
+Getting the distance from a particular apartment to the user's origin (work address) was a two-step process. The first step was to use Euclidean distance to query the database for apartments within x number of miles from the origin. The results are then sent to the view and added as markers to the map.
+
+From there, I used the Google Distance Matrix to retrieve  distance from the origin in time and miles. However, to avoid performance problems and reaching Google's API limit I waited to calculate distance until an individual marker has been clicked.
 
 ### Installation
 
