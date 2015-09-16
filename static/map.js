@@ -123,8 +123,8 @@ function bindinfoWindow(marker, map, infoWindow, html) {
     infoWindow.open(map, marker);
     marker.setIcon('https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_grey.png');
 
-    lat = marker.position.G;
-    lon = marker.position.K;
+    lat = marker.position.lat();
+    lon = marker.position.lng();
 
     // Given latitude and longitude of marker, retrieve distance and duration from Google Distance Matrix.
     console.log('Calculating distance.');
