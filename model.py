@@ -90,6 +90,9 @@ class Posting(db.Model):
     def calculate_avg_rent(cls, apartments):
         """Calculates average rent for a given list of apartment objects."""
 
+        if not apartments:
+            return 0
+
         rents = [int(post.price) for post in apartments]
         avg_rent = (sum(rents))/len(rents)
 
@@ -252,7 +255,7 @@ class Favorite(db.Model):
 def connect_to_db(app):
     """Connect database to Flask app."""
 
-    DATABASE_URL = os.environ.get("DATABASE_URL", "postgresql://localhost/homesoon")
+    DATABASE_URL = os.environ.get("DATABASE_URL", "postgresql://localhost:5432/homesoon")
 
     app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
     db.app = app
