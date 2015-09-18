@@ -1,7 +1,6 @@
 from model import Posting, User, Favorite, connect_to_db, db
 import json
 import requests
-import sqlite3
 
 # List of craigslist URLs. Can add any city to this list as long as we have the city prefix.
 city_list = ['http://sfbay.craigslist.org/jsonsearch/apa/', 'http://portland.craigslist.org/jsonsearch/apa/', 'http://seattle.craigslist.org/jsonsearch/apa/']
