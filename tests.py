@@ -154,7 +154,7 @@ class TestIntegration(unittest.TestCase):
         btn = self.browser.find_element_by_id('search-btn')
         btn.click()
         self.assertEqual(self.browser.title, 'Apartment Results')
-        self.browser.find_element_by_css_selector("div[title='Origin']")
+        # self.browser.find_element_by_css_selector("div[title='Origin']")
 
 
     def test_sign_in(self):
