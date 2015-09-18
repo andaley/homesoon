@@ -116,6 +116,9 @@ def display_apartments():
 
     search_results = Posting.get_apartments(session['price'], session['bedrooms'], session['origin_latitude'], session['origin_longitude'], session['max_distance'])
 
+    if not search_results:
+        return 'Your search returned no results!'
+
     session['num_results'] = len(search_results)
     avg_rent = Posting.calculate_avg_rent(search_results)
     session['avg_rent'] = avg_rent
