@@ -27,86 +27,93 @@ function initialize() {
   // Retrieve apartment objects from server
   $.get('/apartments.json', function(apts) {
 
-      // Re-center map according to user's origin.
-      var center = new google.maps.LatLng(apts['origin_info']['origin_lat'], apts['origin_info']['origin_lon'])
-      map.setCenter(center);
+      if (typeof apts === 'string') {
+        console.log(apts);
+        $('#no-results').text(apts);
+      } else {
 
-      // Set origin marker
-      var originMarker = new google.maps.Marker({
-        position: new google.maps.LatLng(apts['origin_info']['origin_lat'], apts['origin_info']['origin_lon']),
-        map: map,
-        animation: google.maps.Animation.DROP,
-        icon: 'https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_purple.png',
-        title: 'Origin',
-        optimized: true, // used for selenium test. Can set to true once test passes.
-      })
+        // Re-center map according to user's origin.
+        var center = new google.maps.LatLng(apts['origin_info']['origin_lat'], apts['origin_info']['origin_lon'])
+        map.setCenter(center);
 
-    // Place markers on map using database data
-      var apartment, marker, contentString;
+        // Set origin marker
+        var originMarker = new google.maps.Marker({
+          position: new google.maps.LatLng(apts['origin_info']['origin_lat'], apts['origin_info']['origin_lon']),
+          map: map,
+          animation: google.maps.Animation.DROP,
+          icon: 'https://raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_purple.png',
+          title: 'Origin',
+          optimized: true, // used for selenium test. Can set to true once test passes.
+        })
 
-      var listings = apts['listings']
+      // Place markers on map using database data
+        var apartment, marker, contentString;
 
-      for (var key in listings) {
-        apartment = listings[key];
+        var listings = apts['listings']
 
-            // Create marker per apartment object
-            marker = new google.maps.Marker({
-              position: new google.maps.LatLng(apartment['latitude'], apartment['longitude']),
-              map: map,
-              animation: google.maps.Animation.DROP,
-              title: key
-            });
+        for (var key in listings) {
+          apartment = listings[key];
 
-            markerList.push(marker);
+              // Create marker per apartment object
+              marker = new google.maps.Marker({
+                position: new google.maps.LatLng(apartment['latitude'], apartment['longitude']),
+                map: map,
+                animation: google.maps.Animation.DROP,
+                title: key
+              });
 
-            // Set price message to % more or less than the average.
-            var percentMoreLess = Math.round(apartment['price'] / apts['avg_rent'] * 100);
+              markerList.push(marker);
 
-            var priceMessage, difference;
-            if (percentMoreLess < 100) {
-              difference = 100 - percentMoreLess;
-              priceMessage = 'style="color:#94AE80">This is ' + difference + '% less than the average price in your search.</p>';
-            } else if (percentMoreLess > 100) {
-              difference = percentMoreLess - 100;
-              priceMessage = 'style="color:#ff3c00">This is ' + difference + '% more than the average price in your search.';
-            }
+              // Set price message to % more or less than the average.
+              var percentMoreLess = Math.round(apartment['price'] / apts['avg_rent'] * 100);
 
-            var imgURL, imgPlaceholder;
-            if (apartment['img_url'] !== "") {
-              imgPlaceholder = '<img src="' + apartment['img_url'] + '" height="150px">';
-            } else {
-              imgPlaceholder = '';
-            }
+              var priceMessage, difference;
+              if (percentMoreLess < 100) {
+                difference = 100 - percentMoreLess;
+                priceMessage = 'style="color:#94AE80">This is ' + difference + '% less than the average price in your search.</p>';
+              } else if (percentMoreLess > 100) {
+                difference = percentMoreLess - 100;
+                priceMessage = 'style="color:#ff3c00">This is ' + difference + '% more than the average price in your search.';
+              }
 
-            // Define content of infoWindow per marker
-            contentString = (
-              '<div class="window-content">' +
+              var imgURL, imgPlaceholder;
+              if (apartment['img_url'] !== "") {
+                imgPlaceholder = '<img src="' + apartment['img_url'] + '" height="150px">';
+              } else {
+                imgPlaceholder = '';
+              }
 
-              '<a href="' + apartment['url'] + '" target="_blank" class="apt-title">' + apartment['title'] + '</a>' +
-              '<button class="btn" id="' + key + '-fav"><span class="glyphicon glyphicon-star-empty star"></span></button>' +
+              // Define content of infoWindow per marker
+              contentString = (
+                '<div class="window-content">' +
 
-              '<p ' + priceMessage + '</p>' +
-              '<p>Rent: $' + apartment['price'] + '</p>' +
-              '<p>Bedrooms: ' + apartment['bedrooms'] + '</p>' +
-              imgPlaceholder +
-              '<a href="#" target="_blank" id="' + key + '-dir"><p>Commute time: <span id="' + key + '-time"></span> <span class="glyphicon glyphicon-new-window"></span></p></a>' +
-              '<p>Commute distance: <span id="' + key + '-distance">' + '</span></p>' +
-              '</div>'
-            );
+                '<a href="' + apartment['url'] + '" target="_blank" class="apt-title">' + apartment['title'] + '</a>' +
+                '<button class="btn" id="' + key + '-fav"><span class="glyphicon glyphicon-star-empty star"></span></button>' +
+
+                '<p ' + priceMessage + '</p>' +
+                '<p>Rent: $' + apartment['price'] + '</p>' +
+                '<p>Bedrooms: ' + apartment['bedrooms'] + '</p>' +
+                imgPlaceholder +
+                '<a href="#" target="_blank" id="' + key + '-dir"><p>Commute time: <span id="' + key + '-time"></span> <span class="glyphicon glyphicon-new-window"></span></p></a>' +
+                '<p>Commute distance: <span id="' + key + '-distance">' + '</span></p>' +
+                '</div>'
+              );
 
 
-            // Add event listeners per marker
-            bindinfoWindow(marker, map, infoWindow, contentString);
+              // Add event listeners per marker
+              bindinfoWindow(marker, map, infoWindow, contentString);
 
-    }  // END for loop
+      }  // END for loop
 
-    // Recenter map according to number of markers.
-    var bounds = new google.maps.LatLngBounds();
-    for(i=0;i<markerList.length;i++) {
-     bounds.extend(markerList[i].getPosition());
-    }
+      // Recenter map according to number of markers.
+      var bounds = new google.maps.LatLngBounds();
+      for(i=0;i<markerList.length;i++) {
+       bounds.extend(markerList[i].getPosition());
+      }
 
-    map.fitBounds(bounds);
+      map.fitBounds(bounds);
+
+    } // END conditional
 
   });  // END $.get
 
