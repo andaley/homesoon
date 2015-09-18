@@ -148,6 +148,10 @@ img {
   border: none;
 }
 
+#no-results {
+  color: red;
+}
+
 
 /* CHARTS.html */
 
