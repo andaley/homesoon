@@ -2,7 +2,6 @@ function autocomplete() {
 
   // Autocomplete address
   var input = document.getElementById('address');
-  console.log(input);
   var options = {
     types: ['geocode']
   };
